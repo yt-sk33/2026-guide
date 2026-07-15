@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Cup Guide | TEAM</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+      ヘッダー（全ページ共通・TEAMをアクティブ化）
+    =========================================== -->
+    <header class="header">
+        <div class="logo">World Cup Guide</div>
+        <nav class="nav-pc">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rule.html">Rules</a></li>
+                <li><a href="team.html" class="active">Teams</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="result.html">Result</a></li>
+            </ul>
+        </nav>
+        <button class="menu-btn" aria-label="メニューを開く">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <main>
+        <!-- ==========================================
+          1. HEROエリア
+        =========================================== -->
+        <section class="hero-subpage">
+            <div class="hero-subpage-content">
+                <h1>出場国を知ろう</h1>
+                <p>世界最高峰の舞台に集う48ヶ国、それぞれの誇りと情熱、そして注目すべきスター選手たちを詳しくチェック。</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <!-- ==========================================
+              2. 地区フィルターボタン（カプセル型）
+            =========================================== -->
+            <div class="filter-container">
+                <button class="filter-btn active">All Teams</button>
+                <button class="filter-btn">Europe</button>
+                <button class="filter-btn">South America</button>
+                <button class="filter-btn">Asia</button>
+                <button class="filter-btn">Africa</button>
+                <button class="filter-btn">North America</button>
+            </div>
+
+            <!-- ==========================================
+              3. 代表チーム紹介（2大カラム）
+            =========================================== -->
+            <div class="team-main-grid">
+                <div class="solid-card team-main-card">
+                    <!-- 後からチーム画像や情報を入れられるダミーエリア -->
+                </div>
+                <div class="solid-card team-main-card">
+                    <!-- 後からチーム画像や情報を入れられるダミーエリア -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+          4. 注目選手（黄色ライン・スライダー付き）
+        =========================================== -->
+        <section class="players-section">
+            <div class="container">
+                <div class="section-header-with-arrows">
+                    <div class="section-title-left line-yellow">
+                        <h2>注目選手 <span class="en-sub">Featured Players</span></h2>
+                    </div>
+                    <!-- 右側のスライダー矢印 -->
+                    <div class="slider-arrows">
+                        <button class="arrow-btn arrow-prev">＜</button>
+                        <button class="arrow-btn arrow-next active">＞</button>
+                    </div>
+                </div>
+
+                <!-- 縦長カードが4つ -->
+                <div class="player-grid">
+                    <div class="solid-card player-card"></div>
+                    <div class="solid-card player-card"></div>
+                    <div class="solid-card player-card"></div>
+                    <div class="solid-card player-card"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+          5. 注目チーム（ブルーライン・5列2段）
+        =========================================== -->
+        <section class="watch-teams-section">
+            <div class="container">
+                <div class="section-title-left line-blue">
+                    <h2>注目チーム <span class="en-sub">The Teams of Watch</span></h2>
+                </div>
+
+                <!-- 5列×2段（合計10個）のグリッド -->
+                <div class="watch-grid">
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                    <div class="watch-card"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+          6. 推しの国を見つけよう（大きな青いCTA）
+        =========================================== -->
+        <section class="cta-banner-section">
+            <div class="container">
+                <div class="cta-blue-card">
+                    <h2>推しの国を見つけよう</h2>
+                    <p>どの国を応援するか決まりましたか？試合日程をチェックして<br>最高の熱狂に備えましょう。</p>
+                    <div class="cta-buttons">
+                        <a href="#" class="btn btn-green">評価を投稿する</a>
+                        <a href="index.html" class="btn btn-white-border">ホームに戻る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================
+      フッター（全ページ共通）
+    =========================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">World Cup Guide</div>
+                <p class="footer-desc">
+                    世界中のサッカーの魅力を、もっと身近に、もっと楽しく。あらゆるグラフィックやお役立ち情報を配信しています。
+                </p>
+            </div>
+            
+            <div class="footer-nav-groups">
+                <div class="footer-group">
+                    <h3>クイックリンク</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rule.html">Rules Guide</a></li>
+                        <li><a href="team.html">Teams</a></li>
+                        <li><a href="#">Tips</a></li>
+                        <li><a href="result.html">Match Schedule</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h3>お問い合わせ</h3>
+                    <ul>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
