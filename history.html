@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | HISTORY</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS読み込み（前回 ver=5 に変更した状態をキープ） -->
+    <link rel="stylesheet" href="css/style.css?ver=5">
 </head>
 <body>
-
+    <!-- ↓ページ遷移アニメーション用の帯↓ -->
+    <div class="page-transition-overlay">
+        <div class="transition-stripe stripe-1"></div>
+        <div class="transition-stripe stripe-2"></div>
+        <div class="transition-stripe stripe-3"></div>
+        <div class="transition-stripe stripe-4"></div>
+        <div class="transition-stripe stripe-5"></div>
+    </div>
+    
     <!-- ==========================================
       ヘッダー（全ページ共通・Historyをアクティブ化）
     =========================================== -->
@@ -35,8 +44,8 @@
         =========================================== -->
         <section class="hero-subpage">
             <div class="hero-subpage-content">
-                <h1>大会の歴史</h1>
-                <p>1930年の第1回大会から現在に至るまで、世界を熱狂させてきた伝説的な瞬間と、進化の歴史をタイムラインで振り返ります。</p>
+                <h1 class="fade-in-up">大会の歴史</h1>
+                <p class="fade-in-up">1930年の第1回大会から現在に至るまで、世界を熱狂させてきた伝説的な瞬間と、進化の歴史をタイムラインで振り返ります。</p>
             </div>
         </section>
 
@@ -45,13 +54,13 @@
               2. タイムラインセクション
             =========================================== -->
             <section class="timeline-section">
-                <div class="section-title-left line-blue">
+                <div class="section-title-left line-blue fade-in-up">
                     <h2>W杯ヒストリーロード <span class="en-sub">History Timeline</span></h2>
                 </div>
 
                 <div class="timeline-container">
                     <!-- 1930年 -->
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up">
                         <div class="timeline-badge">1930</div>
                         <div class="solid-card timeline-card">
                             <h3>すべての始まり、ウルグアイ大会</h3>
@@ -60,7 +69,7 @@
                     </div>
 
                     <!-- 1970年 -->
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up">
                         <div class="timeline-badge">1970</div>
                         <div class="solid-card timeline-card">
                             <h3>伝説のブラジルとカラー放送開始</h3>
@@ -69,7 +78,7 @@
                     </div>
 
                     <!-- 1998年 -->
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up">
                         <div class="timeline-badge">1998</div>
                         <div class="solid-card timeline-card">
                             <h3>日本代表、悲願の初出場</h3>
@@ -78,11 +87,20 @@
                     </div>
 
                     <!-- 2022年 -->
-                    <div class="timeline-item">
+                    <div class="timeline-item fade-in-up">
                         <div class="timeline-badge">2022</div>
                         <div class="solid-card timeline-card">
                             <h3>メッシの戴冠、カタールでの奇跡</h3>
                             <p>中東初開催となったカタール大会。アルゼンチンのリオネル・メッシが悲願の優勝を果たし、決勝戦は「史上最高のゲーム」として今も語り継がれています。</p>
+                        </div>
+                    </div>
+
+                    <!-- 2026年 -->
+                    <div class="timeline-item fade-in-up">
+                        <div class="timeline-badge">2026</div>
+                        <div class="solid-card timeline-card">
+                            <h3>無敵艦隊スペイン、最小失点記録で2度目の頂点へ</h3>
+                            <p>48カ国制となった北中米大会。スペイン代表は持ち前のパスワークに加え圧倒的な堅守を披露し、全8試合でわずか1失点という驚異的な記録を樹立。W杯優勝チームの最小失点記録を塗り替え、見事に2度目の世界一に輝きました。</p>
                         </div>
                     </div>
                 </div>
@@ -92,11 +110,11 @@
               3. 歴史データ（最多優勝国などのスタッツ）
             =========================================== -->
             <section class="history-stats-section">
-                <div class="section-title-left line-yellow">
+                <div class="section-title-left line-yellow fade-in-up">
                     <h2>数字で見る歴史 <span class="en-sub">Tournament Legend Stats</span></h2>
                 </div>
 
-                <div class="stats-table-wrapper">
+                <div class="stats-table-wrapper fade-in-up">
                     <table class="neofont-table">
                         <thead>
                             <tr>
@@ -126,6 +144,30 @@
                                 <td class="count-td">3回</td>
                                 <td>1978, 1986, 2022</td>
                             </tr>
+                            <!-- 【追加】ウルグアイ -->
+                            <tr>
+                                <td class="team-td"><strong>ウルグアイ</strong></td>
+                                <td class="count-td">2回</td>
+                                <td>1930, 1950</td>
+                            </tr>
+                            <!-- 【追加】フランス -->
+                            <tr>
+                                <td class="team-td"><strong>フランス</strong></td>
+                                <td class="count-td">2回</td>
+                                <td>1998, 2018</td>
+                            </tr>
+                            <!-- スペイン（2026年優勝を加味して2回） -->
+                            <tr>
+                                <td class="team-td"><strong>スペイン</strong></td>
+                                <td class="count-td">2回</td>
+                                <td>2010, 2026</td>
+                            </tr>
+                            <!-- 【追加】イングランド -->
+                            <tr>
+                                <td class="team-td"><strong>イングランド</strong></td>
+                                <td class="count-td">1回</td>
+                                <td>1966</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -138,14 +180,14 @@
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-brand">
+            <div class="footer-brand fade-in-up">
                 <div class="footer-logo">World Cup Guide</div>
                 <p class="footer-desc">
                     世界一のサッカーの祭典を、もっと身近に、もっと楽しく。初心者からコアなファンまで楽しめるコンテンツを配信しています。
                 </p>
             </div>
             
-            <div class="footer-nav-groups">
+            <div class="footer-nav-groups fade-in-up">
                 <div class="footer-group">
                     <h3>クイックリンク</h3>
                     <ul>
@@ -169,6 +211,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JSの読み込み -->
+    <script src="js/script.js?ver=2"></script>
 </body>
 </html>

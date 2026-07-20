@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSSの読み込み（キャッシュクリア設定付き） -->
+    <link rel="stylesheet" href="css/style.css?ver=2">
 </head>
 <body>
-
+    <!-- ==========================================
+      ページ遷移アニメーション用の帯
+    =========================================== -->
+    <div class="page-transition-overlay">
+        <div class="transition-stripe stripe-1"></div>
+        <div class="transition-stripe stripe-2"></div>
+        <div class="transition-stripe stripe-3"></div>
+        <div class="transition-stripe stripe-4"></div>
+        <div class="transition-stripe stripe-5"></div>
+    </div>
+    
     <!-- ==========================================
       ヘッダー（全ページ共通・Figma精密再現）
     =========================================== -->
@@ -39,14 +50,14 @@
         =========================================== -->
         <section class="hero">
             <div class="hero-content">
-                <h1>世界がひとつになる瞬間を<br>見よう。</h1>
-                <p class="hero-sub">過去のゴールシーンや興奮をもう一度チェック。<br>4年の月日が紡ぐドラマや世界の熱狂を体感してください。</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">
-                        動画をチェックする
+                <h1 class="fade-in-up">世界がひとつになる瞬間を<br>見よう。</h1>
+                <p class="hero-sub fade-in-up">過去のゴールシーンや興奮をもう一度チェック。<br>4年の月日が紡ぐドラマや世界の熱狂を体感してください。</p>
+                <div class="hero-buttons fade-in-up">
+                    <a href="history.html" class="btn btn-primary">
+                        ワールドカップを知る
                         <span class="btn-icon">▶</span>
                     </a>
-                    <a href="#" class="btn btn-secondary">大会概要</a>
+                    <a href="result.html" class="btn btn-secondary">大会結果</a>
                 </div>
             </div>
         </section>
@@ -57,29 +68,27 @@
         <section class="about-section">
             <div class="about-container">
                 <div class="about-text">
-                    <span class="sub-label">ABOUT</span>
-                    <h2>ワールドカップとは？</h2>
-                    <p class="about-desc">
+                    <span class="sub-label fade-in-up">ABOUT</span>
+                    <h2 class="fade-in-up">ワールドカップとは？</h2>
+                    <p class="about-desc fade-in-up">
                         4年に一度開催される、サッカーの最高峰にして最大のイベント。世界各国から予選を勝ち抜いたチームが集結し、そのプライドと技術を賭けて激突します。世界の頂点に立つのはどの国か、今からチェックしていきましょう。
                     </p>
                     
-                    <!-- 特徴的なバッジカード（立体影付き） -->
                     <div class="about-stats">
-                        <div class="stat-card card-green">
+                        <div class="stat-card card-green fade-in-up">
                             <span class="stat-num">4年</span>
                             <span class="stat-label">開催周期</span>
                         </div>
-                        <div class="stat-card card-blue">
+                        <div class="stat-card card-blue fade-in-up">
                             <span class="stat-num">82カ国</span>
                             <span class="stat-label">過去出場国</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 右側：2枚の重なる角丸ダミー画像 -->
                 <div class="about-images">
-                    <div class="dummy-photo photo-large"></div>
-                    <div class="dummy-photo photo-small"></div>
+                    <div class="dummy-photo photo-large fade-in-up"></div>
+                    <div class="dummy-photo photo-small fade-in-up"></div>
                 </div>
             </div>
         </section>
@@ -88,7 +97,7 @@
           3. ルールガイド（変則4枚カードレイアウト）
         =========================================== -->
         <section class="rule-guide-section">
-            <div class="section-header">
+            <div class="section-header fade-in-up">
                 <div class="title-wrap">
                     <h2>ルールガイド</h2>
                     <p>これだけ知っておけば大丈夫！今のあなたに必要なルールを紹介！</p>
@@ -96,47 +105,54 @@
                 <a href="rule.html" class="more-link">もっと詳しく見る <span class="arrow">＞</span></a>
             </div>
             
-            <!-- 左右非対称のカードレイアウト（ソリッドシャドウ付き） -->
             <div class="rule-grid">
                 <div class="rule-row">
-                    <div class="solid-card card-long"></div>
-                    <div class="solid-card card-short"></div>
+                    <div class="solid-card card-long fade-in-up"></div>
+                    <div class="solid-card card-short fade-in-up"></div>
                 </div>
                 <div class="rule-row">
-                    <div class="solid-card card-short"></div>
-                    <div class="solid-card card-long"></div>
+                    <div class="solid-card card-short fade-in-up"></div>
+                    <div class="solid-card card-long fade-in-up"></div>
                 </div>
             </div>
         </section>
 
-        <!-- ==========================================
-          4. 注目チームを紹介（ブルー背景・丸画像）
+       <!-- ==========================================
+          4. 注目チームセクション
         =========================================== -->
         <section class="teams-section">
             <div class="teams-container">
-                <div class="section-header text-white">
-                    <div class="title-wrap">
-                        <h2>注目チームを紹介</h2>
-                        <p class="sub-white">世界中でいま最も注目されている強豪国たち</p>
+                
+                <div class="fade-in-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
+                    <div>
+                        <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 8px; color: #ffffff;">注目チームを紹介</h2>
+                        <p style="font-size: 15px; color: #93c5fd;">独自のスタイルを持つ強豪国たち</p>
                     </div>
-                    <a href="team.html" class="more-link link-white">もっと詳しく見る <span class="arrow">＞</span></a>
+                    <a href="team.html" style="font-size: 15px; font-weight: bold; color: #ffffff; text-decoration: none;">
+                        すべてのチームを見る &gt;
+                    </a>
                 </div>
                 
-                <!-- 4つの正円ダミー画像 -->
+                <!-- 【変更箇所】プレースホルダーの中に img タグを追加しました -->
                 <div class="circle-grid">
-                    <div class="circle-item">
-                        <div class="circle-image-placeholder"></div>
+                    <div class="circle-image-placeholder fade-in-up">
+                        <!-- 1カ国目 -->
+                        <img src="img/france.png" alt="フランス代表" class="round-flag">
                     </div>
-                    <div class="circle-item">
-                        <div class="circle-image-placeholder"></div>
+                    <div class="circle-image-placeholder fade-in-up">
+                        <!-- 2カ国目 -->
+                        <img src="img/spain.png" alt="スペイン代表" class="round-flag">
                     </div>
-                    <div class="circle-item">
-                        <div class="circle-image-placeholder"></div>
+                    <div class="circle-image-placeholder fade-in-up">
+                        <!-- 3カ国目 -->
+                        <img src="img/argentina.png" alt="アルゼンチン代表" class="round-flag">
                     </div>
-                    <div class="circle-item">
-                        <div class="circle-image-placeholder"></div>
+                    <div class="circle-image-placeholder fade-in-up">
+                        <!-- 4カ国目 -->
+                        <img src="img/england.png" alt="イングランド代表" class="round-flag">
                     </div>
                 </div>
+                
             </div>
         </section>
 
@@ -146,21 +162,20 @@
         <section class="why-section">
             <div class="why-container">
                 <div class="why-text">
-                    <h2>
+                    <h2 class="fade-in-up">
                         なぜ、サッカーは世界中<br>で愛されるのか？
                         <span class="green-deco-line"></span>
                     </h2>
-                    <p class="why-desc">
+                    <p class="why-desc fade-in-up">
                         ボール一つで始められる手軽さ、言葉が通じなくても繋がれる情熱。そして試合終了のホイッスルが鳴るまで何が起こるか分からないドラマ性。それらすべてが、人々を魅了し続ける理由です。
                     </p>
-                    <a href="#" class="btn btn-primary btn-small">もっと見る</a>
+                    <a href="history.html" class="btn btn-primary btn-small fade-in-up">もっと見る</a>
                 </div>
 
-                <!-- 右側：階段状にずれて並ぶ3枚の縦長カード -->
                 <div class="why-cards-track">
-                    <div class="why-vertical-card card-pos-1"></div>
-                    <div class="why-vertical-card card-pos-2"></div>
-                    <div class="why-vertical-card card-pos-3"></div>
+                    <div class="why-vertical-card card-pos-1 fade-in-up"></div>
+                    <div class="why-vertical-card card-pos-2 fade-in-up"></div>
+                    <div class="why-vertical-card card-pos-3 fade-in-up"></div>
                 </div>
             </div>
         </section>
@@ -168,10 +183,10 @@
         <!-- ==========================================
           6. FINAL CTA
         =========================================== -->
-        <section class="final-cta">
+        <section class="final-cta fade-in-up">
             <h2>Join the Excitement!</h2>
             <p>みんなでワールドカップを盛り上げよう。</p>
-            <a href="#" class="btn btn-primary">詳しく</a>
+            <a href="result.html" class="btn btn-primary">大会結果</a>
         </section>
     </main>
 
@@ -180,14 +195,14 @@
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-brand">
+            <div class="footer-brand fade-in-up">
                 <div class="footer-logo">World Cup Guide</div>
                 <p class="footer-desc">
                     世界一のサッカーの祭典を、もっと身近に、もっと楽しく。初心者からコアなファンまで楽しめるコンテンツを配信しています。
                 </p>
             </div>
             
-            <div class="footer-nav-groups">
+            <div class="footer-nav-groups fade-in-up">
                 <div class="footer-group">
                     <h3>クイックリンク</h3>
                     <ul>
@@ -211,6 +226,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JSの読み込み -->
+    <script src="js/script.js?ver=2"></script>
 </body>
 </html>

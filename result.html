@@ -1,1647 +1,511 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | RESULTS</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body class="light-theme">
+    <!-- CSS読み込み（ver=13 にして確実に更新させます） -->
+    <link rel="stylesheet" href="css/style.css?ver=13">
+</head>
+<body class="light-theme">
+    <!-- ページ遷移アニメーション用の帯 -->
+    <div class="page-transition-overlay">
+        <div class="transition-stripe stripe-1"></div>
+        <div class="transition-stripe stripe-2"></div>
+        <div class="transition-stripe stripe-3"></div>
+        <div class="transition-stripe stripe-4"></div>
+        <div class="transition-stripe stripe-5"></div>
+    </div>
+    
     <!-- ==========================================
       ヘッダー
     =========================================== -->
     <header class="header">
-      <div class="logo">World Cup Guide</div>
-      <nav class="nav-pc">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="rule.html">Rules</a></li>
-          <li><a href="team.html">Teams</a></li>
-          <li><a href="history.html">History</a></li>
-          <li><a href="result.html" class="active">Result</a></li>
-        </ul>
-      </nav>
-      <button class="menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <div class="logo">World Cup Guide</div>
+        <nav class="nav-pc">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rule.html">Rules</a></li>
+                <li><a href="team.html">Teams</a></li>
+                <li><a href="history.html">History</a></li>
+                <li><a href="result.html" class="active">Result</a></li>
+            </ul>
+        </nav>
+        <button class="menu-btn">
+            <span></span><span></span><span></span>
+        </button>
     </header>
 
     <main>
-      <!-- ==========================================
-          1. HEROエリア（他ページと完全に共通のクラスに修正）
+        <!-- ==========================================
+          1. HEROエリア
         =========================================== -->
-      <section class="hero-subpage">
-        <div class="hero-subpage-content">
-          <h1>試合結果を知ろう</h1>
-          <p>世界最高峰の舞台に集う強豪国。それぞれの実力と風格、そして注目すべきスター選手たちを詳しくチェック。</p>
-        </div>
-      </section>
+        <section class="hero-subpage">
+            <div class="hero-subpage-content">
+                <h1 class="fade-in-up">試合結果を知ろう</h1>
+                <p class="fade-in-up">世界最高峰の舞台に集う強豪国。それぞれの実力と風格、そして注目すべきスター選手たちを詳しくチェック。</p>
+            </div>
+        </section>
 
-      <!-- ==========================================
+        <!-- ==========================================
           2. 4つのスタッツカプセル
         =========================================== -->
-      <section class="capsules-outer">
-        <div class="container">
-          <div class="capsules-grid">
-            <div class="capsule">
-              <span class="cap-label">🏆 優勝国</span>
-              <span class="cap-value">アルゼンチン</span>
+        <section class="capsules-outer">
+            <div class="container">
+                <div class="capsules-grid">
+                    <div class="capsule fade-in-up">
+                        <span class="cap-label">🏆 優勝国</span>
+                        <span class="cap-value">スペイン</span>
+                    </div>
+                    <div class="capsule fade-in-up">
+                        <span class="cap-label">⚽ 得点王</span>
+                        <span class="cap-value">エンバペ (10点)</span>
+                    </div>
+                    <div class="capsule fade-in-up">
+                        <span class="cap-label">⭐ 大会MVP</span>
+                        <span class="cap-value">ロドリ</span>
+                    </div>
+                    <div class="capsule fade-in-up">
+                        <span class="cap-label">🏃‍♂️ 若手MVP</span>
+                        <span class="cap-value">クバルシ</span>
+                    </div>
+                </div>
             </div>
-            <div class="capsule">
-              <span class="cap-label">⚽ 得点王</span>
-              <span class="cap-value">エムバペ (8点)</span>
-            </div>
-            <div class="capsule">
-              <span class="cap-label">⭐ 大会MVP</span>
-              <span class="cap-value">リオネル・メッシ</span>
-            </div>
-            <div class="capsule">
-              <span class="cap-label">🏃‍♂️ 若手MVP</span>
-              <span class="cap-value">E. フェルナンデス</span>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <div class="container">
-        <!-- ==========================================
+        <div class="container">
+            <!-- ==========================================
               3. ハイライト（決勝戦 ＆ 3位決定戦）
             =========================================== -->
-        <section class="highlights-outer">
-          <div class="section-title-left line-blue">
-            <h2 class="text-blue">
-              ハイライト
-              <span class="en-sub">Highlights</span>
-            </h2>
-          </div>
-          <div class="highlights-grid">
-            <!-- 決勝戦 -->
-            <div class="hl-card">
-              <div class="hl-badge badge-gold">決勝戦 / FINAL</div>
-              <div class="hl-match">
-                <div class="hl-team">アルゼンチン 🇦🇷</div>
-                <div class="hl-score">
-                  3
-                  <span class="hl-pk">PK 4-2</span>
-                  3
+            <section class="highlights-outer">
+                <div class="section-title-left line-blue fade-in-up">
+                    <h2 class="text-blue">ハイライト <span class="en-sub">Highlights</span></h2>
                 </div>
-                <div class="hl-team">🇫🇷 フランス</div>
-              </div>
-              <p class="hl-desc">アルゼンチンが壮絶な死闘の末、PK戦を制して36年ぶり3度目の戴冠！メッシ悲願の初優勝。</p>
-            </div>
-            <!-- 3位決定戦 -->
-            <div class="hl-card">
-              <div class="hl-badge badge-blue">3位決定戦</div>
-              <div class="hl-match">
-                <div class="hl-team">クロアチア 🇭🇷</div>
-                <div class="hl-score">
-                  2
-                  <span class="hl-ft">FT</span>
-                  1
+                <div class="highlights-grid">
+                    <!-- 決勝戦 -->
+                    <div class="hl-card fade-in-up">
+                        <div class="hl-badge badge-gold">決勝戦 / FINAL</div>
+                        <div class="hl-match">
+                            <div class="hl-team"><img src="img/spain.png" class="table-flag-img" alt="スペイン">スペイン</div>
+                            <div class="hl-score">1 <span class="hl-ft">FT</span> 0</div>
+                            <div class="hl-team"><img src="img/argentina.png" class="table-flag-img" alt="アルゼンチン">アルゼンチン</div>
+                        </div>
+                        <p class="hl-desc">持ち前の圧倒的なパスワークと堅守を見せつけたスペインが1-0でアルゼンチンを下し、見事に2度目のワールドカップ制覇を果たしました！</p>
+                    </div>
+                    <!-- 3位決定戦 -->
+                    <div class="hl-card fade-in-up">
+                        <div class="hl-badge badge-blue">3位決定戦</div>
+                        <div class="hl-match">
+                            <div class="hl-team"><img src="img/france.png" class="table-flag-img" alt="フランス">フランス</div>
+                            <div class="hl-score">4 <span class="hl-ft">FT</span> 6</div>
+                            <div class="hl-team"><img src="img/england.png" class="table-flag-img" alt="イングランド">イングランド</div>
+                        </div>
+                        <p class="hl-desc">両チーム合わせて10ゴールが飛び交う歴史的な大激闘の末、イングランドがフランスを打ち破り3位の座を掴み取りました。</p>
+                    </div>
                 </div>
-                <div class="hl-team">🇲🇦 モロッコ</div>
-              </div>
-              <p class="hl-desc">
-                前回準優勝のクロアチアが、アフリカ勢初の4強入りを果たしたモロッコを下し、2大会連続のメダル獲得！
-              </p>
-            </div>
-          </div>
-        </section>
+            </section>
 
-        <!-- ==========================================
+            <!-- ==========================================
               4. 試合結果（トーナメント / グループ 切り替え）
             =========================================== -->
-        <section class="match-results-outer">
-          <div class="section-title-left line-blue">
-            <h2 class="text-blue">
-              試合結果
-              <span class="en-sub">Match Result</span>
-            </h2>
-          </div>
-
-          <div class="tab-switcher">
-            <button
-              class="tab-btn active"
-              onclick="
-                document.getElementById('view-tournament').style.display = 'block';
-                document.getElementById('view-group-stage').style.display = 'none';
-                document.querySelectorAll('.tab-btn')[0].classList.add('active');
-                document.querySelectorAll('.tab-btn')[1].classList.remove('active');
-              "
-            >
-              Tournament
-            </button>
-            <button
-              class="tab-btn"
-              onclick="
-                document.getElementById('view-tournament').style.display = 'none';
-                document.getElementById('view-group-stage').style.display = 'block';
-                document.querySelectorAll('.tab-btn')[1].classList.add('active');
-                document.querySelectorAll('.tab-btn')[0].classList.remove('active');
-              "
-            >
-              Group Stage
-            </button>
-          </div>
-
-          <!-- 決勝トーナメント -->
-          <div id="view-tournament" class="tab-content" style="display: block">
-            <div class="tournament-scroll-wrapper">
-              <div class="t-tree-container">
-                <!-- [左1] 1回戦 -->
-                <div class="t-col col-1 col-left">
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇩🇪</span>
-                      <span class="t-name">GER</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇵🇾</span>
-                      <span class="t-name">PAR</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇫🇷</span>
-                      <span class="t-name">FRA</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇸🇪</span>
-                      <span class="t-name">SWE</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇿🇦</span>
-                      <span class="t-name">RSA</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇦</span>
-                      <span class="t-name">CAN</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇳🇱</span>
-                      <span class="t-name">NED</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇲🇦</span>
-                      <span class="t-name">MAR</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇵🇹</span>
-                      <span class="t-name">POR</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇭🇷</span>
-                      <span class="t-name">CRO</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇸</span>
-                      <span class="t-name">ESP</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇦🇹</span>
-                      <span class="t-name">AUT</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇺🇸</span>
-                      <span class="t-name">USA</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇧🇦</span>
-                      <span class="t-name">BIH</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇧🇪</span>
-                      <span class="t-name">BEL</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇸🇳</span>
-                      <span class="t-name">SEN</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
+            <section class="match-results-outer">
+                <div class="section-title-left line-blue fade-in-up">
+                    <h2 class="text-blue">試合結果 <span class="en-sub">Match Result</span></h2>
                 </div>
 
-                <!-- [左2] 2回戦 -->
-                <div class="t-col col-2 col-left">
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇵🇾</span>
-                      <span class="t-name">PAR</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇫🇷</span>
-                      <span class="t-name">FRA</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇦</span>
-                      <span class="t-name">CAN</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇲🇦</span>
-                      <span class="t-name">MAR</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇵🇹</span>
-                      <span class="t-name">POR</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇸</span>
-                      <span class="t-name">ESP</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇺🇸</span>
-                      <span class="t-name">USA</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇧🇪</span>
-                      <span class="t-name">BEL</span>
-                      <span class="t-score-num">4</span>
-                    </div>
-                  </div>
+                <div class="tab-switcher fade-in-up">
+                    <button class="tab-btn active" onclick="document.getElementById('view-tournament').style.display='block'; document.getElementById('view-group-stage').style.display='none'; document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.querySelectorAll('.tab-btn')[1].classList.remove('active');">Tournament</button>
+                    <button class="tab-btn" onclick="document.getElementById('view-tournament').style.display='none'; document.getElementById('view-group-stage').style.display='block'; document.querySelectorAll('.tab-btn')[1].classList.add('active'); document.querySelectorAll('.tab-btn')[0].classList.remove('active');">Group Stage</button>
                 </div>
 
-                <!-- [左3] 準々決勝 -->
-                <div class="t-col col-3 col-left">
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇫🇷</span>
-                      <span class="t-name">FRA</span>
-                      <span class="t-score-num">2</span>
+                <!-- 決勝トーナメント -->
+                <div id="view-tournament" class="tab-content" style="display: block;">
+                    <div class="tournament-scroll-wrapper fade-in-up">
+                        <div class="t-tree-container">
+                            
+                            <!-- [左1] 1回戦 -->
+                            <div class="t-col col-1 col-left">
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/germany.png" class="t-flag-img" alt="GER"><span class="t-name">GER</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/paraguay.png" class="t-flag-img" alt="PAR"><span class="t-name">PAR</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/france.png" class="t-flag-img" alt="FRA"><span class="t-name">FRA</span><span class="t-score-num">3</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/sweden.png" class="t-flag-img" alt="SWE"><span class="t-name">SWE</span><span class="t-score-num">0</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/south-africa.png" class="t-flag-img" alt="RSA"><span class="t-name">RSA</span><span class="t-score-num">0</span></div><div class="t-divider"></div><div class="t-team"><img src="img/canada.png" class="t-flag-img" alt="CAN"><span class="t-name">CAN</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/netherlands.png" class="t-flag-img" alt="NED"><span class="t-name">NED</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/morocco.png" class="t-flag-img" alt="MAR"><span class="t-name">MAR</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/portugal.png" class="t-flag-img" alt="POR"><span class="t-name">POR</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/croatia.png" class="t-flag-img" alt="CRO"><span class="t-name">CRO</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/spain.png" class="t-flag-img" alt="ESP"><span class="t-name">ESP</span><span class="t-score-num">3</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/austria.png" class="t-flag-img" alt="AUT"><span class="t-name">AUT</span><span class="t-score-num">0</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/america.png" class="t-flag-img" alt="USA"><span class="t-name">USA</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/bosnia.png" class="t-flag-img" alt="BIH"><span class="t-name">BIH</span><span class="t-score-num">0</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/belgium.png" class="t-flag-img" alt="BEL"><span class="t-name">BEL</span><span class="t-score-num">3</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/senegal.png" class="t-flag-img" alt="SEN"><span class="t-name">SEN</span><span class="t-score-num">2</span></div></div>
+                            </div>
+
+                            <!-- [左2] 2回戦 -->
+                            <div class="t-col col-2 col-left">
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/paraguay.png" class="t-flag-img" alt="PAR"><span class="t-name">PAR</span><span class="t-score-num">0</span></div><div class="t-divider"></div><div class="t-team"><img src="img/france.png" class="t-flag-img" alt="FRA"><span class="t-name">FRA</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/canada.png" class="t-flag-img" alt="CAN"><span class="t-name">CAN</span><span class="t-score-num">0</span></div><div class="t-divider"></div><div class="t-team"><img src="img/morocco.png" class="t-flag-img" alt="MAR"><span class="t-name">MAR</span><span class="t-score-num">3</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/portugal.png" class="t-flag-img" alt="POR"><span class="t-name">POR</span><span class="t-score-num">0</span></div><div class="t-divider"></div><div class="t-team"><img src="img/spain.png" class="t-flag-img" alt="ESP"><span class="t-name">ESP</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/america.png" class="t-flag-img" alt="USA"><span class="t-name">USA</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/belgium.png" class="t-flag-img" alt="BEL"><span class="t-name">BEL</span><span class="t-score-num">4</span></div></div>
+                            </div>
+
+                            <!-- [左3] 準々決勝 -->
+                            <div class="t-col col-3 col-left">
+                                <div class="t-card"><div class="t-team"><img src="img/france.png" class="t-flag-img" alt="FRA"><span class="t-name">FRA</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/morocco.png" class="t-flag-img" alt="MAR"><span class="t-name">MAR</span><span class="t-score-num">0</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/spain.png" class="t-flag-img" alt="ESP"><span class="t-name">ESP</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/belgium.png" class="t-flag-img" alt="BEL"><span class="t-name">BEL</span><span class="t-score-num">1</span></div></div>
+                            </div>
+
+                            <!-- [左4] 準決勝 -->
+                            <div class="t-col col-4 col-left">
+                                <div class="t-card sf-card"><div class="t-team t-loser"><img src="img/france.png" class="t-flag-img" alt="FRA"><span class="t-name">FRA</span><span class="t-score-num">0</span></div><div class="t-divider"></div><div class="t-team"><img src="img/spain.png" class="t-flag-img" alt="ESP"><span class="t-name">ESP</span><span class="t-score-num">2</span></div></div>
+                            </div>
+
+                            <!-- [中央ギャップ] 決勝＆3位決定戦 -->
+                            <div class="t-col-gap">
+                                <div class="gap-fork fork-left"></div>
+                                <div class="gap-fork fork-right"></div>
+
+                                <!-- 決勝戦 -->
+                                <div class="center-match match-final">
+                                    <span class="center-label label-gold">FINAL</span>
+                                    <div class="t-card final-card">
+                                        <div class="t-team"><img src="img/spain.png" class="t-flag-img" alt="ESP"><span class="t-name">ESP</span><span class="t-score-num">1</span></div>
+                                        <div class="t-divider"></div>
+                                        <div class="t-team t-loser"><img src="img/argentina.png" class="t-flag-img" alt="ARG"><span class="t-name">ARG</span><span class="t-score-num">0</span></div>
+                                    </div>
+                                </div>
+                                <!-- 3位決定戦 -->
+                                <div class="center-match match-third">
+                                    <span class="center-label label-blue">3RD PLACE</span>
+                                    <div class="t-card third-card">
+                                        <div class="t-team t-loser"><img src="img/france.png" class="t-flag-img" alt="FRA"><span class="t-name">FRA</span><span class="t-score-num">4</span></div>
+                                        <div class="t-divider"></div>
+                                        <div class="t-team"><img src="img/england.png" class="t-flag-img" alt="ENG"><span class="t-name">ENG</span><span class="t-score-num">6</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- [右4] 準決勝 -->
+                            <div class="t-col col-4 col-right">
+                                <div class="t-card sf-card"><div class="t-team t-loser"><img src="img/england.png" class="t-flag-img" alt="ENG"><span class="t-name">ENG</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/argentina.png" class="t-flag-img" alt="ARG"><span class="t-name">ARG</span><span class="t-score-num">2</span></div></div>
+                            </div>
+
+                            <!-- [右3] 準々決勝 -->
+                            <div class="t-col col-3 col-right">
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/norway.png" class="t-flag-img" alt="NOR"><span class="t-name">NOR</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/england.png" class="t-flag-img" alt="ENG"><span class="t-name">ENG</span><span class="t-score-num">2</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/argentina.png" class="t-flag-img" alt="ARG"><span class="t-name">ARG</span><span class="t-score-num">3</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/switzerland.png" class="t-flag-img" alt="SUI"><span class="t-name">SUI</span><span class="t-score-num">1</span></div></div>
+                            </div>
+
+                            <!-- [右2] 2回戦 -->
+                            <div class="t-col col-2 col-right">
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/brazil.png" class="t-flag-img" alt="BRA"><span class="t-name">BRA</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/norway.png" class="t-flag-img" alt="NOR"><span class="t-name">NOR</span><span class="t-score-num">2</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/mexico.png" class="t-flag-img" alt="MEX"><span class="t-name">MEX</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team"><img src="img/england.png" class="t-flag-img" alt="ENG"><span class="t-name">ENG</span><span class="t-score-num">3</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/argentina.png" class="t-flag-img" alt="ARG"><span class="t-name">ARG</span><span class="t-score-num">3</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/egypt.png" class="t-flag-img" alt="EGY"><span class="t-name">EGY</span><span class="t-score-num">2</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/switzerland.png" class="t-flag-img" alt="SUI"><span class="t-name">SUI</span><span class="t-score-num">0</span></div><div class="t-divider"></div><div class="t-team"><img src="img/colombia.png" class="t-flag-img" alt="COL"><span class="t-name">COL</span><span class="t-score-num">0</span></div></div>
+                            </div>
+
+                            <!-- [右1] 1回戦 -->
+                            <div class="t-col col-1 col-right">
+                                <div class="t-card"><div class="t-team"><img src="img/brazil.png" class="t-flag-img" alt="BRA"><span class="t-name">BRA</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/japan.png" class="t-flag-img" alt="JPN"><span class="t-name">JPN</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/cote-dlvoire.png" class="t-flag-img" alt="CIV"><span class="t-name">CIV</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/norway.png" class="t-flag-img" alt="NOR"><span class="t-name">NOR</span><span class="t-score-num">2</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/mexico.png" class="t-flag-img" alt="MEX"><span class="t-name">MEX</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/ecuador.png" class="t-flag-img" alt="ECU"><span class="t-name">ECU</span><span class="t-score-num">0</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/england.png" class="t-flag-img" alt="ENG"><span class="t-name">ENG</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/congo.png" class="t-flag-img" alt="COD"><span class="t-name">COD</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/argentina.png" class="t-flag-img" alt="ARG"><span class="t-name">ARG</span><span class="t-score-num">3</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/cape-verde.png" class="t-flag-img" alt="CPV"><span class="t-name">CPV</span><span class="t-score-num">2</span></div></div>
+                                <div class="t-card"><div class="t-team t-loser"><img src="img/australia.png" class="t-flag-img" alt="AUS"><span class="t-name">AUS</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team"><img src="img/egypt.png" class="t-flag-img" alt="EGY"><span class="t-name">EGY</span><span class="t-score-num">1</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/switzerland.png" class="t-flag-img" alt="SUI"><span class="t-name">SUI</span><span class="t-score-num">2</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/algeria.png" class="t-flag-img" alt="ALG"><span class="t-name">ALG</span><span class="t-score-num">0</span></div></div>
+                                <div class="t-card"><div class="t-team"><img src="img/colombia.png" class="t-flag-img" alt="COL"><span class="t-name">COL</span><span class="t-score-num">1</span></div><div class="t-divider"></div><div class="t-team t-loser"><img src="img/ghana.png" class="t-flag-img" alt="GHA"><span class="t-name">GHA</span><span class="t-score-num">0</span></div></div>
+                            </div>
+
+                        </div>
                     </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇲🇦</span>
-                      <span class="t-name">MAR</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇸</span>
-                      <span class="t-name">ESP</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇧🇪</span>
-                      <span class="t-name">BEL</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
                 </div>
 
-                <!-- [左4] 準決勝 -->
-                <div class="t-col col-4 col-left">
-                  <div class="t-card sf-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇫🇷</span>
-                      <span class="t-name">FRA</span>
-                      <span class="t-score-num">0</span>
+                <!-- グループステージ -->
+                <div id="view-group-stage" class="tab-content" style="display: none">
+                    <div class="group-stage-container">
+                        <!-- Group A -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. A</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/mexico.png" class="table-flag-img" alt="メキシコ"> メキシコ</td><td>3</td><td>3</td><td>0</td><td>0</td><td>6-0</td><td>+6</td><td class="font-bold text-blue">9</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/south-africa.png" class="table-flag-img" alt="南アフリカ"> 南アフリカ</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-3</td><td>-1</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/south-korea.png" class="table-flag-img" alt="韓国"> 韓国</td><td>3</td><td>1</td><td>0</td><td>2</td><td>2-3</td><td>-1</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/czech.png" class="table-flag-img" alt="チェコ"> チェコ</td><td>3</td><td>0</td><td>1</td><td>2</td><td>2-6</td><td>-4</td><td class="font-bold text-blue">1</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group B -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. B</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/switzerland.png" class="table-flag-img" alt="スイス"> スイス</td><td>3</td><td>2</td><td>1</td><td>0</td><td>7-3</td><td>+4</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/canada.png" class="table-flag-img" alt="カナダ"> カナダ</td><td>3</td><td>1</td><td>1</td><td>1</td><td>8-3</td><td>+5</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/bosnia.png" class="table-flag-img" alt="ボスニア・ヘルツェゴビナ"> ボスニア・ヘルツェゴビナ</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5-6</td><td>-1</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/qatar.png" class="table-flag-img" alt="カタール"> カタール</td><td>3</td><td>0</td><td>1</td><td>2</td><td>2-10</td><td>-8</td><td class="font-bold text-blue">1</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group C -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. C</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/brazil.png" class="table-flag-img" alt="ブラジル"> ブラジル</td><td>3</td><td>2</td><td>1</td><td>0</td><td>7-1</td><td>+6</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/morocco.png" class="table-flag-img" alt="モロッコ"> モロッコ</td><td>3</td><td>2</td><td>1</td><td>0</td><td>6-3</td><td>+3</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/scotland.png" class="table-flag-img" alt="スコットランド"> スコットランド</td><td>3</td><td>1</td><td>0</td><td>2</td><td>1-4</td><td>-3</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/haiti.png" class="table-flag-img" alt="ハイチ"> ハイチ</td><td>3</td><td>0</td><td>0</td><td>3</td><td>2-8</td><td>-6</td><td class="font-bold text-blue">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group D -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. D</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/america.png" class="table-flag-img" alt="アメリカ合衆国"> アメリカ合衆国</td><td>3</td><td>2</td><td>0</td><td>1</td><td>8-4</td><td>+4</td><td class="font-bold text-blue">6</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/australia.png" class="table-flag-img" alt="オーストラリア"> オーストラリア</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-2</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/paraguay.png" class="table-flag-img" alt="パラグアイ"> パラグアイ</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-4</td><td>-2</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/turkiye.png" class="table-flag-img" alt="トルコ"> トルコ</td><td>3</td><td>1</td><td>0</td><td>2</td><td>3-5</td><td>-2</td><td class="font-bold text-blue">3</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group E -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. E</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/germany.png" class="table-flag-img" alt="ドイツ"> ドイツ</td><td>3</td><td>2</td><td>0</td><td>1</td><td>10-4</td><td>+6</td><td class="font-bold text-blue">6</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/cote-dlvoire.png" class="table-flag-img" alt="コートジボワール"> コートジボワール</td><td>3</td><td>2</td><td>0</td><td>1</td><td>4-2</td><td>+2</td><td class="font-bold text-blue">6</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/ecuador.png" class="table-flag-img" alt="エクアドル"> エクアドル</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-2</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/curacao.png" class="table-flag-img" alt="キュラソー"> キュラソー</td><td>3</td><td>0</td><td>1</td><td>2</td><td>1-9</td><td>-8</td><td class="font-bold text-blue">1</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group F -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. F</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/netherlands.png" class="table-flag-img" alt="オランダ"> オランダ</td><td>3</td><td>2</td><td>1</td><td>0</td><td>10-4</td><td>+6</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/japan.png" class="table-flag-img" alt="日本"> 日本</td><td>3</td><td>1</td><td>2</td><td>0</td><td>7-3</td><td>+4</td><td class="font-bold text-blue">5</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/sweden.png" class="table-flag-img" alt="スウェーデン"> スウェーデン</td><td>3</td><td>1</td><td>1</td><td>1</td><td>7-7</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/tunisia.png" class="table-flag-img" alt="チュニジア"> チュニジア</td><td>3</td><td>0</td><td>0</td><td>3</td><td>2-12</td><td>-10</td><td class="font-bold text-blue">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group G -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. G</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/belgium.png" class="table-flag-img" alt="ベルギー"> ベルギー</td><td>3</td><td>1</td><td>2</td><td>0</td><td>6-2</td><td>+4</td><td class="font-bold text-blue">5</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/egypt.png" class="table-flag-img" alt="エジプト"> エジプト</td><td>3</td><td>1</td><td>2</td><td>0</td><td>5-3</td><td>+2</td><td class="font-bold text-blue">5</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/iran.png" class="table-flag-img" alt="イラン"> イラン</td><td>3</td><td>0</td><td>3</td><td>0</td><td>3-3</td><td>0</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/newzealand.png" class="table-flag-img" alt="ニュージーランド"> ニュージーランド</td><td>3</td><td>0</td><td>1</td><td>2</td><td>4-10</td><td>-6</td><td class="font-bold text-blue">1</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group H -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. H</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/spain.png" class="table-flag-img" alt="スペイン"> スペイン</td><td>3</td><td>2</td><td>1</td><td>0</td><td>5-0</td><td>+5</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/cape-verde.png" class="table-flag-img" alt="カーボベルデ"> カーボベルデ</td><td>3</td><td>0</td><td>3</td><td>0</td><td>2-2</td><td>0</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/uruguay.png" class="table-flag-img" alt="ウルグアイ"> ウルグアイ</td><td>3</td><td>0</td><td>2</td><td>1</td><td>3-4</td><td>-1</td><td class="font-bold text-blue">2</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/saudiarabia.png" class="table-flag-img" alt="サウジアラビア"> サウジアラビア</td><td>3</td><td>0</td><td>2</td><td>1</td><td>1-5</td><td>-4</td><td class="font-bold text-blue">2</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group I -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. I</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/france.png" class="table-flag-img" alt="フランス"> フランス</td><td>3</td><td>3</td><td>0</td><td>0</td><td>10-2</td><td>+8</td><td class="font-bold text-blue">9</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/norway.png" class="table-flag-img" alt="ノルウェー"> ノルウェー</td><td>3</td><td>2</td><td>0</td><td>1</td><td>8-7</td><td>+1</td><td class="font-bold text-blue">6</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/senegal.png" class="table-flag-img" alt="セネガル"> セネガル</td><td>3</td><td>1</td><td>0</td><td>2</td><td>8-6</td><td>+2</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/iraq.png" class="table-flag-img" alt="イラク"> イラク</td><td>3</td><td>0</td><td>0</td><td>3</td><td>1-12</td><td>-11</td><td class="font-bold text-blue">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group J -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. J</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/argentina.png" class="table-flag-img" alt="アルゼンチン"> アルゼンチン</td><td>3</td><td>3</td><td>0</td><td>0</td><td>8-1</td><td>+7</td><td class="font-bold text-blue">9</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/austria.png" class="table-flag-img" alt="オーストリア"> オーストリア</td><td>3</td><td>1</td><td>1</td><td>1</td><td>6-6</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/algeria.png" class="table-flag-img" alt="アルジェリア"> アルジェリア</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5-7</td><td>-2</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/jordan.png" class="table-flag-img" alt="ヨルダン"> ヨルダン</td><td>3</td><td>0</td><td>0</td><td>3</td><td>3-8</td><td>-5</td><td class="font-bold text-blue">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group K -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. K</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/colombia.png" class="table-flag-img" alt="コロンビア"> コロンビア</td><td>3</td><td>2</td><td>1</td><td>0</td><td>4-1</td><td>+3</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/portugal.png" class="table-flag-img" alt="ポルトガル"> ポルトガル</td><td>3</td><td>1</td><td>2</td><td>0</td><td>6-1</td><td>+5</td><td class="font-bold text-blue">5</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/congo.png" class="table-flag-img" alt="コンゴ民主共和国"> コンゴ民主共和国</td><td>3</td><td>1</td><td>1</td><td>1</td><td>4-3</td><td>+1</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/uzbekistan.png" class="table-flag-img" alt="ウズベキスタン"> ウズベキスタン</td><td>3</td><td>0</td><td>0</td><td>3</td><td>2-11</td><td>-9</td><td class="font-bold text-blue">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Group L -->
+                        <div class="group-block fade-in-up">
+                            <h3 class="group-title">Grp. L</h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/england.png" class="table-flag-img" alt="イングランド"> イングランド</td><td>3</td><td>2</td><td>1</td><td>0</td><td>6-2</td><td>+4</td><td class="font-bold text-blue">7</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/croatia.png" class="table-flag-img" alt="クロアチア"> クロアチア</td><td>3</td><td>2</td><td>0</td><td>1</td><td>5-5</td><td>0</td><td class="font-bold text-blue">6</td></tr>
+                                        <tr class="promotion-row-third"><td>3</td><td class="text-left font-bold"><img src="img/ghana.png" class="table-flag-img" alt="ガーナ"> ガーナ</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-2</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr><td>4</td><td class="text-left font-bold"><img src="img/panama.png" class="table-flag-img" alt="パナマ"> パナマ</td><td>3</td><td>0</td><td>0</td><td>3</td><td>0-4</td><td>-4</td><td class="font-bold text-blue">0</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 各グループ3位 総合順位表 -->
+                        <div class="group-block third-place-ranking fade-in-up">
+                            <h3 class="group-title" style="border-left-color: var(--color-accent-yellow);">
+                                各グループ3位 総合順位表 
+                                <span style="font-size:14px; font-weight:normal; color:#64748b;">(上位8チームが通過)</span>
+                            </h3>
+                            <div class="table-wrapper">
+                                <table class="stage-table">
+                                    <thead>
+                                        <tr><th>#</th><th class="text-left">チーム</th><th>Grp</th><th>終</th><th>勝</th><th>分</th><th>負</th><th>+/-</th><th>差</th><th>点</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="promotion-row"><td>1</td><td class="text-left font-bold"><img src="img/congo.png" class="table-flag-img" alt="コンゴ民主共和国"> コンゴ民主共和国</td><td>K</td><td>3</td><td>1</td><td>1</td><td>1</td><td>4-3</td><td>+1</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>2</td><td class="text-left font-bold"><img src="img/sweden.png" class="table-flag-img" alt="スウェーデン"> スウェーデン</td><td>F</td><td>3</td><td>1</td><td>1</td><td>1</td><td>7-7</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>3</td><td class="text-left font-bold"><img src="img/ghana.png" class="table-flag-img" alt="ガーナ"> ガーナ</td><td>L</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-2</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>4</td><td class="text-left font-bold"><img src="img/ecuador.png" class="table-flag-img" alt="エクアドル"> エクアドル</td><td>E</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-2</td><td>0</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>5</td><td class="text-left font-bold"><img src="img/bosnia.png" class="table-flag-img" alt="ボスニア・ヘルツェゴビナ"> ボスニア・ヘルツェゴビナ</td><td>B</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5-6</td><td>-1</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>6</td><td class="text-left font-bold"><img src="img/algeria.png" class="table-flag-img" alt="アルジェリア"> アルジェリア</td><td>J</td><td>3</td><td>1</td><td>1</td><td>1</td><td>5-7</td><td>-2</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>7</td><td class="text-left font-bold"><img src="img/paraguay.png" class="table-flag-img" alt="パラグアイ"> パラグアイ</td><td>D</td><td>3</td><td>1</td><td>1</td><td>1</td><td>2-4</td><td>-2</td><td class="font-bold text-blue">4</td></tr>
+                                        <tr class="promotion-row"><td>8</td><td class="text-left font-bold"><img src="img/senegal.png" class="table-flag-img" alt="セネガル"> セネガル</td><td>I</td><td>3</td><td>1</td><td>0</td><td>2</td><td>8-6</td><td>+2</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>9</td><td class="text-left font-bold"><img src="img/iran.png" class="table-flag-img" alt="イラン"> イラン</td><td>G</td><td>3</td><td>0</td><td>3</td><td>0</td><td>3-3</td><td>0</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>10</td><td class="text-left font-bold"><img src="img/south-korea.png" class="table-flag-img" alt="韓国"> 韓国</td><td>A</td><td>3</td><td>1</td><td>0</td><td>2</td><td>2-3</td><td>-1</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>11</td><td class="text-left font-bold"><img src="img/scotland.png" class="table-flag-img" alt="スコットランド"> スコットランド</td><td>C</td><td>3</td><td>1</td><td>0</td><td>2</td><td>1-4</td><td>-3</td><td class="font-bold text-blue">3</td></tr>
+                                        <tr><td>12</td><td class="text-left font-bold"><img src="img/uruguay.png" class="table-flag-img" alt="ウルグアイ"> ウルグアイ</td><td>H</td><td>3</td><td>0</td><td>2</td><td>1</td><td>3-4</td><td>-1</td><td class="font-bold text-blue">2</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇸</span>
-                      <span class="t-name">ESP</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
                 </div>
 
-                <!-- [中央ギャップ] -->
-                <div class="t-col-gap"></div>
-
-                <!-- [右4] 準決勝 -->
-                <div class="t-col col-4 col-right">
-                  <div class="t-card sf-card">
-                    <div class="t-team">
-                      <span class="t-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-                      <span class="t-name">ENG</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇦🇷</span>
-                      <span class="t-name">ARG</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- [右3] 準々決勝 -->
-                <div class="t-col col-3 col-right">
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇳🇴</span>
-                      <span class="t-name">NOR</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-                      <span class="t-name">ENG</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇦🇷</span>
-                      <span class="t-name">ARG</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇭</span>
-                      <span class="t-name">SUI</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- [右2] 2回戦 -->
-                <div class="t-col col-2 col-right">
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇧🇷</span>
-                      <span class="t-name">BRA</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇳🇴</span>
-                      <span class="t-name">NOR</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇲🇽</span>
-                      <span class="t-name">MEX</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-                      <span class="t-name">ENG</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇦🇷</span>
-                      <span class="t-name">ARG</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇬</span>
-                      <span class="t-name">EGY</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇭</span>
-                      <span class="t-name">SUI</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇴</span>
-                      <span class="t-name">COL</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- [右1] 1回戦 -->
-                <div class="t-col col-1 col-right">
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇧🇷</span>
-                      <span class="t-name">BRA</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇯🇵</span>
-                      <span class="t-name">JPN</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇮</span>
-                      <span class="t-name">CIV</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇳🇴</span>
-                      <span class="t-name">NOR</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇲🇽</span>
-                      <span class="t-name">MEX</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇨</span>
-                      <span class="t-name">ECU</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-                      <span class="t-name">ENG</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇩</span>
-                      <span class="t-name">COD</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇦🇷</span>
-                      <span class="t-name">ARG</span>
-                      <span class="t-score-num">3</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇻</span>
-                      <span class="t-name">CPV</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇦🇺</span>
-                      <span class="t-name">AUS</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇪🇬</span>
-                      <span class="t-name">EGY</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇭</span>
-                      <span class="t-name">SUI</span>
-                      <span class="t-score-num">2</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇩🇿</span>
-                      <span class="t-name">ALG</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                  <div class="t-card">
-                    <div class="t-team">
-                      <span class="t-flag">🇨🇴</span>
-                      <span class="t-name">COL</span>
-                      <span class="t-score-num">1</span>
-                    </div>
-                    <div class="t-divider"></div>
-                    <div class="t-team">
-                      <span class="t-flag">🇬🇭</span>
-                      <span class="t-name">GHA</span>
-                      <span class="t-score-num">0</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- グループステージ (A〜L 12グループ 48チーム枠) -->
-          <div id="view-group-stage" class="tab-content" style="display: none">
-            <div class="group-stage-container">
-              <!-- Group A -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. A</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇲🇽</span>
-                          メキシコ
-                        </td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>6-0</td>
-                        <td>+6</td>
-                        <td class="font-bold text-blue">9</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇿🇦</span>
-                          南アフリカ
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2-3</td>
-                        <td>-1</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇰🇷</span>
-                          韓国
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>2-3</td>
-                        <td>-1</td>
-                        <td class="font-bold text-blue">3</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇿</span>
-                          チェコ
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>2-6</td>
-                        <td>-4</td>
-                        <td class="font-bold text-blue">1</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group B -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. B</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇭</span>
-                          スイス
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>7-3</td>
-                        <td>+4</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇦</span>
-                          カナダ
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>8-3</td>
-                        <td>+5</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇧🇦</span>
-                          ボスニア・ヘルツェゴビナ
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>5-6</td>
-                        <td>-1</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇶🇦</span>
-                          カタール
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>2-10</td>
-                        <td>-8</td>
-                        <td class="font-bold text-blue">1</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group C -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. C</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇧🇷</span>
-                          ブラジル
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>7-1</td>
-                        <td>+6</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇲🇦</span>
-                          モロッコ
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>6-3</td>
-                        <td>+3</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
-                          スコットランド
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>1-4</td>
-                        <td>-3</td>
-                        <td class="font-bold text-blue">3</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇭🇹</span>
-                          ハイチ
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2-8</td>
-                        <td>-6</td>
-                        <td class="font-bold text-blue">0</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group D -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. D</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇺🇸</span>
-                          アメリカ合衆国
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>8-4</td>
-                        <td>+4</td>
-                        <td class="font-bold text-blue">6</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇦🇺</span>
-                          オーストラリア
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2-2</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇵🇾</span>
-                          パラグアイ
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2-4</td>
-                        <td>-2</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇹🇷</span>
-                          トルコ
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>3-5</td>
-                        <td>-2</td>
-                        <td class="font-bold text-blue">3</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group E -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. E</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇩🇪</span>
-                          ドイツ
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>10-4</td>
-                        <td>+6</td>
-                        <td class="font-bold text-blue">6</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇮</span>
-                          コートジボワール
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>4-2</td>
-                        <td>+2</td>
-                        <td class="font-bold text-blue">6</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇪🇨</span>
-                          エクアドル
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2-2</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇼</span>
-                          キュラソー
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>1-9</td>
-                        <td>-8</td>
-                        <td class="font-bold text-blue">1</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group F -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. F</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇳🇱</span>
-                          オランダ
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>10-4</td>
-                        <td>+6</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇯🇵</span>
-                          日本
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>7-3</td>
-                        <td>+4</td>
-                        <td class="font-bold text-blue">5</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇸🇪</span>
-                          スウェーデン
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>7-7</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇹🇳</span>
-                          チュニジア
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2-12</td>
-                        <td>-10</td>
-                        <td class="font-bold text-blue">0</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group G -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. G</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇧🇪</span>
-                          ベルギー
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>6-2</td>
-                        <td>+4</td>
-                        <td class="font-bold text-blue">5</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇪🇬</span>
-                          エジプト
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>5-3</td>
-                        <td>+2</td>
-                        <td class="font-bold text-blue">5</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇮🇷</span>
-                          イラン
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>3-3</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">3</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇳🇿</span>
-                          ニュージーランド
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>4-10</td>
-                        <td>-6</td>
-                        <td class="font-bold text-blue">1</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group H -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. H</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇪🇸</span>
-                          スペイン
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>5-0</td>
-                        <td>+5</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇻</span>
-                          カーボベルデ
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>2-2</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">3</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇺🇾</span>
-                          ウルグアイ
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>3-4</td>
-                        <td>-1</td>
-                        <td class="font-bold text-blue">2</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇸🇦</span>
-                          サウジアラビア
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1-5</td>
-                        <td>-4</td>
-                        <td class="font-bold text-blue">2</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group I -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. I</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇫🇷</span>
-                          フランス
-                        </td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>10-2</td>
-                        <td>+8</td>
-                        <td class="font-bold text-blue">9</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇳🇴</span>
-                          ノルウェー
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>8-7</td>
-                        <td>+1</td>
-                        <td class="font-bold text-blue">6</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇸🇳</span>
-                          セネガル
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>2</td>
-                        <td>8-6</td>
-                        <td>+2</td>
-                        <td class="font-bold text-blue">3</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇮🇶</span>
-                          イラク
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>1-12</td>
-                        <td>-11</td>
-                        <td class="font-bold text-blue">0</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group J -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. J</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇦🇷</span>
-                          アルゼンチン
-                        </td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>8-1</td>
-                        <td>+7</td>
-                        <td class="font-bold text-blue">9</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇦🇹</span>
-                          オーストリア
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>6-6</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇩🇿</span>
-                          アルジェリア
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>5-7</td>
-                        <td>-2</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇯🇴</span>
-                          ヨルダン
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>3-8</td>
-                        <td>-5</td>
-                        <td class="font-bold text-blue">0</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group K -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. K</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇴</span>
-                          コロンビア
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>4-1</td>
-                        <td>+3</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇵🇹</span>
-                          ポルトガル
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>6-1</td>
-                        <td>+5</td>
-                        <td class="font-bold text-blue">5</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇨🇩</span>
-                          コンゴ民主共和国
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>4-3</td>
-                        <td>+1</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇺🇿</span>
-                          ウズベキスタン
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>2-11</td>
-                        <td>-9</td>
-                        <td class="font-bold text-blue">0</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <!-- Group L -->
-              <div class="group-block">
-                <h3 class="group-title">Grp. L</h3>
-                <div class="table-wrapper">
-                  <table class="stage-table">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th class="text-left">チーム</th>
-                        <th>終</th>
-                        <th>勝</th>
-                        <th>分</th>
-                        <th>負</th>
-                        <th>+/-</th>
-                        <th>差</th>
-                        <th>点</th>
-                        <th>フォーム</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="promotion-row">
-                        <td>1</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
-                          イングランド
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>6-2</td>
-                        <td>+4</td>
-                        <td class="font-bold text-blue">7</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr class="promotion-row">
-                        <td>2</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇭🇷</span>
-                          クロアチア
-                        </td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>5-5</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">6</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇬🇭</span>
-                          ガーナ
-                        </td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>2-2</td>
-                        <td>0</td>
-                        <td class="font-bold text-blue">4</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td class="text-left font-bold">
-                          <span class="table-flag">🇵🇦</span>
-                          パナマ
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>0</td>
-                        <td>3</td>
-                        <td>0-4</td>
-                        <td>-4</td>
-                        <td class="font-bold text-blue">0</td>
-                        <td><span class="f-badge draw">-</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+            </section>
+        </div>
     </main>
 
     <!-- ==========================================
-      フッター（全ページ共通）
+      フッター
     =========================================== -->
     <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <div class="footer-logo">World Cup Guide</div>
-          <p class="footer-desc">
-            世界一のサッカーの祭典を、もっと身近に、もっと楽しく。初心者からコアなファンまで楽しめるコンテンツを配信しています。
-          </p>
+        <div class="footer-container">
+            <div class="footer-brand fade-in-up">
+                <div class="footer-logo">World Cup Guide</div>
+                <p class="footer-desc">
+                    世界一のサッカーの祭典を、もっと身近に、もっと楽しく。初心者からコアなファンまで楽しめるコンテンツを配信しています。
+                </p>
+            </div>
+            
+            <div class="footer-nav-groups fade-in-up">
+                <div class="footer-group">
+                    <h3>クイックリンク</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rule.html">Rules Guide</a></li>
+                        <li><a href="team.html">Teams</a></li>
+                        <li><a href="history.html">History</a></li>
+                        <li><a href="result.html">Result</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <h3>お問い合わせ</h3>
+                    <ul>
+                        <li><a href="#">プライバシーポリシー</a></li>
+                        <li><a href="#">利用規約</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-
-        <div class="footer-nav-groups">
-          <div class="footer-group">
-            <h3>クイックリンク</h3>
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="rule.html">Rules Guide</a></li>
-              <li><a href="team.html">Teams</a></li>
-              <li><a href="history.html">History</a></li>
-              <li><a href="result.html">Result</a></li>
-              <li><a href="#">Support</a></li>
-            </ul>
-          </div>
-          <div class="footer-group">
-            <h3>お問い合わせ</h3>
-            <ul>
-              <li><a href="#">プライバシーポリシー</a></li>
-              <li><a href="#">利用規約</a></li>
-              <li><a href="#">FAQ</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </footer>
 
-    <script src="js/script.js"></script>
-  </body>
+    <!-- JSの読み込み -->
+    <script src="js/script.js?ver=13"></script>
+</body>
 </html>

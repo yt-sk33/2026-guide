@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Cup Guide | TEAM</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>World Cup Guide | TEAMS</title>
+    <!-- CSSの読み込み（キャッシュクリア設定付き） -->
+    <link rel="stylesheet" href="css/style.css?ver=2">
 </head>
-<body>
-
+<body class="light-theme">
+    <!-- ↓ここから追加（ページ遷移アニメーション用の帯）↓ -->
+    <div class="page-transition-overlay">
+        <div class="transition-stripe stripe-1"></div>
+        <div class="transition-stripe stripe-2"></div>
+        <div class="transition-stripe stripe-3"></div>
+        <div class="transition-stripe stripe-4"></div>
+        <div class="transition-stripe stripe-5"></div>
+    </div>
+    <!-- ↑ここまで追加↑ -->
+    
     <!-- ==========================================
-      ヘッダー（全ページ共通・TEAMをアクティブ化）
+      ヘッダー
     =========================================== -->
     <header class="header">
         <div class="logo">World Cup Guide</div>
@@ -22,10 +32,8 @@
                 <li><a href="result.html">Result</a></li>
             </ul>
         </nav>
-        <button class="menu-btn" aria-label="メニューを開く">
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="menu-btn">
+            <span></span><span></span><span></span>
         </button>
     </header>
 
@@ -35,99 +43,332 @@
         =========================================== -->
         <section class="hero-subpage">
             <div class="hero-subpage-content">
-                <h1>出場国を知ろう</h1>
-                <p>世界最高峰の舞台に集う48ヶ国、それぞれの誇りと情熱、そして注目すべきスター選手たちを詳しくチェック。</p>
+                <h1 class="fade-in-up">出場国を知ろう</h1>
+                <p class="fade-in-up">世界最高峰の舞台に集う強豪国。それぞれの実力と風格、そして注目すべきスター選手たちを詳しくチェック。</p>
             </div>
         </section>
 
+        <!-- ==========================================
+          2. タブ（フィルター）ボタン
+        =========================================== -->
         <div class="container">
-            <!-- ==========================================
-              2. 地区フィルターボタン（カプセル型）
-            =========================================== -->
-            <div class="filter-container">
-                <button class="filter-btn active">All Teams</button>
-                <button class="filter-btn">Europe</button>
-                <button class="filter-btn">South America</button>
-                <button class="filter-btn">Asia</button>
-                <button class="filter-btn">Africa</button>
-                <button class="filter-btn">North America</button>
-            </div>
-
-            <!-- ==========================================
-              3. 代表チーム紹介（2大カラム）
-            =========================================== -->
-            <div class="team-main-grid">
-                <div class="solid-card team-main-card">
-                    <!-- 後からチーム画像や情報を入れられるダミーエリア -->
-                </div>
-                <div class="solid-card team-main-card">
-                    <!-- 後からチーム画像や情報を入れられるダミーエリア -->
-                </div>
+            <div class="filter-container fade-in-up">
+                <button class="filter-btn active" data-target="all" onclick="switchRegion('all')">All Teams</button>
+                <button class="filter-btn" data-target="europe" onclick="switchRegion('europe')">Europe</button>
+                <button class="filter-btn" data-target="south-america" onclick="switchRegion('south-america')">South America</button>
+                <button class="filter-btn" data-target="north-america" onclick="switchRegion('north-america')">North & Central America</button>
+                <button class="filter-btn" data-target="africa" onclick="switchRegion('africa')">Africa</button>
+                <button class="filter-btn" data-target="asia" onclick="switchRegion('asia')">Asia</button>
+                <button class="filter-btn" data-target="oceania" onclick="switchRegion('oceania')">Oceania</button>
             </div>
         </div>
 
         <!-- ==========================================
-          4. 注目選手（黄色ライン・スライダー付き）
+          3. 地域別コンテンツ枠（丸枠・スライダー対応）
+        =========================================== -->
+        <div class="container">
+            
+            <!-- [全チーム: 48枠] -->
+            <div id="region-all" class="region-pane" style="display: block;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">全チーム <span class="en-sub">All Teams (48)</span></h2>
+                    </div>
+                    <div class="slider-arrows">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-all', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-all', 1)">&gt;</button>
+                    </div>
+                </div>
+                <div id="grid-circle-all" class="region-circle-grid fade-in-up">
+                    <!-- 1〜10 -->
+                    <div class="region-circle-item"><img src="img/algeria.png" alt="アルジェリア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/america.png" alt="アメリカ合衆国" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/argentina.png" alt="アルゼンチン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/australia.png" alt="オーストラリア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/austria.png" alt="オーストリア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/belgium.png" alt="ベルギー" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/bosnia.png" alt="ボスニア・ヘルツェゴビナ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/brazil.png" alt="ブラジル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/canada.png" alt="カナダ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/cape-verde.png" alt="カーボベルデ" class="round-flag"></div>
+                    <!-- 11〜20 -->
+                    <div class="region-circle-item"><img src="img/colombia.png" alt="コロンビア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/congo.png" alt="コンゴ民主共和国" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/cote-dlvoire.png" alt="コートジボワール" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/croatia.png" alt="クロアチア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/curacao.png" alt="キュラソー" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/czech.png" alt="チェコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/ecuador.png" alt="エクアドル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/egypt.png" alt="エジプト" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/england.png" alt="イングランド" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/france.png" alt="フランス" class="round-flag"></div>
+                    <!-- 21〜30 -->
+                    <div class="region-circle-item"><img src="img/germany.png" alt="ドイツ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/ghana.png" alt="ガーナ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/haiti.png" alt="ハイチ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/iran.png" alt="イラン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/iraq.png" alt="イラク" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/japan.png" alt="日本" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/jordan.png" alt="ヨルダン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/mexico.png" alt="メキシコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/morocco.png" alt="モロッコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/netherlands.png" alt="オランダ" class="round-flag"></div>
+                    <!-- 31〜40 -->
+                    <div class="region-circle-item"><img src="img/newzealand.png" alt="ニュージーランド" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/norway.png" alt="ノルウェー" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/panama.png" alt="パナマ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/paraguay.png" alt="パラグアイ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/portugal.png" alt="ポルトガル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/qatar.png" alt="カタール" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/saudiarabia.png" alt="サウジアラビア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/scotland.png" alt="スコットランド" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/senegal.png" alt="セネガル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/south-africa.png" alt="南アフリカ" class="round-flag"></div>
+                    <!-- 41〜48 -->
+                    <div class="region-circle-item"><img src="img/south-korea.png" alt="韓国" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/spain.png" alt="スペイン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/sweden.png" alt="スウェーデン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/switzerland.png" alt="スイス" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/tunisia.png" alt="チュニジア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/turkiye.png" alt="トルコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/uruguay.png" alt="ウルグアイ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/uzbekistan.png" alt="ウズベキスタン" class="round-flag"></div>
+                </div>
+            </div>
+
+            <!-- [ヨーロッパ: 16枠] -->
+            <div id="region-europe" class="region-pane" style="display: none;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">ヨーロッパ <span class="en-sub">Europe (16)</span></h2>
+                    </div>
+                    <div class="slider-arrows">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-europe', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-europe', 1)">&gt;</button>
+                    </div>
+                </div>
+                <div id="grid-circle-europe" class="region-circle-grid fade-in-up">
+                    <div class="region-circle-item"><img src="img/austria.png" alt="オーストリア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/belgium.png" alt="ベルギー" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/bosnia.png" alt="ボスニア・ヘルツェゴビナ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/croatia.png" alt="クロアチア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/czech.png" alt="チェコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/england.png" alt="イングランド" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/france.png" alt="フランス" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/germany.png" alt="ドイツ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/netherlands.png" alt="オランダ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/norway.png" alt="ノルウェー" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/portugal.png" alt="ポルトガル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/scotland.png" alt="スコットランド" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/spain.png" alt="スペイン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/sweden.png" alt="スウェーデン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/switzerland.png" alt="スイス" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/turkiye.png" alt="トルコ" class="round-flag"></div>
+                </div>
+            </div>
+
+            <!-- [南米: 6枠] -->
+            <div id="region-south-america" class="region-pane" style="display: none;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">南米 <span class="en-sub">South America (6)</span></h2>
+                    </div>
+                </div>
+                <div id="grid-circle-sa" class="region-circle-grid fade-in-up">
+                    <div class="region-circle-item"><img src="img/argentina.png" alt="アルゼンチン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/brazil.png" alt="ブラジル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/colombia.png" alt="コロンビア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/ecuador.png" alt="エクアドル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/paraguay.png" alt="パラグアイ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/uruguay.png" alt="ウルグアイ" class="round-flag"></div>
+                </div>
+            </div>
+
+            <!-- [北中米カリブ海: 6枠] -->
+            <div id="region-north-america" class="region-pane" style="display: none;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">北中米カリブ海 <span class="en-sub">North & Central America (6)</span></h2>
+                    </div>
+                </div>
+                <div id="grid-circle-na" class="region-circle-grid fade-in-up">
+                    <div class="region-circle-item"><img src="img/america.png" alt="アメリカ合衆国" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/canada.png" alt="カナダ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/curacao.png" alt="キュラソー" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/haiti.png" alt="ハイチ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/mexico.png" alt="メキシコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/panama.png" alt="パナマ" class="round-flag"></div>
+                </div>
+            </div>
+
+            <!-- [アフリカ: 10枠] -->
+            <div id="region-africa" class="region-pane" style="display: none;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">アフリカ <span class="en-sub">Africa (10)</span></h2>
+                    </div>
+                    <div class="slider-arrows">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-africa', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-africa', 1)">&gt;</button>
+                    </div>
+                </div>
+                <div id="grid-circle-africa" class="region-circle-grid fade-in-up">
+                    <div class="region-circle-item"><img src="img/algeria.png" alt="アルジェリア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/cape-verde.png" alt="カーボベルデ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/congo.png" alt="コンゴ民主共和国" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/cote-dlvoire.png" alt="コートジボワール" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/egypt.png" alt="エジプト" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/ghana.png" alt="ガーナ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/morocco.png" alt="モロッコ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/senegal.png" alt="セネガル" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/south-africa.png" alt="南アフリカ" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/tunisia.png" alt="チュニジア" class="round-flag"></div>
+                </div>
+            </div>
+
+            <!-- [アジア: 9枠] -->
+            <div id="region-asia" class="region-pane" style="display: none;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">アジア <span class="en-sub">Asia (9)</span></h2>
+                    </div>
+                    <div class="slider-arrows">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-asia', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-asia', 1)">&gt;</button>
+                    </div>
+                </div>
+                <div id="grid-circle-asia" class="region-circle-grid fade-in-up">
+                    <div class="region-circle-item"><img src="img/australia.png" alt="オーストラリア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/iran.png" alt="イラン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/iraq.png" alt="イラク" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/japan.png" alt="日本" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/jordan.png" alt="ヨルダン" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/qatar.png" alt="カタール" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/saudiarabia.png" alt="サウジアラビア" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/south-korea.png" alt="韓国" class="round-flag"></div>
+                    <div class="region-circle-item"><img src="img/uzbekistan.png" alt="ウズベキスタン" class="round-flag"></div>
+                </div>
+            </div>
+
+            <!-- [オセアニア: 1枠] -->
+            <div id="region-oceania" class="region-pane" style="display: none;">
+                <div class="section-header-with-arrows fade-in-up">
+                    <div class="section-title-left line-blue">
+                        <h2 class="text-blue">オセアニア <span class="en-sub">Oceania (1)</span></h2>
+                    </div>
+                </div>
+                <div class="region-circle-grid fade-in-up">
+                    <div class="region-circle-item"><img src="img/newzealand.png" alt="ニュージーランド" class="round-flag"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==========================================
+          4. 注目選手セクション（タブ連動・スライダー対応）
         =========================================== -->
         <section class="players-section">
             <div class="container">
-                <div class="section-header-with-arrows">
+                <div class="section-header-with-arrows fade-in-up">
                     <div class="section-title-left line-yellow">
-                        <h2>注目選手 <span class="en-sub">Featured Players</span></h2>
-                    </div>
-                    <!-- 右側のスライダー矢印 -->
-                    <div class="slider-arrows">
-                        <button class="arrow-btn arrow-prev">＜</button>
-                        <button class="arrow-btn arrow-next active">＞</button>
+                        <h2>注目選手 <span class="en-sub">Featured Player</span></h2>
                     </div>
                 </div>
 
-                <!-- 縦長カードが4つ -->
-                <div class="player-grid">
-                    <div class="solid-card player-card"></div>
-                    <div class="solid-card player-card"></div>
-                    <div class="solid-card player-card"></div>
-                    <div class="solid-card player-card"></div>
+                <!-- [全チーム: 8枚] -->
+                <div id="players-all" class="player-pane" style="display: block;">
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-player-all', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-all', 1)">&gt;</button>
+                    </div>
+                    <div id="grid-player-all" class="player-grid fade-in-up">
+                        <!-- 1〜8 -->
+                        <div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div>
+                    </div>
                 </div>
+
+                <!-- [ヨーロッパ: 8枚] -->
+                <div id="players-europe" class="player-pane" style="display: none;">
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-player-europe', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-europe', 1)">&gt;</button>
+                    </div>
+                    <div id="grid-player-europe" class="player-grid fade-in-up">
+                        <!-- 1〜8 -->
+                        <div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div>
+                    </div>
+                </div>
+
+                <!-- [南米: 8枚] -->
+                <div id="players-south-america" class="player-pane" style="display: none;">
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-player-sa', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-sa', 1)">&gt;</button>
+                    </div>
+                    <div id="grid-player-sa" class="player-grid fade-in-up">
+                        <!-- 1〜8 -->
+                        <div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div>
+                    </div>
+                </div>
+
+                <!-- [北中米カリブ海: 8枚] -->
+                <div id="players-north-america" class="player-pane" style="display: none;">
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-player-na', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-na', 1)">&gt;</button>
+                    </div>
+                    <div id="grid-player-na" class="player-grid fade-in-up">
+                        <!-- 1〜8 -->
+                        <div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div>
+                    </div>
+                </div>
+
+                <!-- [アフリカ: 8枚] -->
+                <div id="players-africa" class="player-pane" style="display: none;">
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-player-africa', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-africa', 1)">&gt;</button>
+                    </div>
+                    <div id="grid-player-africa" class="player-grid fade-in-up">
+                        <!-- 1〜8 -->
+                        <div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div>
+                    </div>
+                </div>
+
+                <!-- [アジア: 8枚] -->
+                <div id="players-asia" class="player-pane" style="display: none;">
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
+                        <button class="arrow-btn" onclick="scrollSlider('grid-player-asia', -1)">&lt;</button>
+                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-asia', 1)">&gt;</button>
+                    </div>
+                    <div id="grid-player-asia" class="player-grid fade-in-up">
+                        <!-- 1〜8 -->
+                        <div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div><div class="player-card solid-card"></div>
+                    </div>
+                </div>
+
+                <!-- [オセアニア: 1枚] -->
+                <div id="players-oceania" class="player-pane" style="display: none;">
+                    <div class="player-grid fade-in-up">
+                        <!-- 1 -->
+                        <div class="player-card solid-card" style="max-width: 270px; flex: none;"></div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <!-- ==========================================
-          5. 注目チーム（ブルーライン・5列2段）
-        =========================================== -->
-        <section class="watch-teams-section">
-            <div class="container">
-                <div class="section-title-left line-blue">
-                    <h2>注目チーム <span class="en-sub">The Teams of Watch</span></h2>
-                </div>
-
-                <!-- 5列×2段（合計10個）のグリッド -->
-                <div class="watch-grid">
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                    <div class="watch-card"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================
-          6. 推しの国を見つけよう（大きな青いCTA）
+       <!-- ==========================================
+          5. CTA（推しの国を見つけよう）
         =========================================== -->
         <section class="cta-banner-section">
             <div class="container">
-                <div class="cta-blue-card">
+                <div class="cta-blue-card fade-in-up">
                     <h2>推しの国を見つけよう</h2>
-                    <p>どの国を応援するか決まりましたか？試合日程をチェックして<br>最高の熱狂に備えましょう。</p>
+                    <p style="margin-top: 10px; font-size: 15px;">どの国を応援するか決まりましたか？試合結果をチェックして最高の祭典の結果を確認しましょう。</p>
                     <div class="cta-buttons">
-                        <a href="#" class="btn btn-green">試合結果を見る</a>
-                        <a href="index.html" class="btn btn-white-border">ホームに戻る</a>
+                        <a href="result.html" class="btn btn-green">試合結果を確認する</a>
+                        <a href="rule.html" class="btn btn-white-border">ルールを知る</a>
                     </div>
                 </div>
             </div>
@@ -135,18 +376,18 @@
     </main>
 
     <!-- ==========================================
-      フッター（全ページ共通）
+      フッター
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-brand">
+            <div class="footer-brand fade-in-up">
                 <div class="footer-logo">World Cup Guide</div>
                 <p class="footer-desc">
                     世界一のサッカーの祭典を、もっと身近に、もっと楽しく。初心者からコアなファンまで楽しめるコンテンツを配信しています。
                 </p>
             </div>
             
-            <div class="footer-nav-groups">
+            <div class="footer-nav-groups fade-in-up">
                 <div class="footer-group">
                     <h3>クイックリンク</h3>
                     <ul>
@@ -170,6 +411,38 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JSの読み込み（正しい位置・キャッシュクリア設定付き） -->
+    <script src="js/script.js?ver=2"></script>
+    
+    <!-- タブ切り替え ＆ スライダー用のJavaScript（そのまま維持） -->
+    <script>
+        // 1. 地域タブ切り替え機能
+        function switchRegion(regionId) {
+            const panes = document.querySelectorAll('.region-pane');
+            panes.forEach(pane => pane.style.display = 'none');
+            document.getElementById('region-' + regionId).style.display = 'block';
+
+            const playerPanes = document.querySelectorAll('.player-pane');
+            playerPanes.forEach(pane => pane.style.display = 'none');
+            const targetPlayerPane = document.getElementById('players-' + regionId);
+            if(targetPlayerPane) {
+                targetPlayerPane.style.display = 'block';
+            }
+            
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-target="${regionId}"]`).classList.add('active');
+        }
+
+        // 2. 矢印ボタンスクロール機能（横移動）
+        function scrollSlider(containerId, direction) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                // 表示領域の約80%ずつ横にスクロールさせる
+                const scrollAmount = container.clientWidth * 0.8;
+                container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>

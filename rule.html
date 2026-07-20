@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | RULES</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSSの読み込み（キャッシュクリア設定付き） -->
+    <link rel="stylesheet" href="css/style.css?ver=2">
 </head>
-<body>
-
+<body class="light-theme">
+    <!-- ↓ここから追加（ページ遷移アニメーション用の帯）↓ -->
+    <div class="page-transition-overlay">
+        <div class="transition-stripe stripe-1"></div>
+        <div class="transition-stripe stripe-2"></div>
+        <div class="transition-stripe stripe-3"></div>
+        <div class="transition-stripe stripe-4"></div>
+        <div class="transition-stripe stripe-5"></div>
+    </div>
+    <!-- ↑ここまで追加↑ -->
+    
     <!-- ==========================================
-      ヘッダー（全ページ共通・Rulesをアクティブ化）
+      ヘッダー
     =========================================== -->
     <header class="header">
         <div class="logo">World Cup Guide</div>
@@ -35,32 +45,35 @@
         =========================================== -->
         <section class="hero-subpage">
             <div class="hero-subpage-content">
-                <h1>ルールを知ろう</h1>
-                <p>サッカーの基本から、知っておくと観戦が100倍面白くなるオフサイドなどの専門ルールまで、シンプルにわかりやすく解説します。</p>
+                <!-- 【追加】タイトルと説明文に fade-in-up を追加 -->
+                <h1 class="fade-in-up">ルールを知ろう</h1>
+                <p class="fade-in-up">サッカーの基本から、知っておくと観戦が100倍面白くなる新規定や専門ルールまで、シンプルにわかりやすく解説します。</p>
             </div>
         </section>
 
         <div class="container">
             <!-- ==========================================
-              2. 基本ルール3箇条（ソリッドカード）
+              2. 基本ルール3箇条
             =========================================== -->
             <section class="basic-rules-section">
-                <div class="section-title-left line-blue">
+                <!-- 【追加】セクションタイトルに fade-in-up -->
+                <div class="section-title-left line-blue fade-in-up">
                     <h2>これだけは外せない基本 <span class="en-sub">Basic Rules</span></h2>
                 </div>
 
                 <div class="rules-basic-grid">
-                    <div class="solid-card basic-card">
+                    <!-- 【追加】各カードに fade-in-up -->
+                    <div class="solid-card basic-card fade-in-up">
                         <div class="card-badge">01</div>
                         <h3>手を使ってはいけない</h3>
                         <p>ゴールキーパー以外の選手は、プレイ中に手や腕を使ってボールを扱ってはいけません（ハンドの反則）。</p>
                     </div>
-                    <div class="solid-card basic-card">
+                    <div class="solid-card basic-card fade-in-up">
                         <div class="card-badge">02</div>
                         <h3>試合時間と人数</h3>
                         <p>1チーム11人、前後半それぞれ45分の合計90分間で勝敗を競います。アディショナルタイムもあります。</p>
                     </div>
-                    <div class="solid-card basic-card">
+                    <div class="solid-card basic-card fade-in-up">
                         <div class="card-badge">03</div>
                         <h3>得点の決まり方</h3>
                         <p>ゴールラインをボールが完全に越えた場合に1得点となります。シンプルなルールこそが熱狂を生みます。</p>
@@ -69,16 +82,86 @@
             </section>
 
             <!-- ==========================================
-              3. よくある質問・詳細ルール（アコーディオン機能）
+              3. 今大会からの新ルール (新規追加セクション)
+            =========================================== -->
+            <section class="basic-rules-section" style="padding-top: 20px;">
+                <!-- 【追加】セクションタイトルに fade-in-up -->
+                <div class="section-title-left line-blue fade-in-up">
+                    <h2>今大会からの新ルール・変更点 <span class="en-sub">New Rules</span></h2>
+                </div>
+
+                <!-- 1段目 (1〜3) -->
+                <div class="rules-basic-grid">
+                    <!-- 【追加】各カードに fade-in-up -->
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">01</div>
+                        <h3>スローイン等は「5秒以内」</h3>
+                        <p>時間稼ぎを防ぐため、審判が5秒間のカウントダウンを実施。過ぎてしまうと相手ボール（スローインやCK）に変わります。</p>
+                    </div>
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">02</div>
+                        <h3>交代選手は「10秒で退出」</h3>
+                        <p>交代で下がる選手は10秒以内にピッチ外へ出る必要があります。遅れると交代選手が60秒間入れず、一時的に10人で戦うペナルティに。</p>
+                    </div>
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">03</div>
+                        <h3>負傷治療後は「60秒待機」</h3>
+                        <p>痛むフリを防ぐため、ピッチ内で治療を受けた選手は再開後60秒間戻れません（GKの負傷や相手のカード提示を伴う反則時などは例外）。</p>
+                    </div>
+                </div>
+
+                <!-- 2段目 (4〜6) -->
+                <div class="rules-basic-grid" style="margin-top: 24px;">
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">04</div>
+                        <h3>GK治療中の「作戦会議」禁止</h3>
+                        <p>ゴールキーパーの治療で試合が止まっている時間を悪用し、他の選手がベンチ前に集まって戦術指示を受ける行為が禁止されました。</p>
+                    </div>
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">05</div>
+                        <h3>口元を隠す発言は「一発退場」</h3>
+                        <p>暴言や人種差別の隠蔽を防ぐため、手やユニフォーム等で意図的に口元を覆いながら発言する行為にはレッドカードが提示されます。</p>
+                    </div>
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">06</div>
+                        <h3>抗議の「ピッチ放棄」厳罰化</h3>
+                        <p>判定への不満から意図的にピッチを引き揚げるボイコット行為は禁止。関係者は退場となり、試合自体が没収（不戦敗）になる可能性も。</p>
+                    </div>
+                </div>
+
+                <!-- 3段目 (7〜9) -->
+                <div class="rules-basic-grid" style="margin-top: 24px;">
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">07</div>
+                        <h3>「給水ブレイク」の義務化</h3>
+                        <p>選手の安全のため、気候に関わらず前半・後半の22分頃に一律で「正確に3分間」の給水・休憩時間が設けられるようになりました。</p>
+                    </div>
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">08</div>
+                        <h3>交代枠は「最大5人」ベース</h3>
+                        <p>通常の交代は最大5人（3回まで）。さらに「脳震盪での特別枠」や「延長戦での追加枠（+1人）」も公平に用意されています。</p>
+                    </div>
+                    <div class="solid-card basic-card fade-in-up">
+                        <div class="card-badge">09</div>
+                        <h3>VARの対象プレーが拡大</h3>
+                        <p>得点や一発退場などに加え、「2枚目のイエローカード」「誤ったCK判定」「セットプレー再開前のファウル」なども確認対象になりました。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ==========================================
+              4. よくある質問・詳細ルール（アコーディオン）
             =========================================== -->
             <section class="accordion-section">
-                <div class="section-title-left line-yellow">
+                <!-- 【追加】セクションタイトルに fade-in-up -->
+                <div class="section-title-left line-yellow fade-in-up">
                     <h2>もっと深く知る解説 <span class="en-sub">Detailed Rules (FAQ)</span></h2>
                 </div>
 
                 <div class="accordion-container">
+                    <!-- 【追加】各アコーディオンアイテムに fade-in-up -->
                     <!-- アコーディオン1 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item fade-in-up">
                         <button class="accordion-header">
                             <span class="q-icon">Q</span>
                             <span class="q-text">「オフサイド」って結局なんですか？</span>
@@ -92,7 +175,7 @@
                     </div>
 
                     <!-- アコーディオン2 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item fade-in-up">
                         <button class="accordion-header">
                             <span class="q-icon">Q</span>
                             <span class="q-text">イエローカードとレッドカードの基準は？</span>
@@ -106,7 +189,7 @@
                     </div>
 
                     <!-- アコーディオン3 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item fade-in-up">
                         <button class="accordion-header">
                             <span class="q-icon">Q</span>
                             <span class="q-text">VAR（ビデオ・アシスタント・レフェリー）とは？</span>
@@ -114,7 +197,7 @@
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-inner">
-                                <p>試合の勝敗を左右する「重大な局面（ゴール、PK、一発退場、人違い）」において、映像を用いて主審の判定をサポートするシステムです。最終決定権は常にピッチ上の主審にあります。</p>
+                                <p>試合の勝敗を左右する「重大な局面（ゴール、PK、一発退場、人違い）」などにおいて、映像を用いて主審の判定をサポートするシステムです。最終決定権は常にピッチ上の主審にあります。</p>
                             </div>
                         </div>
                     </div>
@@ -124,18 +207,19 @@
     </main>
 
     <!-- ==========================================
-      フッター（全ページ共通）
+      フッター
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-brand">
+            <!-- 【追加】フッター要素に fade-in-up -->
+            <div class="footer-brand fade-in-up">
                 <div class="footer-logo">World Cup Guide</div>
                 <p class="footer-desc">
                     世界一のサッカーの祭典を、もっと身近に、もっと楽しく。初心者からコアなファンまで楽しめるコンテンツを配信しています。
                 </p>
             </div>
             
-            <div class="footer-nav-groups">
+            <div class="footer-nav-groups fade-in-up">
                 <div class="footer-group">
                     <h3>クイックリンク</h3>
                     <ul>
@@ -159,6 +243,7 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- JSの読み込み（正しい位置・キャッシュクリア設定付き） -->
+    <script src="js/script.js?ver=2"></script>
 </body>
 </html>
