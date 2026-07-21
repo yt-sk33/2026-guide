@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide</title>
-    <!-- CSSの読み込み（キャッシュクリア設定付き） -->
-    <link rel="stylesheet" href="css/style.css?ver=2">
+    <!-- CSSの読み込み -->
+    <link rel="stylesheet" href="css/style.css?ver=43">
 </head>
 <body>
     <!-- ==========================================
@@ -86,9 +86,17 @@
                     </div>
                 </div>
 
-                <div class="about-images">
-                    <div class="dummy-photo photo-large fade-in-up"></div>
-                    <div class="dummy-photo photo-small fade-in-up"></div>
+                <!-- ABOUTセクション：右側のビジュアルエリア -->
+                <div class="about-visual-container">
+                    <div class="visual-large">
+                        <img src="img/about-stadium.jpg" alt="ワールドカップのスタジアム">
+                    </div>
+                    
+                    <div class="visual-small">
+                        <p class="impact-sub">全世界が熱狂の渦に</p>
+                        <p class="impact-main">50<span>億人</span></p>
+                        <p class="impact-desc">以上が視聴する地球規模のメガイベント</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -106,13 +114,69 @@
             </div>
             
             <div class="rule-grid">
+                <!-- 上段 -->
                 <div class="rule-row">
-                    <div class="solid-card card-long fade-in-up"></div>
-                    <div class="solid-card card-short fade-in-up"></div>
+                    <div class="solid-card card-long rule-card">
+                        <div class="rule-card-header">
+                            <span class="rule-icon">🏆</span>
+                            <h3 class="rule-title">48カ国が激突！大会の仕組み</h3>
+                        </div>
+                        <div class="rule-card-content">
+                            <p class="rule-desc">今大会から出場国が拡大！まずはグループステージを戦い、上位チームが決勝トーナメントへ進みます。</p>
+                            <div class="rule-flow">
+                                <div class="flow-step">
+                                    <strong>グループステージ</strong>
+                                    <span>4カ国×12組の総当たり戦。<br>上位2チーム＋3位の上位8チームが突破。</span>
+                                </div>
+                                <div class="flow-arrow">▶︎</div>
+                                <div class="flow-step">
+                                    <strong>決勝トーナメント</strong>
+                                    <span>32チームによる負けたら終わりの<br>一発勝負！</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="solid-card card-short rule-card">
+                        <div class="rule-card-header">
+                            <span class="rule-icon">⏱️</span>
+                            <h3 class="rule-title">1試合は何分？</h3>
+                        </div>
+                        <div class="rule-card-content center-content">
+                            <div class="time-big">90<span class="time-small">分</span></div>
+                            <p class="rule-desc">前半45分 ＋ 後半45分<br><span style="font-size: 12px;">(間に15分のハーフタイム)</span></p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- 下段 -->
                 <div class="rule-row">
-                    <div class="solid-card card-short fade-in-up"></div>
-                    <div class="solid-card card-long fade-in-up"></div>
+                    <div class="solid-card card-short rule-card">
+                        <div class="rule-card-header">
+                            <span class="rule-icon">📺</span>
+                            <h3 class="rule-title">VARって何？</h3>
+                        </div>
+                        <div class="rule-card-content">
+                            <p class="rule-desc"><strong>ビデオ・アシスタント・レフェリー</strong>の略称。<br><br>ゴールやPKなど、試合を左右する重要な判定を別室の映像でチェックし、主審の「正しい判定」をサポートします。</p>
+                        </div>
+                    </div>
+
+                    <div class="solid-card card-long rule-card">
+                        <div class="rule-card-header">
+                            <span class="rule-icon">⚔️</span>
+                            <h3 class="rule-title">同点のまま試合が終わったら？</h3>
+                        </div>
+                        <div class="rule-card-content">
+                            <p class="rule-desc">決勝トーナメントには「引き分け」がありません。必ず勝敗を決めます。</p>
+                            <div class="pk-flow">
+                                <div class="pk-step">90分で同点</div>
+                                <div class="pk-arrow">➔</div>
+                                <div class="pk-step"><strong>延長戦</strong><br>15分 × 2回</div>
+                                <div class="pk-arrow">➔</div>
+                                <div class="pk-step highlight-step"><strong>PK戦</strong><br>キッカー5人〜</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -125,31 +189,27 @@
                 
                 <div class="fade-in-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
                     <div>
-                        <h2 style="font-size: 36px; font-weight: 800; margin-bottom: 8px; color: #ffffff;">注目チームを紹介</h2>
-                        <p style="font-size: 15px; color: #93c5fd;">独自のスタイルを持つ強豪国たち</p>
+                        <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 8px; color: #ffffff;">注目チームを紹介</h2>
+                        <p style="font-size: 14px; color: #93c5fd;">独自のスタイルを持つ強豪国たち</p>
                     </div>
-                    <a href="team.html" style="font-size: 15px; font-weight: bold; color: #ffffff; text-decoration: none;">
+                    <a href="team.html" style="font-size: 12px; font-weight: bold; color: #ffffff; text-decoration: none;">
                         すべてのチームを見る &gt;
                     </a>
                 </div>
                 
-                <!-- 【変更箇所】プレースホルダーの中に img タグを追加しました -->
                 <div class="circle-grid">
-                    <div class="circle-image-placeholder fade-in-up">
-                        <!-- 1カ国目 -->
-                        <img src="img/france.png" alt="フランス代表" class="round-flag">
+                    <!-- ★修正：featured-flag-itemクラスの追加と、alt属性を「国名」のみに変更しました -->
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                        <img src="img/france.png" alt="フランス" class="round-flag">
                     </div>
-                    <div class="circle-image-placeholder fade-in-up">
-                        <!-- 2カ国目 -->
-                        <img src="img/spain.png" alt="スペイン代表" class="round-flag">
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                        <img src="img/spain.png" alt="スペイン" class="round-flag">
                     </div>
-                    <div class="circle-image-placeholder fade-in-up">
-                        <!-- 3カ国目 -->
-                        <img src="img/argentina.png" alt="アルゼンチン代表" class="round-flag">
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                        <img src="img/argentina.png" alt="アルゼンチン" class="round-flag">
                     </div>
-                    <div class="circle-image-placeholder fade-in-up">
-                        <!-- 4カ国目 -->
-                        <img src="img/england.png" alt="イングランド代表" class="round-flag">
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                        <img src="img/england.png" alt="イングランド" class="round-flag">
                     </div>
                 </div>
                 
@@ -172,10 +232,16 @@
                     <a href="history.html" class="btn btn-primary btn-small fade-in-up">もっと見る</a>
                 </div>
 
-                <div class="why-cards-track">
-                    <div class="why-vertical-card card-pos-1 fade-in-up"></div>
-                    <div class="why-vertical-card card-pos-2 fade-in-up"></div>
-                    <div class="why-vertical-card card-pos-3 fade-in-up"></div>
+                <div class="reason-cards-container">
+                    <div class="reason-card">
+                        <img src="img/reason1.jpg" alt="サッカーの手軽さ">
+                    </div>
+                    <div class="reason-card">
+                        <img src="img/reason2.jpg" alt="サッカーの情熱">
+                    </div>
+                    <div class="reason-card">
+                        <img src="img/reason3.jpg" alt="サッカーのドラマ性">
+                    </div>
                 </div>
             </div>
         </section>
@@ -190,7 +256,7 @@
         </section>
     </main>
 
-    <!-- ==========================================
+<!-- ==========================================
       フッター（全ページ共通）
     =========================================== -->
     <footer class="footer">
@@ -211,15 +277,17 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <li><a href="#">Support</a></li>
+                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
                     </ul>
                 </div>
             </div>
@@ -228,5 +296,18 @@
 
     <!-- JSの読み込み -->
     <script src="js/script.js?ver=2"></script>
+
+    <!-- ★追加：国旗のホバーツールチップ用のデータを自動設定するJavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const flagContainers = document.querySelectorAll('.featured-flag-item');
+            flagContainers.forEach(item => {
+                const img = item.querySelector('img');
+                if (img && img.alt) {
+                    item.setAttribute('data-name', img.alt);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

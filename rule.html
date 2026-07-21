@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | RULES</title>
     <!-- CSSの読み込み（キャッシュクリア設定付き） -->
-    <link rel="stylesheet" href="css/style.css?ver=2">
+    <link rel="stylesheet" href="css/style.css?ver=30">
 </head>
 <body class="light-theme">
     <!-- ↓ここから追加（ページ遷移アニメーション用の帯）↓ -->
@@ -43,13 +43,14 @@
         <!-- ==========================================
           1. HEROエリア
         =========================================== -->
-        <section class="hero-subpage">
-            <div class="hero-subpage-content">
-                <!-- 【追加】タイトルと説明文に fade-in-up を追加 -->
-                <h1 class="fade-in-up">ルールを知ろう</h1>
-                <p class="fade-in-up">サッカーの基本から、知っておくと観戦が100倍面白くなる新規定や専門ルールまで、シンプルにわかりやすく解説します。</p>
-            </div>
-        </section>
+        <!-- ▼▼▼ 修正：背景画像付きのダイナミックなヘッダー ▼▼▼ -->
+<div class="subpage-hero bg-rules">
+    <div class="subpage-hero-inner">
+        <h1>ルールを知ろう</h1>
+        <p>サッカーの基本から、知っておくと観戦が100倍面白くなる新規定や専門ルールまで、シンプルにわかりやすく解説します。</p>
+    </div>
+</div>
+<!-- ▲▲▲ ここまで ▲▲▲ -->
 
         <div class="container">
             <!-- ==========================================
@@ -207,11 +208,10 @@
     </main>
 
     <!-- ==========================================
-      フッター
+      フッター（全ページ共通）
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
-            <!-- 【追加】フッター要素に fade-in-up -->
             <div class="footer-brand fade-in-up">
                 <div class="footer-logo">World Cup Guide</div>
                 <p class="footer-desc">
@@ -228,15 +228,17 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <li><a href="#">Support</a></li>
+                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
                     </ul>
                 </div>
             </div>

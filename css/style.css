@@ -7,6 +7,12 @@
     box-sizing: border-box;
 }
 
+/* 画像のはみ出し防止 */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 :root {
     --color-primary: #0f2e82;      
     --color-primary-dark: #0a1f5a; 
@@ -136,6 +142,8 @@ ul {
     font-weight: 800;
     color: var(--color-primary);
     letter-spacing: -0.5px;
+    z-index: 1001;
+    position: relative;
 }
 
 .header nav ul {
@@ -151,10 +159,7 @@ ul {
     padding: 6px 0;
 }
 
-.header nav a:hover {
-    color: var(--color-primary);
-}
-
+.header nav a:hover,
 .header nav a.active {
     color: var(--color-primary);
 }
@@ -171,6 +176,7 @@ ul {
     border-radius: 2px;
 }
 
+/* スマホ用ハンバーガーボタン */
 .menu-btn {
     display: none;
     background: none;
@@ -178,6 +184,8 @@ ul {
     cursor: pointer;
     flex-direction: column;
     gap: 6px;
+    z-index: 1001;
+    position: relative;
 }
 
 .menu-btn span {
@@ -186,6 +194,7 @@ ul {
     height: 3px;
     background-color: var(--color-primary);
     border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* フッター */
@@ -249,39 +258,17 @@ ul {
     color: #ffffff;
 }
 
-/* 下層ページ共通ヒーロー */
-.hero-subpage {
-    height: 300px;
-    background-color: #7f7f7f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #ffffff;
-    padding: 0 24px;
-    margin-bottom: 60px;
-}
-
-.hero-subpage-content h1 {
-    font-size: 40px;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-.hero-subpage-content p {
-    font-size: 16px;
-    max-width: 800px;
-    margin: 0 auto;
-    color: #f3f4f6;
-    line-height: 1.6;
-}
-
 /* ==========================================================================
-   3. TOPページ専用スタイル 
+   3. HEROエリア（Home用） ＆ サブページ用ヒーローヘッダー
    ========================================================================== */
+/* Home用ヒーロー */
 .hero {
     height: 560px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('../img/hero-bg.jpg');
     background-color: #7f7f7f;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -289,257 +276,141 @@ ul {
     color: #ffffff;
     padding: 0 24px;
 }
+.hero h1 { font-size: 48px; font-weight: 800; line-height: 1.35; margin-bottom: 20px; }
+.hero-sub { font-size: 17px; line-height: 1.65; color: #f3f4f6; margin-bottom: 36px; }
+.hero-buttons { display: flex; gap: 20px; justify-content: center; }
 
-.hero h1 {
-    font-size: 48px;
-    font-weight: 800;
-    line-height: 1.35;
-    margin-bottom: 20px;
-}
-
-.hero-sub {
-    font-size: 17px;
-    line-height: 1.65;
-    color: #f3f4f6;
-    margin-bottom: 36px;
-}
-
-.hero-buttons {
+/* ▼ サブページ共通：ヒーローヘッダー ▼ */
+.subpage-hero {
+    width: 100%;
+    height: 320px; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
-    gap: 20px;
     justify-content: center;
-}
-
-.about-section {
-    padding: 120px 80px;
-    background-color: #ffffff;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
     align-items: center;
-    gap: 80px;
+    text-align: center;
+    padding: 0 24px;
 }
 
-.about-text {
-    flex: 1.1;
+.subpage-hero-inner {
+    max-width: 800px;
 }
 
-.about-text .sub-label {
-    font-size: 13px;
+.subpage-hero h1 {
+    font-size: 36px;
+    color: #ffffff;
     font-weight: bold;
-    color: #9ca3af;
+    margin-bottom: 16px;
     letter-spacing: 2px;
 }
 
-.about-text h2 {
-    font-size: 36px;
-    color: var(--color-primary);
-    margin: 8px 0 24px 0;
-    font-weight: 800;
-}
-
-.about-desc {
+.subpage-hero p {
     font-size: 16px;
-    color: var(--color-text-sub);
-    margin-bottom: 36px;
+    color: #ffffff;
+    line-height: 1.8;
+    opacity: 0.9;
 }
 
-.about-stats {
-    display: flex;
-    gap: 24px;
+/* ヒーローヘッダー直後の要素に余白を持たせる */
+.subpage-hero + * {
+    margin-top: 48px !important;
 }
 
-.stat-card {
-    border-radius: 16px;
-    padding: 16px 28px;
-    width: 160px;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-}
+/* ▼ ページごとの画像設定 ▼ */
+.bg-teams { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../img/teams-bg.jpg'); }
+.bg-rules { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../img/rules-bg.jpg'); }
+.bg-history { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../img/history-bg.jpg'); }
+.bg-result { background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('../img/result-bg.jpg'); }
 
-.card-green {
-    border: 2px solid var(--color-accent);
-    border-left: 8px solid var(--color-accent);
-    box-shadow: 4px 4px 0px var(--color-primary);
-}
+/* ==========================================================================
+   4. 各ページ用スタイル (ABOUT / RULE / TEAMS etc...)
+   ========================================================================== */
+/* ABOUTセクション */
+.about-section { padding: 120px 80px; background-color: #ffffff; }
+.about-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 80px; }
+.about-text { flex: 1.1; }
+.about-text .sub-label { font-size: 13px; font-weight: bold; color: #9ca3af; letter-spacing: 2px; }
+.about-text h2 { font-size: 36px; color: var(--color-primary); margin: 8px 0 24px 0; font-weight: 800; }
+.about-desc { font-size: 16px; color: var(--color-text-sub); margin-bottom: 36px; }
 
-.card-blue {
-    border: 2px solid var(--color-primary);
-    box-shadow: 4px 4px 0px var(--color-accent);
-}
-
-.stat-num {
-    font-size: 26px;
-    font-weight: 800;
-    line-height: 1.2;
-}
-
+/* 3つのカード */
+.about-stats { display: flex; gap: 24px; }
+.stat-card { border-radius: 16px; padding: 16px 28px; width: 160px; display: flex; flex-direction: column; background-color: #ffffff; }
+.card-green { border: 2px solid var(--color-accent); border-left: 8px solid var(--color-accent); box-shadow: 4px 4px 0px var(--color-primary); }
+.card-blue { border: 2px solid var(--color-primary); box-shadow: 4px 4px 0px var(--color-accent); }
+.stat-num { font-size: 26px; font-weight: 800; line-height: 1.2; }
 .card-green .stat-num { color: var(--color-accent); }
 .card-blue .stat-num { color: var(--color-primary); }
+.stat-label { font-size: 12px; color: var(--color-text-sub); font-weight: bold; margin-top: 4px; }
 
-.stat-label {
-    font-size: 12px;
-    color: var(--color-text-sub);
-    font-weight: bold;
-    margin-top: 4px;
-}
+/* ABOUTエリア：右側の重なり合う画像とテキスト枠 */
+.about-visual-container { position: relative; width: 100%; max-width: 500px; aspect-ratio: 4 / 3; margin: 0 auto; }
+.visual-large { position: absolute; top: 0; right: 0; width: 80%; height: 85%; border: 2px solid #00205b; border-radius: 20px; background-color: #e6ebf5; overflow: hidden; box-shadow: 6px 6px 0px #00205b; }
+.visual-large img { width: 100%; height: 100%; object-fit: cover; }
+.visual-small { position: absolute; bottom: 0; left: 0; width: 60%; border: 2px solid #00205b; border-radius: 16px; padding: 24px; z-index: 2; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: 6px 6px 0px #00205b; }
+.visual-small .impact-sub { font-size: 14px; font-weight: bold; color: #009b77; margin-bottom: 4px; }
+.visual-small .impact-main { font-size: 44px; font-weight: 900; color: #00205b; line-height: 1; margin-bottom: 8px; letter-spacing: -2px; }
+.visual-small .impact-main span { font-size: 20px; margin-left: 4px; letter-spacing: normal; }
+.visual-small .impact-desc { font-size: 13px; font-weight: bold; color: #4a4a4a; line-height: 1.5; }
 
-.about-images {
-    flex: 0.9;
-    position: relative;
-    height: 380px;
-}
-
-.dummy-photo {
-    background-color: #cccccc;
-    border: 2px solid var(--color-primary);
-    border-radius: 32px;
-    box-shadow: 8px 8px 0px rgba(15, 46, 130, 0.08);
-}
-
-.photo-large {
-    width: 85%;
-    height: 320px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: #b3b3b3;
-}
-
-.photo-small {
-    width: 52%;
-    height: 160px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: #d9d9d9;
-    z-index: 2;
-}
-
-.rule-guide-section {
-    padding: 100px 80px;
-    background-color: #ffffff;
-    max-width: 1280px;
-    margin: 0 auto;
-}
-
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 48px;
-}
-
-.section-header h2 {
-    font-size: 36px;
-    color: var(--color-primary);
-    font-weight: 800;
-    margin-bottom: 8px;
-}
-
-.more-link {
-    font-weight: bold;
-    color: var(--color-primary);
-    font-size: 15px;
-}
+/* RULEガイド */
+.rule-guide-section { padding: 100px 80px; background-color: #ffffff; max-width: 1280px; margin: 0 auto; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+.section-header h2 { font-size: 36px; color: var(--color-primary); font-weight: 800; margin-bottom: 8px; }
+.more-link { font-weight: bold; color: var(--color-primary); font-size: 15px; }
 
 .rule-grid { display: flex; flex-direction: column; gap: 24px; }
 .rule-row { display: flex; gap: 24px; }
+.solid-card { background-color: var(--color-bg-card); border: 2px solid var(--color-primary); border-radius: var(--border-radius-main); box-shadow: 6px 6px 0px var(--color-primary); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.solid-card:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--color-primary); }
 
-.solid-card {
-    background-color: var(--color-bg-card);
-    border: 2px solid var(--color-primary);
-    border-radius: var(--border-radius-main);
-    box-shadow: 6px 6px 0px var(--color-primary);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.solid-card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px var(--color-primary);
-}
-
-.card-long { flex: 2; height: 220px; }
-.card-short { flex: 1; height: 220px; }
-
+/* 注目チーム(TOP用) */
 .teams-section { background-color: var(--color-primary); padding: 100px 80px; color: #ffffff; }
 .teams-container { max-width: 1200px; margin: 0 auto; }
 .circle-grid { display: flex; gap: 32px; justify-content: space-between; margin-top: 20px; }
-.circle-image-placeholder {
-    width: 190px;
-    height: 190px;
-    background-color: #cccccc;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.25);
-}
+.circle-image-placeholder { width: 190px; height: 190px; background-color: #cccccc; border-radius: 50%; border: 2px solid #ffffff; box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.25); }
 
+/* Whyセクション */
 .why-section { padding: 120px 80px 180px 80px; background-color: #f8fafc; }
 .why-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 80px; }
 .why-text { flex: 1; }
 .why-text h2 { font-size: 36px; color: var(--color-primary); font-weight: 800; line-height: 1.4; margin-bottom: 24px; }
 .green-deco-line { display: block; width: 60px; height: 5px; background-color: var(--color-accent); margin-top: 16px; border-radius: 2px; }
 .why-desc { color: var(--color-text-sub); margin-bottom: 36px; font-size: 16px; }
-.why-cards-track { flex: 1.1; display: flex; gap: 24px; }
-.why-vertical-card {
-    flex: 1;
-    height: 280px;
-    background-color: var(--color-bg-card);
-    border: 2px solid var(--color-primary);
-    border-radius: 20px;
-    box-shadow: 6px 6px 0px var(--color-primary);
-}
+
+/* 3連カードのコンテナ */
+.reason-cards-container { display: flex !important; gap: 20px !important; flex: 1 !important; min-width: 0 !important; width: auto !important; }
+.reason-card { flex: 1 !important; min-width: 0 !important; aspect-ratio: 2 / 3 !important; border: 2px solid #00205b; border-radius: 16px; box-shadow: 4px 4px 0px #00205b; background-color: #e6ebf5; overflow: hidden; }
+.reason-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card-pos-1 { transform: translateY(0px); }
 .card-pos-2 { transform: translateY(30px); }
 .card-pos-3 { transform: translateY(60px); }
 
+/* FINAL CTA */
 .final-cta { padding: 120px 24px 120px 24px; text-align: center; background-color: #ffffff; }
 .final-cta h2 { font-size: 40px; font-weight: 800; color: var(--color-primary); margin-bottom: 16px; }
 .final-cta p { font-size: 16px; color: var(--color-text-main); margin-bottom: 40px !important; }
 
 /* ==========================================================================
-   4. TEAMページ専用スタイル 
+   5. TEAMページ専用スタイル 
    ========================================================================== */
 .filter-container { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
 .filter-btn { border: none; padding: 10px 24px; border-radius: 30px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: var(--color-bg-card); color: var(--color-primary); transition: all 0.2s ease; }
 .filter-btn.active, .filter-btn:hover { background-color: var(--color-primary); color: #ffffff; }
 
-.region-circle-grid {
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    grid-auto-flow: column; 
-    grid-auto-columns: calc((100% - 80px) / 3); 
-    row-gap: 60px; column-gap: 40px; margin-bottom: 80px;
-    overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-    padding-top: 20px; padding-bottom: 20px; 
-    -ms-overflow-style: none; scrollbar-width: none;
-}
+.region-circle-grid { display: grid; grid-template-rows: repeat(2, 1fr); grid-auto-flow: column; grid-auto-columns: calc((100% - 80px) / 3); row-gap: 60px; column-gap: 40px; margin-bottom: 80px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-top: 20px; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none; }
 .region-circle-grid::-webkit-scrollbar { display: none; }
-.region-circle-item {
-    width: 240px; height: 240px; margin: 0 auto; 
-    background-color: var(--color-bg-card); border: 2px solid var(--color-primary); border-radius: 50%;
-    box-shadow: 6px 6px 0px var(--color-primary); transition: transform 0.2s ease, box-shadow 0.2s ease;
-    scroll-snap-align: start; 
-}
+.region-circle-item { width: 240px; height: 240px; margin: 0 auto; background-color: var(--color-bg-card); border: 2px solid var(--color-primary); border-radius: 50%; box-shadow: 6px 6px 0px var(--color-primary); transition: transform 0.2s ease, box-shadow 0.2s ease; scroll-snap-align: start; }
 .region-circle-item:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--color-primary); }
 
 .slider-arrows { display: flex; gap: 12px; }
-.arrow-btn {
-    width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--color-primary);
-    background-color: #ffffff; color: var(--color-primary); font-size: 16px; font-weight: bold; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; transition: 0.2s;
-}
+.arrow-btn { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--color-primary); background-color: #ffffff; color: var(--color-primary); font-size: 16px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
 .arrow-btn.active, .arrow-btn:hover { background-color: var(--color-primary); color: #ffffff; }
 
 .players-section { padding: 80px 0; background-color: #f8fafc; }
-.player-grid {
-    display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-    padding: 20px 20px 30px 20px; -ms-overflow-style: none; scrollbar-width: none;
-}
+.player-grid { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 20px 20px 30px 20px; -ms-overflow-style: none; scrollbar-width: none; }
 .player-grid::-webkit-scrollbar { display: none; }
 .player-card { flex: 0 0 calc((100% - 72px) / 4); min-width: 250px; height: 380px; scroll-snap-align: start; }
 
@@ -550,7 +421,7 @@ ul {
 .btn-white-border { background-color: #ffffff; color: var(--color-primary); border: 2px solid var(--color-primary); box-shadow: 4px 4px 0px var(--color-accent); }
 
 /* ==========================================================================
-   5. RULEページ専用スタイル
+   6. RULEページ専用スタイル
    ========================================================================== */
 .basic-rules-section { padding: 60px 0; }
 .rules-basic-grid { display: flex; gap: 24px; margin-top: 40px; }
@@ -568,35 +439,54 @@ ul {
 .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background-color: var(--color-bg-card); }
 .accordion-inner { padding: 24px 32px; border-top: 1px dashed rgba(15, 46, 130, 0.2); }
 
+/* ルールガイド用 装飾デザイン (修正・完成版) */
+.rule-card { display: flex; flex-direction: column; justify-content: flex-start; height: 100%; }
+.rule-card-content { display: flex; flex-direction: column; flex: 1; }
+.rule-card-header { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
+.rule-icon { display: inline-flex; justify-content: center; align-items: center; width: 44px; height: 44px; background-color: #ffffff; border-radius: 50%; font-size: 22px; border: 2px solid var(--color-primary); flex-shrink: 0; box-shadow: 2px 2px 0px var(--color-accent); }
+.rule-title { font-size: 18px; color: var(--color-primary); font-weight: 800; }
+.rule-desc { font-size: 14px; color: var(--color-text-sub); line-height: 1.6; margin-bottom: 16px; word-break: keep-all; overflow-wrap: break-word; }
+
+/* 大会フォーマット（矢印図解） */
+.rule-flow { display: flex; align-items: center; gap: 16px; margin-top: auto; background-color: #ffffff; padding: 16px; border-radius: 12px; border: 2px dashed #cbd5e1; width: 100% !important; box-sizing: border-box !important; }
+.flow-step { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.flow-step strong { color: var(--color-primary); font-size: 15px; }
+.flow-step span { font-size: 12px; color: var(--color-text-sub); line-height: 1.4; }
+.flow-arrow { font-size: 20px; color: var(--color-accent); font-weight: bold; }
+
+/* 時間表示 */
+.center-content { text-align: center; justify-content: center; align-items: center; }
+.time-big { font-size: 52px; font-weight: 900; color: var(--color-primary); line-height: 1; margin: 12px 0 8px 0; }
+.time-small { font-size: 20px; margin-left: 4px; }
+
+/* 延長・PK戦フロー */
+.pk-flow { display: flex; align-items: center; justify-content: space-between; margin-top: auto; background-color: #ffffff; padding: 16px; border-radius: 12px; border: 2px dashed #cbd5e1; text-align: center; width: 100% !important; box-sizing: border-box !important; }
+.pk-step { font-size: 13px; color: var(--color-text-sub); flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; }
+.pk-step strong { display: block; color: var(--color-primary); font-size: 15px; margin-bottom: 4px; }
+.pk-arrow { color: #cbd5e1; font-weight: bold; display: flex; align-items: center; }
+.highlight-step strong { color: var(--color-accent); font-size: 17px; }
+
 /* ==========================================================================
-   6. HISTORYページ専用スタイル 
+   7. HISTORYページ専用スタイル 
    ========================================================================== */
 .timeline-section { padding: 60px 0; }
 .timeline-container { position: relative; max-width: 900px; margin: 60px auto 0 auto; padding: 0 20px; }
-.timeline-container::before {
-    content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-    width: 0; border-left: 4px dashed var(--color-primary); transform: translateX(-50%);
-}
+.timeline-container::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 0; border-left: 4px dashed var(--color-primary); transform: translateX(-50%); }
 .timeline-item { position: relative; margin-bottom: 80px; width: 100%; display: flex; justify-content: flex-start; }
 .timeline-item:nth-child(even) { justify-content: flex-end; }
-.timeline-badge {
-    position: absolute; left: 50%; top: 24px; transform: translateX(-50%);
-    width: 90px; height: 44px; background-color: var(--color-accent); border: 2px solid var(--color-primary);
-    border-radius: 22px; color: #ffffff; font-weight: 800; display: flex; align-items: center; justify-content: center;
-    box-shadow: 4px 4px 0px var(--color-primary); z-index: 10;
-}
+.timeline-badge { position: absolute; left: 50%; top: 24px; transform: translateX(-50%); width: 90px; height: 44px; background-color: var(--color-accent); border: 2px solid var(--color-primary); border-radius: 22px; color: #ffffff; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: 4px 4px 0px var(--color-primary); z-index: 10; }
 .timeline-card { width: 42%; padding: 32px; background-color: #ffffff; }
 
 .history-stats-section { padding: 60px 0 120px 0; }
 .stats-table-wrapper { margin-top: 40px; overflow-x: auto; }
-.neofont-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 3px solid var(--color-primary); border-radius: 16px; overflow: hidden; box-shadow: 6px 6px 0px var(--color-primary); background-color: #ffffff; }
+.neofont-table { width: 100%; border-collapse: separate; border-spacing: 0; border: 3px solid var(--color-primary); border-radius: 16px; overflow: hidden; box-shadow: 6px 6px 0px var(--color-primary); background-color: #ffffff; min-width: 600px; }
 .neofont-table th { background-color: var(--color-bg-card); color: var(--color-primary); font-weight: 800; padding: 20px 24px; text-align: left; border-bottom: 3px solid var(--color-primary); }
 .neofont-table td { padding: 20px 24px; font-size: 15px; color: var(--color-text-main); border-bottom: 2px solid #e5e7eb; }
 .team-td { font-size: 16px; color: var(--color-primary); font-weight: bold; }
 .count-td { font-weight: 800; color: var(--color-accent); }
 
 /* ==========================================================================
-   7. RESULTページ専用スタイル 
+   8. RESULTページ専用スタイル 
    ========================================================================== */
 .capsules-outer { background-color: #ffffff; padding: 40px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 40px; }
 .capsules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -622,45 +512,34 @@ ul {
 .tab-btn.active { background-color: #0f2e82; color: #ffffff; }
 .tab-content { display: none; }
 
-/* -----------------------------------------
-   決勝トーナメントツリー（完全無欠版）
------------------------------------------ */
+/* トーナメントツリー */
 .tournament-scroll-wrapper { overflow-x: auto !important; padding: 40px 24px; }
 .t-tree-container { display: flex; flex-wrap: nowrap !important; gap: 32px; height: 720px; min-width: max-content; margin: 0 auto; }
 .t-col { display: grid; align-content: start; width: 120px; height: 720px; flex-shrink: 0 !important; position: relative; }
-
 .col-1 { grid-template-rows: repeat(8, 90px); }
 .col-2 { grid-template-rows: repeat(4, 180px); }
 .col-3 { grid-template-rows: repeat(2, 360px); }
 .col-4 { grid-template-rows: repeat(1, 720px); }
-
 .t-card { background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 8px; height: 56px; box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: space-between; position: relative; box-sizing: border-box; margin: 0; align-self: center; width: 100%; z-index: 2; }
 .sf-card { border: 1px solid #cbd5e1; } 
 .t-team { display: flex; align-items: center; font-size: 11px; font-weight: 700; color: #1e293b; }
 .t-name { flex: 1; text-align: left; }
 .t-score-num { color: #0f2e82; font-weight: 900; }
 .t-divider { height: 1px; background-color: #f1f5f9; margin: 2px 0; }
-
-/* 横線 */
 .col-left .t-card::after { content: ""; position: absolute; right: -18px; top: calc(50% - 1px); width: 18px; height: 2px; background-color: #cbd5e1; z-index: -1; }
 .col-left.col-4 .t-card::after { right: -50px; width: 50px; }
 .col-right .t-card::after { content: ""; position: absolute; left: -18px; top: calc(50% - 1px); width: 18px; height: 2px; background-color: #cbd5e1; z-index: -1; }
 .col-right.col-4 .t-card::after { left: -50px; width: 50px; }
-
-/* 縦線ブラケット */
 .col-left.col-2 .t-card::before { content: ""; position: absolute; left: -16px; width: 16px; top: calc(50% - 46px); height: 92px; border: 2px solid #cbd5e1; border-left: none; box-sizing: border-box; z-index: -1; }
 .col-left.col-3 .t-card::before { content: ""; position: absolute; left: -16px; width: 16px; top: calc(50% - 91px); height: 182px; border: 2px solid #cbd5e1; border-left: none; box-sizing: border-box; z-index: -1; }
 .col-left.col-4 .t-card::before { content: ""; position: absolute; left: -16px; width: 16px; top: calc(50% - 181px); height: 362px; border: 2px solid #cbd5e1; border-left: none; box-sizing: border-box; z-index: -1; }
 .col-right.col-2 .t-card::before { content: ""; position: absolute; right: -16px; width: 16px; top: calc(50% - 46px); height: 92px; border: 2px solid #cbd5e1; border-right: none; box-sizing: border-box; z-index: -1; }
 .col-right.col-3 .t-card::before { content: ""; position: absolute; right: -16px; width: 16px; top: calc(50% - 91px); height: 182px; border: 2px solid #cbd5e1; border-right: none; box-sizing: border-box; z-index: -1; }
 .col-right.col-4 .t-card::before { content: ""; position: absolute; right: -16px; width: 16px; top: calc(50% - 181px); height: 362px; border: 2px solid #cbd5e1; border-right: none; box-sizing: border-box; z-index: -1; }
-
-/* 中央エリア */
 .t-col-gap { width: 192px; flex-shrink: 0; position: relative; height: 720px; }
 .gap-fork { position: absolute; top: 259px; height: 202px; width: 20px; border: 2px solid #cbd5e1; box-sizing: border-box; z-index: -1; }
 .fork-left { left: 16px; border-right: none; }
 .fork-right { right: 16px; border-left: none; }
-
 .center-match { position: absolute; left: 50%; transform: translateX(-50%); width: 120px; display: flex; flex-direction: column; align-items: center; z-index: 2; }
 .match-final { top: 232px; }
 .match-third { top: 432px; }
@@ -671,15 +550,13 @@ ul {
 .final-card { border-color: #f59e0b !important; border-width: 2px !important; }
 .third-card { border-color: #3b82f6 !important; border-width: 2px !important; }
 
-/* -----------------------------------------
-   グループステージ
------------------------------------------ */
+/* グループステージ */
 .group-stage-container { margin-top: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
 .group-block { background-color: #ffffff; border-radius: 16px; padding: 24px; border: 1px solid #e2e8f0; }
 .third-place-ranking { grid-column: 1 / -1; }
 .group-title { font-size: 20px; font-weight: 800; color: #0f2e82; margin-bottom: 16px; border-left: 4px solid #10b981; padding-left: 12px; }
 .table-wrapper { overflow-x: auto; }
-.stage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; }
+.stage-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: center; min-width: 400px; }
 .stage-table th { padding: 12px 8px; border-bottom: 2px solid #f1f5f9; color: #64748b; }
 .stage-table td { padding: 14px 8px; border-bottom: 1px solid #f1f5f9; }
 .text-left { text-align: left; }
@@ -688,8 +565,37 @@ ul {
 .promotion-row-third { border-left: 4px solid var(--color-accent-yellow); background-color: #fffbeb; }
 .stage-table tr:not(.promotion-row):not(.promotion-row-third) { border-left: 4px solid transparent; }
 
+/* 敗退チーム等の装飾 */
+.t-loser .t-name { text-decoration: line-through; color: #6b7280; }
+.t-loser .t-score-num { color: #6b7280; font-weight: normal; }
+.t-loser .t-flag-img { opacity: 0.5; filter: grayscale(60%); }
+.table-flag-img { width: 22px; height: 22px; object-fit: cover; border-radius: 50%; vertical-align: middle; margin-right: 8px; border: 1px solid #cbd5e1; }
+.t-flag-img { width: 16px; height: 16px; object-fit: cover; border-radius: 50%; margin-right: 6px; border: 1px solid #cbd5e1; }
+.round-flag { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+.region-circle-grid { padding-top: 20px; padding-bottom: 20px; }
+.player-grid { padding: 20px 20px 30px 20px; }
+
 /* ==========================================================================
-   8. メディアクエリ (レスポンシブ対応)
+   9. ページ遷移・スクロールアニメーション
+   ========================================================================== */
+.page-transition-overlay { position: fixed; top: 50%; left: 50%; width: 200vmax; height: 200vmax; transform: translate(-50%, -50%) rotate(-45deg); z-index: 999999; pointer-events: none; display: flex; }
+.transition-stripe { flex: 1; height: 100%; will-change: transform; transform: translate3d(0, 0%, 0); animation: stripeEnter 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+.page-transition-overlay.is-leaving .transition-stripe { animation: stripeLeave 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+
+.stripe-1 { animation-delay: 0s; background-color: #06133a; }
+.stripe-2 { animation-delay: 0.05s; background-color: #0a1f5a; }
+.stripe-3 { animation-delay: 0.1s; background-color: #0f2e82; }
+.stripe-4 { animation-delay: 0.15s; background-color: #2558c4; }
+.stripe-5 { animation-delay: 0.2s; background-color: #3b82f6; }
+
+@keyframes stripeEnter { 0% { transform: translate3d(0, 0%, 0); } 100% { transform: translate3d(0, 100%, 0); } }
+@keyframes stripeLeave { 0% { transform: translate3d(0, -100%, 0); } 100% { transform: translate3d(0, 0%, 0); } }
+
+.fade-in-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
+.fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
+
+/* ==========================================================================
+   10. メディアクエリ (レスポンシブ対応)
    ========================================================================== */
 @media (max-width: 1024px) {
     .header { padding: 20px 40px; }
@@ -715,69 +621,641 @@ ul {
 }
 
 @media (max-width: 768px) {
-    .header nav { display: none; }
+    /* サブページヒーローのスマホ用調整 */
+    .subpage-hero { height: 260px; padding: 0 16px; }
+    .subpage-hero h1 { font-size: 26px; margin-bottom: 12px; }
+    .subpage-hero p { font-size: 14px; }
+    .subpage-hero + * { margin-top: 32px !important; }
+
+    /* アニメーション非表示 */
+    .page-transition-overlay { display: none !important; }
+
+    /* メニューボタン（三本線） */
     .menu-btn { display: flex; }
+    .header.is-open .menu-btn span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .header.is-open .menu-btn span:nth-child(2) { opacity: 0; }
+    .header.is-open .menu-btn span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+    /* スマホ用の全画面メニュー設定 */
+    .header nav {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; z-index: 1000;
+    }
+    .header.is-open nav { opacity: 1; visibility: visible; }
+    .header nav ul { flex-direction: column; gap: 40px; text-align: center; }
+    .header nav a { font-size: 24px; }
+
+    /* 全体的な余白のスマホ最適化（画面を広く使う） */
+    .about-section, .rule-guide-section, .teams-section, .why-section, .footer { 
+        padding-left: 24px; padding-right: 24px; 
+    }
+
+    /* 文字サイズの最適化 */
     .hero h1 { font-size: 36px; }
     .hero-sub { font-size: 15px; }
+    .section-title-left h2 { font-size: 24px; }
+    .about-text h2, .why-text h2, .final-cta h2 { font-size: 28px; }
+    
+    /* トップのボタン等 */
     .hero-buttons { flex-direction: column; align-items: center; gap: 12px; }
     .btn { width: 100%; max-width: 280px; }
-    .rule-row { flex-direction: column; gap: 24px; }
-    .why-cards-track { flex-direction: column; gap: 40px; }
-    .card-pos-2, .card-pos-3 { transform: translateY(0) !important; }
-    .card-pos-1:hover, .card-pos-2:hover, .card-pos-3:hover { transform: translateY(-5px) !important; }
+    
+    /* Homeページのレイアウト崩れ・重なり解消 */
+    .about-stats { display: flex; flex-direction: column; align-items: stretch; gap: 16px; width: 100%; }
+    .stat-card { width: 100%; max-width: none; height: auto; }
+
+    /* 82カ国下の画像を消し、ルールガイドまでの隙間を詰める */
+    .about-images { display: none !important; }
+    .about-section { padding-bottom: 40px !important; }
+    .rule-guide-section { padding-top: 40px !important; }
+
+    /* Whyセクション */
+    .why-text .btn { display: flex !important; margin: 32px auto 0 auto !important; }
+    .why-cards-track { display: none !important; }
+    .why-section { padding-bottom: 80px !important; }
+    
+    /* 注目チーム紹介の修正 */
+    .teams-section .section-header { display: flex !important; flex-direction: column !important; align-items: flex-start !important; margin-bottom: 24px !important; }
+    .teams-section .section-header h2 { font-size: 28px !important; line-height: 1.4 !important; }
+    .teams-section .section-header h2 br { display: none !important; }
+    .teams-section .section-header .more-link { display: block !important; width: 100% !important; text-align: right !important; margin-top: 16px !important; }
+    .circle-grid { display: grid; grid-template-columns: repeat(2, 1fr); row-gap: 32px; column-gap: 16px; width: 100%; margin-top: 24px; }
+    .circle-image-placeholder { width: 130px; height: 130px; margin: 0 auto; }
+
     .cta-blue-card { padding: 40px 20px; }
-    .cta-blue-card h2 { font-size: 28px; }
     .cta-buttons { flex-direction: column; align-items: center; gap: 12px; }
     
+    /* HISTORYとRESULTページ */
     .timeline-container::before { left: 30px; transform: none; }
     .timeline-item, .timeline-item:nth-child(even) { justify-content: flex-end; margin-bottom: 50px; }
     .timeline-badge { left: 30px; transform: translateX(-50%); width: 70px; height: 36px; font-size: 14px; top: 20px; }
     .timeline-card { width: calc(100% - 70px); padding: 24px; }
     
     .capsules-grid { grid-template-columns: 1fr; }
-    .hero-subpage-content h1 { font-size: 26px; }
-    .region-circle-grid { grid-auto-columns: 100%; }
-    .player-card { flex: 0 0 85%; }
+    
+    /* TEAMページのスマホ対応（国旗と矢印） */
+    .section-header-with-arrows { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .region-circle-grid { grid-auto-columns: calc((100% - 16px) / 2) !important; column-gap: 16px !important; row-gap: 32px !important; justify-content: center !important; justify-items: center !important; }
+    .region-circle-item { width: 110px !important; height: 110px !important; margin: 0 auto; }
+    
+    /* 注目選手カード */
+    .player-card { flex: 0 0 calc((100% - 16px) / 2) !important; min-width: 140px !important; height: 220px !important; }
+    .player-grid { gap: 16px !important; }
+    
+    /* HISTORYページのテーブル */
+    .stats-table-wrapper { width: 100% !important; margin-top: 24px !important; }
+    .neofont-table { min-width: 100% !important; transform: translateZ(0) !important; }
+    .neofont-table th, .neofont-table td { padding: 12px 8px !important; font-size: 13px !important; }
+    .neofont-table .team-td { font-size: 14px !important; }
+    .neofont-table .count-td { font-size: 14px !important; }
+    .neofont-table th:nth-child(1), .neofont-table th:nth-child(2), .neofont-table td:nth-child(1), .neofont-table td:nth-child(2) { white-space: nowrap !important; }
+    .neofont-table th:first-child { border-top-left-radius: 12px !important; }
+    .neofont-table th:last-child { border-top-right-radius: 12px !important; }
+    .neofont-table tr:last-child td:first-child { border-bottom-left-radius: 12px !important; }
+    .neofont-table tr:last-child td:last-child { border-bottom-right-radius: 12px !important; }
+    
+    /* RESULTページのハイライトカード */
+    .hl-match { flex-wrap: nowrap !important; justify-content: center !important; gap: 8px !important; }
+    .hl-team { flex-wrap: nowrap !important; white-space: nowrap !important; font-size: 15px !important; min-width: 0 !important; }
+    .hl-team .t-flag-img { width: 14px !important; height: 14px !important; margin-right: 4px !important; }
+    .hl-score { padding: 4px 8px !important; font-size: 15px !important; flex-shrink: 0 !important; margin: 0 4px !important; display: flex !important; align-items: center !important; white-space: nowrap !important; }
+    
+    /* グループステージ表 */
+    .group-block { padding: 16px 2px !important; }
+    .stage-table { min-width: 0 !important; width: 100% !important; font-size: 10px !important; }
+    .stage-table th, .stage-table td { padding: 10px 1px !important; }
+    .stage-table td.text-left { font-size: 11px !important; white-space: nowrap !important; }
+    .table-flag-img { width: 12px !important; height: 12px !important; margin-right: 2px !important; }
+    .group-title .group-sub { display: block !important; font-size: 13px !important; font-weight: normal !important; margin-top: 4px !important; color: #4b5563 !important; }
+    
+    /* ルールガイド */
+    .rule-guide-section .section-header .more-link { display: block !important; width: 100% !important; text-align: center !important; margin-top: 24px !important; }
+    .rule-guide-section .dummy-photo, .rule-guide-section .about-images, .rule-guide-section .image-placeholder, .rule-guide-section > img { display: none !important; }
+    .rule-flow { flex-direction: column; text-align: center; }
+    .flow-arrow { transform: rotate(90deg); margin: -4px 0; }
+    .pk-flow { flex-direction: column; gap: 8px; }
+    .pk-arrow { transform: rotate(90deg); margin: 4px 0; }
+    
+    .rule-guide-section .rule-grid, .rule-guide-section .rule-row { display: flex !important; flex-direction: column !important; width: 100% !important; gap: 24px !important; margin: 0 !important; }
+    .rule-guide-section .solid-card.rule-card { width: 100% !important; flex: none !important; height: auto !important; min-height: auto !important; box-sizing: border-box !important; margin: 0 !important; }
+    .rule-guide-section .section-header { display: flex !important; flex-direction: column !important; align-items: flex-start !important; width: 100% !important; gap: 12px !important; }
+    .rule-guide-section .title-wrap { width: 100% !important; }
+    .rule-guide-section h2, .rule-guide-section .rule-title { word-break: auto !important; overflow-wrap: break-word !important; white-space: normal !important; line-height: 1.4 !important; width: 100% !important; }
+    .rule-guide-section p, .rule-guide-section .rule-desc { word-break: auto !important; overflow-wrap: break-word !important; line-break: auto !important; line-height: 1.6 !important; width: 100% !important; }
+    .rule-guide-section .rule-desc strong { display: inline !important; }
+    .rule-guide-section .solid-card { padding: 24px 16px !important; max-width: 100% !important; box-sizing: border-box !important; }
+    .rule-guide-section .rule-card-header { display: flex !important; align-items: center !important; flex-wrap: nowrap !important; width: 100% !important; gap: 8px !important; }
+    .rule-guide-section .rule-icon { flex-shrink: 0 !important; }
+    .rule-guide-section .rule-title { font-size: 15px !important; flex: 1 !important; min-width: 0 !important; letter-spacing: -0.5px !important; }
+    
+    /* 3連カード */
+    .reason-cards-container { flex-direction: column; gap: 24px !important; }
+    .reason-card { width: 100% !important; aspect-ratio: 16 / 9 !important; }
+    
+    /* ABOUT visual */
+    .about-visual-container { margin-top: 40px; }
+    .visual-small { width: 75%; padding: 16px; }
+    .visual-small .impact-main { font-size: 36px; }
 }
+/* ▼▼▼ ルールガイドカードのサイズ・余白（窮屈さの解消） ▼▼▼ */
+.card-long { 
+    flex: 2;           /* 左側のカードを広く（比率2） */
+    padding: 32px;     /* 内側に32pxのたっぷりの余白を作って窮屈さをなくす */
+    height: auto;
+    min-height: 260px; /* 最低限の高さを確保しつつ、文字が増えたら自動で伸びるようにする */
+}
+
+.card-short { 
+    flex: 1;           /* 右側のカード（比率1） */
+    padding: 32px;     
+    height: auto;
+    min-height: 260px;
+}
+/* ▲▲▲ 追加ここまで ▲▲▲ */
 
 /* ==========================================================================
-   ページ遷移・スクロールアニメーション
+   TEAMページ：注目選手カード（タイポグラフィデザイン）
    ========================================================================== */
-.page-transition-overlay { position: fixed; top: 50%; left: 50%; width: 200vmax; height: 200vmax; transform: translate(-50%, -50%) rotate(-45deg); z-index: 999999; pointer-events: none; display: flex; }
-.transition-stripe { flex: 1; height: 100%; will-change: transform; transform: translate3d(0, 0%, 0); animation: stripeEnter 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
-.page-transition-overlay.is-leaving .transition-stripe { animation: stripeLeave 0.4s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+.player-card {
+    position: relative;
+    overflow: hidden; /* 背景の背番号がはみ出さないようにする */
+    background-color: var(--color-bg-card);
+    border: 2px solid var(--color-primary);
+    border-radius: 16px;
+    box-shadow: 6px 6px 0px var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* テキストを下寄りに配置して安定感を出す */
+    padding: 24px;
+}
 
-.stripe-1 { animation-delay: 0s; background-color: #06133a; }
-.stripe-2 { animation-delay: 0.05s; background-color: #0a1f5a; }
-.stripe-3 { animation-delay: 0.1s; background-color: #0f2e82; }
-.stripe-4 { animation-delay: 0.15s; background-color: #2558c4; }
-.stripe-5 { animation-delay: 0.2s; background-color: #3b82f6; }
+/* 背景の巨大な背番号 */
+.player-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 160px; /* ガツンと大きく */
+    font-weight: 900;
+    font-style: italic; /* 少し斜体にしてスピード感を演出 */
+    color: var(--color-primary);
+    opacity: 0.05; /* ★超重要：ギリギリ見えるレベルまで薄くする */
+    line-height: 1;
+    z-index: 0;
+    pointer-events: none;
+}
 
-@keyframes stripeEnter { 0% { transform: translate3d(0, 0%, 0); } 100% { transform: translate3d(0, 100%, 0); } }
-@keyframes stripeLeave { 0% { transform: translate3d(0, -100%, 0); } 100% { transform: translate3d(0, 0%, 0); } }
+/* 選手情報（文字）のレイヤー */
+.player-info {
+    position: relative;
+    z-index: 1;
+}
 
-.fade-in-up { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); will-change: opacity, transform; }
-.fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
+/* ポジションバッジ */
+.player-pos {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 12px;
+    border: 2px solid #ffffff; /* 白フチをつけて少しポップに */
+}
+/* ポジションごとの色分け設定 */
+.badge-fw { background-color: #ef4444; } /* 赤 */
+.badge-mf { background-color: #10b981; } /* 緑 */
+.badge-df { background-color: #3b82f6; } /* 青 */
+.badge-gk { background-color: #f59e0b; } /* 黄色 */
+
+/* 国名 */
+.player-country {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-text-sub);
+    margin-bottom: 6px;
+}
+
+/* 選手名 */
+.player-name {
+    font-size: 24px;
+    color: var(--color-primary);
+    font-weight: 900;
+    margin-bottom: 12px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+/* 英語のサブネーム */
+.player-en {
+    display: block;
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 2px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 紹介文 */
+.player-desc {
+    font-size: 13px;
+    color: var(--color-text-sub);
+    line-height: 1.6;
+}
+/* ▼▼▼ 追加：注目選手カードの改行修正と背景国旗デザイン ▼▼▼ */
+/* 紹介文の不自然な改行（文字のぶつ切り）を防止 */
+.player-desc {
+    word-break: normal !important; 
+    overflow-wrap: break-word !important; 
+}
+
+/* 背景に配置する国旗画像（透かし） */
+.player-bg-flag {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    opacity: 0.12; /* 文字の邪魔にならない、かっこいい透かし具合に調整 */
+    z-index: 0;
+    pointer-events: none;
+    transform: rotate(-10deg); /* 少し斜めにして躍動感を出す */
+    filter: grayscale(100%); /* モノクロにしてシックに馴染ませる */
+}
+/* ▲▲▲ 追加ここまで ▲▲▲ */
 
 /* ==========================================================================
-   丸型国旗画像用のクラス
+   ▼▼▼ 修正：注目選手カード完全版（スマホ対応） ＆ 国旗ツールチップ ▼▼▼
    ========================================================================== */
-.round-flag { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
-.region-circle-grid { padding-top: 20px; padding-bottom: 20px; }
-.player-grid { padding: 20px 20px 30px 20px; }
-.table-flag-img { width: 22px; height: 22px; object-fit: cover; border-radius: 50%; vertical-align: middle; margin-right: 8px; border: 1px solid #cbd5e1; }
-.t-flag-img { width: 16px; height: 16px; object-fit: cover; border-radius: 50%; margin-right: 6px; border: 1px solid #cbd5e1; }
+/* --- 選手カードのレイアウト --- */
+.player-card {
+    min-width: 280px !important; /* ★スマホでも潰れないように横幅をしっかり確保 */
+    flex-shrink: 0 !important;   /* ★縮小を防止し、横スライダーとして機能させる */
+    justify-content: flex-start !important; 
+}
 
-/* ▼▼▼ 追加：敗退チームのグレーアウトスタイル ▼▼▼ */
-.t-loser .t-name {
-    text-decoration: line-through; /* 名前に横線 */
-    color: #6b7280; /* しっかり見える範囲のグレー */
+.player-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
-.t-loser .t-score-num {
-    color: #6b7280; /* スコアも合わせてグレーに */
-    font-weight: normal; /* 勝者と差をつけるために少し細く */
+
+.player-pos {
+    align-self: flex-start !important; 
+    margin-top: auto !important; 
+    margin-bottom: 8px !important;
 }
-.t-loser .t-flag-img {
-    opacity: 0.5; /* 国旗も少し暗くする */
-    filter: grayscale(60%);
+
+.player-country {
+    margin-bottom: 4px !important; 
 }
+
+.player-name {
+    margin-top: 0 !important; 
+    margin-bottom: 6px !important; 
+    min-height: auto !important; 
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+}
+
+.player-club {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    font-size: 12px;
+    color: #475569;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.club-label {
+    background-color: #cbd5e1;
+    color: #334155;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    flex-shrink: 0 !important; /* ★CLUBラベルが潰れるのを防ぐ */
+}
+
+.player-desc {
+    margin-top: 0 !important; 
+    line-break: strict !important; 
+    word-break: normal !important; 
+    overflow-wrap: break-word !important; 
+}
+
+.player-bg-flag {
+    width: 170px !important;
+    height: 170px !important;
+    object-fit: contain !important; 
+    top: 20px !important;
+    left: -10px !important;
+}
+
+/* --- 国旗ホバー時のツールチップ（国名） --- */
+.region-circle-item {
+    position: relative;
+    cursor: pointer;
+}
+
+/* 吹き出しの本体 */
+.region-circle-item::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* 吹き出しのしっぽ（三角形） */
+.region-circle-item::before {
+    content: "";
+    position: absolute;
+    bottom: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent #1e293b transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* ホバー時にアニメーションで表示 */
+.region-circle-item:hover::after,
+.region-circle-item:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+/* ▲▲▲ 修正ここまで ▲▲▲ */
+
+/* --- Homeページ・Teamsページ共通：国旗ホバー時のツールチップ --- */
+.region-circle-item,
+.featured-flag-item,
+.team-flag-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.region-circle-item::after,
+.featured-flag-item::after,
+.team-flag-card::after {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -38px;
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background-color: #1e293b;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.region-circle-item::before,
+.featured-flag-item::before,
+.team-flag-card::before {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 6px 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent #1e293b transparent;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.region-circle-item:hover::after,
+.region-circle-item:hover::before,
+.featured-flag-item:hover::after,
+.featured-flag-item:hover::before,
+.team-flag-card:hover::after,
+.team-flag-card:hover::before {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+/* ==========================================================================
+   ▼▼▼ 修正：Teamsページの国旗一覧（縦スクロールトラップの防止） ▼▼▼
+   ========================================================================== */
+.region-circle-grid {
+    overflow-y: hidden !important;   /* 縦方向のスクロールを完全に禁止（ページスクロールを優先） */
+    overflow-x: auto !important;     /* 横方向のスクロール（スライダー）は維持 */
+    padding-bottom: 60px !important; /* 縦を隠すことで、下に出るツールチップ（国名）が切れないよう余白を確保 */
+    height: auto !important;         /* 高さを自動にして無駄な縦はみ出しを防ぐ */
+}
+/* ▲▲▲ 修正ここまで ▲▲▲ */
+/* ==========================================================================
+   ▼▼▼ 修正：国旗セクション（全チーム等）の矢印を右側に統一 ▼▼▼
+   ========================================================================== */
+.region-pane .section-header-with-arrows {
+    display: flex;
+    flex-direction: column; /* タイトルとボタンを縦並びに設定 */
+}
+
+.region-pane .slider-arrows {
+    display: flex !important;
+    justify-content: flex-end !important; /* ★ここで右寄せにしています */
+    gap: 12px !important;
+    margin-top: 12px !important;   /* 見出しとの間隔 */
+    margin-bottom: 24px !important; /* 国旗との間隔（注目選手と統一） */
+}
+/* ▲▲▲ 修正ここまで ▲▲▲ */
+
+/* ==========================================================================
+   ▼▼▼ 推しの国診断モーダル（上位3カ国表示版） ▼▼▼
+   ========================================================================== */
+.quiz-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 23, 42, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.quiz-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+.quiz-modal-content {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 16px;
+    padding: 32px 24px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+.quiz-modal-overlay.active .quiz-modal-content {
+    transform: translateY(0);
+}
+.quiz-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #94a3b8;
+    cursor: pointer;
+}
+.quiz-step {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+}
+.quiz-step.active {
+    display: flex;
+}
+.quiz-progress {
+    font-size: 14px;
+    color: #16a34a;
+    font-weight: bold;
+}
+.quiz-choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+}
+.quiz-choice-btn {
+    background-color: #f8fafc;
+    border: 2px solid #e2e8f0;
+    padding: 14px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+.quiz-choice-btn:hover {
+    background-color: #f0fdf4;
+    border-color: #16a34a;
+    color: #16a34a;
+    transform: translateX(4px);
+}
+
+/* --- 結果ランキング表示用 --- */
+.result-rank {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    text-align: left;
+    position: relative;
+}
+.rank-1 {
+    background: #fffbeb;
+    border-color: #fcd34d;
+    padding: 16px;
+}
+.rank-badge {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #eab308; /* Gold */
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.rank-badge.silver { background: #94a3b8; }
+.rank-badge.bronze { background: #b45309; }
+
+.result-rank img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-right: 12px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.rank-1 img {
+    width: 70px;
+    height: 70px;
+    margin-right: 16px;
+}
+.res-info { flex: 1; }
+.match-rate {
+    font-size: 12px;
+    color: #ef4444;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+.res-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e293b;
+}
+.rank-1 .res-name { font-size: 20px; }
+
+.sub-ranks {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+.sub-ranks .result-rank {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 8px 12px;
+    margin-bottom: 0;
+}
+.sub-ranks .result-rank img {
+    margin: 0 0 8px 0;
+    width: 46px;
+    height: 46px;
+}
+.sub-ranks .res-info { text-align: center; }

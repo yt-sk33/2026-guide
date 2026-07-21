@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | HISTORY</title>
     <!-- CSS読み込み（前回 ver=5 に変更した状態をキープ） -->
-    <link rel="stylesheet" href="css/style.css?ver=5">
+    <link rel="stylesheet" href="css/style.css?ver30">
 </head>
 <body>
     <!-- ↓ページ遷移アニメーション用の帯↓ -->
@@ -42,12 +42,15 @@
         <!-- ==========================================
           1. HEROエリア
         =========================================== -->
-        <section class="hero-subpage">
-            <div class="hero-subpage-content">
-                <h1 class="fade-in-up">大会の歴史</h1>
-                <p class="fade-in-up">1930年の第1回大会から現在に至るまで、世界を熱狂させてきた伝説的な瞬間と、進化の歴史をタイムラインで振り返ります。</p>
-            </div>
-        </section>
+       
+        <!-- ▼▼▼ 修正：背景画像付きのダイナミックなヘッダー ▼▼▼ -->
+<div class="subpage-hero bg-history">
+    <div class="subpage-hero-inner">
+        <h1>大会の歴史</h1>
+        <p>1930年の第1回大会から現在に至るまで、世界を熱狂させてきた伝説的な瞬間と、進化の歴史をタイムラインで振り返ります。</p>
+    </div>
+</div>
+<!-- ▲▲▲ ここまで ▲▲▲ -->
 
         <div class="container">
             <!-- ==========================================
@@ -196,15 +199,17 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <li><a href="#">Support</a></li>
+                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">利用規約</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
+                        <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
                     </ul>
                 </div>
             </div>
