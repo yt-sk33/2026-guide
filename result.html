@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | RESULTS</title>
-    <!-- CSS読み込み（ver=13 にして確実に更新させます） -->
-    <link rel="stylesheet" href="css/style.css?ver=31">
+    <!-- CSS読み込み（ver=14 にして確実に更新させます） -->
+    <link rel="stylesheet" href="css/style.css?ver=14">
 </head>
 <body class="light-theme">
     <!-- ページ遷移アニメーション用の帯 -->
@@ -40,14 +40,13 @@
         <!-- ==========================================
           1. HEROエリア
         =========================================== -->
-<!-- ▼▼▼ 修正：背景画像付きのダイナミックなヘッダー ▼▼▼ -->
-<div class="subpage-hero bg-result">
-    <div class="subpage-hero-inner">
-        <h1>試合結果を知ろう</h1>
-        <p>世界最高峰の舞台に集う強豪国。それぞれの実力と風格、そして注目すべきスター選手たちを詳しくチェック。</p>
-    </div>
-</div>
-<!-- ▲▲▲ ここまで ▲▲▲ -->
+        <div class="subpage-hero bg-result">
+            <div class="subpage-hero-inner">
+                <h1>試合結果を知ろう</h1>
+                <p>世界最高峰の舞台に集う強豪国。それぞれの実力と風格、そして注目すべきスター選手たちを詳しくチェック。</p>
+            </div>
+        </div>
+
         <!-- ==========================================
           2. 4つのスタッツカプセル
         =========================================== -->
@@ -434,11 +433,10 @@
                             </div>
                         </div>
 
-                        <!-- 各グループ3位 総合順位表 -->
+                        <!-- ★修正箇所：各グループ3位 総合順位表 -->
                         <div class="group-block third-place-ranking fade-in-up">
                             <h3 class="group-title" style="border-left-color: var(--color-accent-yellow);">
-                                各グループ3位 総合順位表 
-                                <div class="group-title">各グループ3位 総合順位表 <span class="group-sub">(上位8チームが通過)</span></div>
+                                各グループ3位 総合順位表 <span style="font-size: 14px; color: #64748b; font-weight: normal; margin-left: 8px;">(上位8チームが通過)</span>
                             </h3>
                             <div class="table-wrapper">
                                 <table class="stage-table">
@@ -509,6 +507,6 @@
     </footer>
 
     <!-- JSの読み込み -->
-    <script src="js/script.js?ver=13"></script>
+    <script src="js/script.js?ver=14"></script>
 </body>
 </html>
