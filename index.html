@@ -87,7 +87,8 @@
                 </div>
 
                 <!-- ABOUTセクション：右側のビジュアルエリア -->
-                <div class="about-visual-container">
+                <!-- ★修正：ここに fade-in-up を追加しました -->
+                <div class="about-visual-container fade-in-up">
                     <div class="visual-large">
                         <img src="img/about-stadium.jpg" alt="ワールドカップのスタジアム">
                     </div>
@@ -116,7 +117,7 @@
             <div class="rule-grid">
                 <!-- 上段 -->
                 <div class="rule-row">
-                    <div class="solid-card card-long rule-card">
+                    <div class="solid-card card-long rule-card fade-in-up">
                         <div class="rule-card-header">
                             <span class="rule-icon">🏆</span>
                             <h3 class="rule-title">48カ国が激突！大会の仕組み</h3>
@@ -137,7 +138,7 @@
                         </div>
                     </div>
                     
-                    <div class="solid-card card-short rule-card">
+                    <div class="solid-card card-short rule-card fade-in-up" style="transition-delay: 0.1s;">
                         <div class="rule-card-header">
                             <span class="rule-icon">⏱️</span>
                             <h3 class="rule-title">1試合は何分？</h3>
@@ -151,7 +152,7 @@
 
                 <!-- 下段 -->
                 <div class="rule-row">
-                    <div class="solid-card card-short rule-card">
+                    <div class="solid-card card-short rule-card fade-in-up">
                         <div class="rule-card-header">
                             <span class="rule-icon">📺</span>
                             <h3 class="rule-title">VARって何？</h3>
@@ -161,7 +162,7 @@
                         </div>
                     </div>
 
-                    <div class="solid-card card-long rule-card">
+                    <div class="solid-card card-long rule-card fade-in-up" style="transition-delay: 0.1s;">
                         <div class="rule-card-header">
                             <span class="rule-icon">⚔️</span>
                             <h3 class="rule-title">同点のまま試合が終わったら？</h3>
@@ -198,17 +199,16 @@
                 </div>
                 
                 <div class="circle-grid">
-                    <!-- ★修正：featured-flag-itemクラスの追加と、alt属性を「国名」のみに変更しました -->
                     <div class="circle-image-placeholder fade-in-up featured-flag-item">
                         <img src="img/france.png" alt="フランス" class="round-flag">
                     </div>
-                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item" style="transition-delay: 0.1s;">
                         <img src="img/spain.png" alt="スペイン" class="round-flag">
                     </div>
-                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item" style="transition-delay: 0.2s;">
                         <img src="img/argentina.png" alt="アルゼンチン" class="round-flag">
                     </div>
-                    <div class="circle-image-placeholder fade-in-up featured-flag-item">
+                    <div class="circle-image-placeholder fade-in-up featured-flag-item" style="transition-delay: 0.3s;">
                         <img src="img/england.png" alt="イングランド" class="round-flag">
                     </div>
                 </div>
@@ -233,13 +233,14 @@
                 </div>
 
                 <div class="reason-cards-container">
-                    <div class="reason-card">
+                    <!-- ★修正：ここに fade-in-up と時間差（transition-delay）を追加しました -->
+                    <div class="reason-card fade-in-up">
                         <img src="img/reason1.jpg" alt="サッカーの手軽さ">
                     </div>
-                    <div class="reason-card">
+                    <div class="reason-card fade-in-up" style="transition-delay: 0.2s;">
                         <img src="img/reason2.jpg" alt="サッカーの情熱">
                     </div>
-                    <div class="reason-card">
+                    <div class="reason-card fade-in-up" style="transition-delay: 0.4s;">
                         <img src="img/reason3.jpg" alt="サッカーのドラマ性">
                     </div>
                 </div>
@@ -277,14 +278,12 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
@@ -295,9 +294,10 @@
     </footer>
 
     <!-- JSの読み込み -->
-    <script src="js/script.js?ver=2"></script>
+    <!-- ※ブラウザのキャッシュをクリアするため、ver=3 にしています -->
+    <script src="js/script.js?ver=3"></script>
 
-    <!-- ★追加：国旗のホバーツールチップ用のデータを自動設定するJavaScript -->
+    <!-- 国旗のホバーツールチップ用のデータを自動設定するJavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const flagContainers = document.querySelectorAll('.featured-flag-item');
