@@ -1259,3 +1259,188 @@ ul {
     height: 46px;
 }
 .sub-ranks .res-info { text-align: center; }
+
+/* 丸国旗をホバーしたときに「押せる感」を出す */
+.region-circle-item {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.region-circle-item:hover {
+    transform: scale(1.08) translateY(-5px);
+}
+
+/* ==========================================
+   プロ仕様モーダル（アニメーション＆差し色対応）
+========================================== */
+/* 背景の黒いオーバーレイ（すりガラス効果＋フェードイン） */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.7); /* 少し暗くリッチな色 */
+    backdrop-filter: blur(6px); /* 背景をぼかすプロ技 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    /* アニメーションの初期状態（透明で見えない） */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* ★JSでこのクラスが付くと、フワッと表示される */
+.modal-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* モーダルの白いカード本体 */
+.modal-content-pro {
+    background: #ffffff;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    overflow: hidden; /* カラーバーがはみ出ないように */
+    
+    /* アニメーションの初期状態（少し下に下がって、縮んでいる） */
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+    /* 跳ねるような気持ちいい動き（cubic-bezier） */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+}
+
+.modal-overlay.is-active .modal-content-pro {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+/* 差し色（テーマカラー）のバー */
+.modal-color-bar {
+    height: 8px;
+    width: 100%;
+    background-color: var(--theme-color, #3b82f6); /* JSから変数を受け取る */
+}
+
+/* 閉じるボタン（ホバーで回転する遊び心） */
+.modal-close-btn {
+    position: absolute;
+    top: 16px; right: 20px;
+    font-size: 26px;
+    background: #f1f5f9;
+    border: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.2s ease;
+}
+.modal-close-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: rotate(90deg);
+}
+
+/* ヘッダー周り */
+.modal-header-pro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 30px 20px;
+}
+
+/* 国旗を少し大きく、差し色のオーラをまとう */
+/* 国旗を少し大きく、差し色のオーラをまとう */
+.flag-wrapper {
+    position: relative;
+    display: inline-flex; /* ★追加：中身の画像にピッタリと枠を合わせる */
+    width: 72px;          /* ★追加：画像のサイズと完全に一致させる */
+    height: 72px;         /* ★追加：画像のサイズと完全に一致させる */
+    flex-shrink: 0;       /* ★追加：レイアウト崩れで潰れないようにする */
+}
+
+.flag-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -5px; left: -5px; right: -5px; bottom: -5px; /* 枠の広がり具合 */
+    border: 2px solid var(--theme-color, #e2e8f0);
+    border-radius: 50%;
+    opacity: 0.4;
+}
+
+.modal-flag-img-pro {
+    width: 100%;          /* ★変更：親枠の72pxにぴったり合わせる */
+    height: 100%;         /* ★変更：親枠の72pxにぴったり合わせる */
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+    display: block;       /* ★追加：画像の下に自然にできる不要な隙間を消す */
+}
+
+.modal-title-area-pro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.modal-title-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.modal-title-pro {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.modal-title-en-pro {
+    font-size: 13px;
+    color: var(--theme-color, #94a3b8); /* 英語名も差し色に */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* 差し色の愛称バッジ */
+.modal-badge-pro {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--theme-color, #1e293b);
+    color: #ffffff;
+    display: inline-block;
+}
+
+/* ボディ周り */
+.modal-body-pro {
+    padding: 0 30px 30px;
+}
+
+/* 差し色の左枠がついたユニフォーム情報 */
+.color-info-box-pro {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #f8fafc;
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    border-left: 5px solid var(--theme-color, #3b82f6);
+}
+
+.color-desc-pro, .modal-desc-pro {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #334155;
+    margin: 0;
+}

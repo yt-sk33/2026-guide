@@ -953,6 +953,37 @@
         </div>
     </div>
 </div>
+<!-- ==========================================
+  チーム詳細モーダル（プロ仕様・アニメーション付き）
+=========================================== -->
+<div id="team-modal" class="modal-overlay">
+    <div class="modal-content-pro">
+        <!-- 差し色が入るヘッダーバー -->
+        <div class="modal-color-bar"></div>
+        <button id="modal-close" class="modal-close-btn">×</button>
+        
+        <div class="modal-header-pro">
+            <div class="flag-wrapper">
+                <img id="modal-flag" src="" alt="" class="modal-flag-img-pro">
+            </div>
+            <div class="modal-title-area-pro">
+                <div class="modal-title-wrap">
+                    <h3 id="modal-team-name" class="modal-title-pro"></h3>
+                    <span id="modal-team-name-en" class="modal-title-en-pro"></span>
+                </div>
+                <span id="modal-team-nickname" class="modal-badge-pro"></span>
+            </div>
+        </div>
+        
+        <div class="modal-body-pro">
+            <div class="color-info-box-pro">
+                <span class="color-icon">👕</span>
+                <p id="modal-team-color" class="color-desc-pro"></p>
+            </div>
+            <p id="modal-team-desc" class="modal-desc-pro"></p>
+        </div>
+    </div>
+</div>
     <!-- ==========================================
       フッター（全ページ共通）
     =========================================== -->
@@ -1034,6 +1065,368 @@
 
         // ※※※ ここにダブって記載されていた「推しの国診断プログラム」は丸ごと削除しました ※※※
         
+// チームの詳細データ（themeColorを追加！）
+        // 全48チームの詳細データ（プロ仕様）
+        const teamData = {
+            // Group A
+            "メキシコ": {
+                enName: "Mexico", themeColor: "#166534",
+                nickname: "El Tri（エル・トリ / 3色）",
+                color: "国旗の3色（緑・白・赤）に由来する「エル・トリ」。ホームは伝統的に深い緑色を採用しています。",
+                desc: "北中米の絶対的王者。高いテクニックと機動力を活かしたパスサッカーで、常に大会をかき回す実力派です。"
+            },
+            "南アフリカ": {
+                enName: "South Africa", themeColor: "#ca8a04",
+                nickname: "Bafana Bafana（バファナ・バファナ / 少年たち）",
+                color: "国旗にも使われる黄色と緑。アフリカの大地を感じさせる鮮やかなイエローが代名詞です。",
+                desc: "アフリカ特有のバネとスピードを持つチーム。自国開催の2010年大会で見せた熱狂を再び巻き起こします。"
+            },
+            "韓国": {
+                enName: "South Korea", themeColor: "#dc2626",
+                nickname: "Taegeuk Warriors（太極戦士）",
+                color: "国旗の太極旗に由来する情熱的な赤（レッド・デビルズとも呼ばれます）。",
+                desc: "アジア屈指のフィジカルと、最後まで走り抜く無尽蔵のスタミナが持ち味。欧州のトップクラブで活躍する選手も多数在籍。"
+            },
+            "チェコ": {
+                enName: "Czech Republic", themeColor: "#1e3a8a",
+                nickname: "Národní tým（ナロドニ・ティーム / 代表チーム）",
+                color: "国旗の色である赤、青、白。力強いレッドを基調とすることが多いです。",
+                desc: "堅守速攻と長身を活かしたセットプレーが武器。東欧の古豪として、組織力で上位進出を狙います。"
+            },
+
+            // Group B
+            "スイス": {
+                enName: "Switzerland", themeColor: "#dc2626",
+                nickname: "Nati（ナティ / 代表の略）",
+                color: "スイス国旗と同じ赤地に白の十字をモチーフにしたデザインが伝統です。",
+                desc: "強豪国キラーとして名を馳せる組織派チーム。中盤の構成力と、鉄壁のディフェンスラインが特徴です。"
+            },
+            "カナダ": {
+                enName: "Canada", themeColor: "#b91c1c",
+                nickname: "The Canucks（ザ・カナックス） / Les Rouges",
+                color: "国旗のメイプルリーフ（楓の葉）を象徴する鮮やかな赤がチームカラーです。",
+                desc: "圧倒的なスピードを誇る若きウインガーたちを中心に、ダイナミックで攻撃的なサッカーを展開する新進気鋭のチーム。"
+            },
+            "ボスニア・ヘルツェゴビナ": {
+                enName: "Bosnia and Herzegovina", themeColor: "#1d4ed8",
+                nickname: "Zmajevi（ズマイェヴィ / ドラゴンズ）",
+                color: "国旗の青と黄色を基調とし、鮮やかなブルーのユニフォームをまといます。",
+                desc: "テクニカルな中盤と、絶対的な決定力を持つストライカーを擁する東欧の曲者。爆発力は侮れません。"
+            },
+            "カタール": {
+                enName: "Qatar", themeColor: "#7f1d1d",
+                nickname: "The Maroons（ザ・マルーンズ / 海老茶色）",
+                color: "国旗の色であるマルーン（海老茶色・えんじ色）がそのままチームの象徴となっています。",
+                desc: "長期的な育成プロジェクトにより成長を遂げた中東の雄。パスワークと連動したプレッシングが武器です。"
+            },
+
+            // Group C
+            "ブラジル": {
+                enName: "Brazil", themeColor: "#facc15",
+                nickname: "Seleção（セレソン / 選抜） / Canarinho",
+                color: "カナリア・イエロー。輝かしい黄色と緑の組み合わせは、世界中で最も有名なユニフォームの一つです。",
+                desc: "言わずと知れたサッカー王国。サンバのリズムに乗ったような創造性あふれるテクニックで観客を魅了します。"
+            },
+            "モロッコ": {
+                enName: "Morocco", themeColor: "#b91c1c",
+                nickname: "Atlas Lions（アトラス・ライオンズ）",
+                color: "国旗の赤と緑。燃えるような赤のシャツに緑のアクセントが施されます。",
+                desc: "アフリカ勢としての新境地を開拓。欧州仕込みの戦術眼とアフリカの身体能力を高次元で融合させています。"
+            },
+            "スコットランド": {
+                enName: "Scotland", themeColor: "#1e3a8a",
+                nickname: "Tartan Army（タータン・アーミー）",
+                color: "伝統的なタータンチェック柄や、国旗に由来する深いネイビーブルーが特徴です。",
+                desc: "闘争心とフィジカルを前面に出した伝統の英国スタイル。熱狂的なサポーターの後押しでピッチを駆け回ります。"
+            },
+            "ハイチ": {
+                enName: "Haiti", themeColor: "#1d4ed8",
+                nickname: "Les Grenadiers（レ・グレナディエ / 擲弾兵）",
+                color: "国旗の青と赤。カリブ海を思わせるブルーのシャツが基本です。",
+                desc: "カリブの旋風。個々の高い身体能力と、失うもののないアグレッシブなプレースタイルで番狂わせを狙います。"
+            },
+
+            // Group D
+            "アメリカ合衆国": {
+                enName: "USA", themeColor: "#0f172a",
+                nickname: "The Stars and Stripes（星条旗）",
+                color: "星条旗カラーである白・赤・紺色。クリーンな白をベースにすることが多いです。",
+                desc: "スポーツ大国の威信をかけ、若きタレントたちが躍動。アスリート能力の高さと最新の戦術を武器に戦います。"
+            },
+            "オーストラリア": {
+                enName: "Australia", themeColor: "#eab308",
+                nickname: "Socceroos（サッカルーズ / サッカー＋カンガルー）",
+                color: "国花のゴールデン・ワトルに由来する黄色と緑色。国旗の色（青・白・赤）とは異なります。",
+                desc: "恵まれた体格を活かしたパワフルなサッカー。近年は足元の技術も向上し、アジア枠の強豪として君臨します。"
+            },
+            "パラグアイ": {
+                enName: "Paraguay", themeColor: "#dc2626",
+                nickname: "La Albirroja（ラ・アルビロハ / 白と赤）",
+                color: "伝統的な白と赤の縦縞ユニフォーム。南米の中でも一際目立つデザインです。",
+                desc: "南米屈指の「堅守」。激しい球際と魂のこもったディフェンスから、鋭いカウンターでゴールを強襲します。"
+            },
+            "トルコ": {
+                enName: "Turkiye", themeColor: "#dc2626",
+                nickname: "Ay-Yıldızlılar（アイ・ユルドゥズルラル / 三日月と星）",
+                color: "国旗の色である赤と白。胸に大きな三日月と星が描かれる伝統的なデザインです。",
+                desc: "欧州とアジアの架け橋。情熱的でアグレッシブなプレーと、スタジアムを支配する熱狂的なサポーターが武器です。"
+            },
+
+            // Group E
+            "ドイツ": {
+                enName: "Germany", themeColor: "#1e293b",
+                nickname: "Die Mannschaft（ディ・マンシャフト / The Team）",
+                color: "伝統の白シャツに黒パンツ。ドイツ帝国の国旗カラーに由来する由緒あるデザインです。",
+                desc: "「ゲルマン魂」と呼ばれる強靭なメンタリティと、緻密な戦術、高い組織力を誇るトーナメントの覇者。"
+            },
+            "コートジボワール": {
+                enName: "Ivory Coast", themeColor: "#f97316",
+                nickname: "Les Éléphants（レ・エレファン / 象たち）",
+                color: "国旗のカラーである鮮やかなオレンジ色。ピッチ上でひと際目立つチームカラーです。",
+                desc: "身体能力のバケモノと称されるスター選手を多数輩出。規格外のフィジカルと個人技で相手をねじ伏せます。"
+            },
+            "エクアドル": {
+                enName: "Ecuador", themeColor: "#facc15",
+                nickname: "La Tri（ラ・トリ / 3色）",
+                color: "国旗の黄・青・赤。黄色いシャツに青いパンツの組み合わせが定番です。",
+                desc: "高地での強さに加え、近年は欧州で活躍する若手が増加。南米特有の高い個人技とスプリント能力が光ります。"
+            },
+            "キュラソー": {
+                enName: "Curacao", themeColor: "#0284c7",
+                nickname: "La Familia Azul（青い家族）",
+                color: "美しいカリブ海と空を象徴する、国旗と同じ鮮やかなブルーとイエロー。",
+                desc: "オランダ仕込みのテクニックを持つ選手が集結。小国ながら洗練されたパスワークを見せるダークホースです。"
+            },
+
+            // Group F
+            "オランダ": {
+                enName: "Netherlands", themeColor: "#ea580c",
+                nickname: "Oranje（オラニエ / オレンジ）",
+                color: "王家オラニエ＝ナッサウ家に由来する伝統のオレンジ色。世界で最も愛されるユニフォームの一つ。",
+                desc: "トータルフットボールの系譜を継ぐ攻撃的スタイル。流れるようなパスワークと圧倒的な個の力で頂点を目指します。"
+            },
+            "日本": {
+                enName: "Japan", themeColor: "#1e3a8a",
+                nickname: "SAMURAI BLUE（サムライブルー）",
+                color: "国土を象徴する海と空の青。情熱を表す赤や、カラス（八咫烏）をモチーフにしたデザインも取り入れられます。",
+                desc: "組織的な連動性と最後まで諦めないハードワークが武器。スピーディーなパス回しで世界に挑みます。"
+            },
+            "スウェーデン": {
+                enName: "Sweden", themeColor: "#facc15",
+                nickname: "Blågult（ブローグルト / 青と黄）",
+                color: "国旗に由来する黄色と青。鮮やかなイエローのシャツが北欧の雄を象徴します。",
+                desc: "北欧特有の屈強なフィジカルと、組織的な強固なディフェンス。シンプルながら威力抜群のカウンターが武器。"
+            },
+            "チュニジア": {
+                enName: "Tunisia", themeColor: "#dc2626",
+                nickname: "Eagles of Carthage（カルタゴの鷲）",
+                color: "国旗の赤と白。ホームは白、アウェイは赤を基調とすることが多いです。",
+                desc: "北アフリカの強豪。テクニカルなパスワークと、組織的に連動した強度の高い守備ブロックで相手を封じます。"
+            },
+
+            // Group G
+            "ベルギー": {
+                enName: "Belgium", themeColor: "#dc2626",
+                nickname: "Red Devils（赤い悪魔）",
+                color: "1900年代初頭から続く伝統の赤。黒と黄色のアクセントが加わります。",
+                desc: "黄金世代が牽引する攻撃のスペシャリスト集団。魔法のようなパスと理不尽なまでの決定力でゴールを量産します。"
+            },
+            "エジプト": {
+                enName: "Egypt", themeColor: "#b91c1c",
+                nickname: "The Pharaohs（ファラオたち）",
+                color: "国旗の赤・白・黒。情熱的な赤のシャツに黒のラインが入るデザインが特徴的です。",
+                desc: "絶対的エースにボールを集め、圧倒的なスピードでゴールに迫るアフリカ最多のアフリカネイションズカップ優勝国。"
+            },
+            "イラン": {
+                enName: "Iran", themeColor: "#166534",
+                nickname: "Team Melli（チーム・メッリ / 国民のチーム）",
+                color: "白を基調とし、国旗の緑と赤がアクセント。胸に絶滅危惧種のアジアチーターが描かれたことも。",
+                desc: "アジアNo.1のフィジカルと強固な守備ブロック。鋭いカウンターとセットプレーの強さは世界トップレベルです。"
+            },
+            "ニュージーランド": {
+                enName: "New Zealand", themeColor: "#0f172a",
+                nickname: "All Whites（オール・ホワイツ）",
+                color: "ラグビー代表（オールブラックス）とは対照的に、純白のユニフォームに身を包みます。",
+                desc: "オセアニアの覇者。英国流のロングボールとフィジカルコンタクトの強さを活かしたダイナミックなサッカー。"
+            },
+
+            // Group H
+            "スペイン": {
+                enName: "Spain", themeColor: "#dc2626",
+                nickname: "La Roja（ラ・ロハ / 赤）",
+                color: "情熱の赤。国旗の赤と黄色を基調とし、闘牛の国らしい情熱と闘争心を表しています。",
+                desc: "圧倒的なボール支配と細かいパスワーク（ティキ・タカ）が持ち味の強豪国。若手とベテランの融合が鍵を握ります。"
+            },
+            "カーボベルデ": {
+                enName: "Cape Verde", themeColor: "#0284c7",
+                nickname: "Tubarões Azuis（青いサメ）",
+                color: "国旗と海を象徴する美しいブルー。アフリカの島国らしい爽やかなカラーです。",
+                desc: "近年急成長を遂げたアフリカの新星。ポルトガル仕込みの確かな技術と、しなやかな身体能力が持ち味です。"
+            },
+            "ウルグアイ": {
+                enName: "Uruguay", themeColor: "#38bdf8",
+                nickname: "La Celeste（ラ・セレステ / 水色）",
+                color: "澄み切った空を思わせる美しい水色のシャツに、黒いパンツが伝統のスタイル。",
+                desc: "「ガルラ・チャルーア（不屈の精神）」と呼ばれる魂のディフェンスと、世界最高峰のストライカーを輩出する古豪。"
+            },
+            "サウジアラビア": {
+                enName: "Saudi Arabia", themeColor: "#166534",
+                nickname: "Green Falcons（グリーン・ファルコンズ / 緑のハヤブサ）",
+                color: "国旗の色である白と緑。アウェイでは全身が深い緑色に染まります。",
+                desc: "中東特有の高い足元の技術と、驚異的なアジリティ。暑さへの強さとスタジアムを包む独特の熱気も武器です。"
+            },
+
+            // Group I
+            "フランス": {
+                enName: "France", themeColor: "#1d4ed8",
+                nickname: "Les Bleus（レ・ブルー / 青）",
+                color: "伝統的な青。国旗のトリコロール（青・白・赤）を、シャツ・パンツ・ソックスの全身で表現します。",
+                desc: "スピード、フィジカル、テクニックすべてを兼ね備えたタレント軍団。選手層の厚さは世界一とも言われます。"
+            },
+            "ノルウェー": {
+                enName: "Norway", themeColor: "#dc2626",
+                nickname: "Løvene（ルーヴェネ / ライオンズ）",
+                color: "国旗の赤・白・青をあしらい、ベースカラーには力強い赤が採用されます。",
+                desc: "規格外の点取り屋と、世界屈指のプレーメーカーを擁する北欧の脅威。縦への速い攻撃で相手を粉砕します。"
+            },
+            "セネガル": {
+                enName: "Senegal", themeColor: "#166534",
+                nickname: "Lions of Teranga（テランガのライオン）",
+                color: "国旗の緑・黄・赤。ホームは白基調にカラフルなアクセントが入ることが多いです。",
+                desc: "アフリカ最高峰のタレント集団。圧倒的なスプリント能力と柔軟な足元の技術で、強豪国を次々と苦しめます。"
+            },
+            "イラク": {
+                enName: "Iraq", themeColor: "#166534",
+                nickname: "Lions of Mesopotamia（メソポタミアのライオン）",
+                color: "国旗の緑と白を基調としています。ホームは深い緑色が定番です。",
+                desc: "どんな逆境にも屈しない強いメンタリティの持ち主。フィジカルの強さと情熱的なプレーで中東を牽引します。"
+            },
+
+            // Group J
+            "アルゼンチン": {
+                enName: "Argentina", themeColor: "#38bdf8",
+                nickname: "La Albiceleste（ラ・アルビセレステ / 白と水色）",
+                color: "白と水色の縦縞。独立運動時に使用されたリボンの色がそのまま受け継がれています。",
+                desc: "情熱的なプレーと圧倒的な個の力が魅力。絶対的エースを中心とした攻撃陣は世界最高峰です。"
+            },
+            "オーストリア": {
+                enName: "Austria", themeColor: "#dc2626",
+                nickname: "Das Team（ダス・ティーム / The Team）",
+                color: "国旗の色である赤と白。伝統的に赤基調のスタイリッシュなデザインが多いです。",
+                desc: "激しいプレッシングと縦への推進力が持ち味。近代的なドイツ流の戦術を取り入れた組織的なサッカーを展開します。"
+            },
+            "アルジェリア": {
+                enName: "Algeria", themeColor: "#166534",
+                nickname: "Les Fennecs（レ・フェネック / 砂漠のキツネ）",
+                color: "白と緑。ホームはクリーンな白をベースに、緑の差し色が入ります。",
+                desc: "フランス仕込みの洗練されたテクニックと、北アフリカ特有の野性味が融合。華麗なドリブル突破が魅力です。"
+            },
+            "ヨルダン": {
+                enName: "Jordan", themeColor: "#dc2626",
+                nickname: "The Chivalrous（アル・ナシャマ / 勇敢なる者たち）",
+                color: "国旗の白と赤がベース。シンプルな中にも力強さを感じるデザインです。",
+                desc: "アジアのダークホース。組織的で粘り強い守備から、一瞬の隙を突くカウンターで大物食いを狙います。"
+            },
+
+            // Group K
+            "コロンビア": {
+                enName: "Colombia", themeColor: "#facc15",
+                nickname: "Los Cafeteros（ロス・カフェテロス / コーヒー生産者）",
+                color: "国旗の黄色、青、赤。ピッチでひと際輝くカナリアイエローがメインカラーです。",
+                desc: "ラテンの陽気なリズムを体現する攻撃的サッカー。華麗なボールタッチと強烈なミドルシュートで観客を沸かせます。"
+            },
+            "ポルトガル": {
+                enName: "Portugal", themeColor: "#b91c1c",
+                nickname: "Seleção das Quinas（キナスの盾の選抜）",
+                color: "国旗の赤と緑。深みのあるワインレッドに近い赤が使われることが多いです。",
+                desc: "欧州のブラジルとも称される高い足元の技術。絶対的スター選手を中心に、勝負強い試合運びを見せます。"
+            },
+            "コンゴ民主共和国": {
+                enName: "DR Congo", themeColor: "#2563eb",
+                nickname: "The Leopards（レパーズ / ヒョウ）",
+                color: "青、赤、黄色。国旗のカラーと、チームの象徴であるヒョウのモチーフが取り入れられます。",
+                desc: "身体能力に優れたタレントが揃うアフリカの古豪。予測不能なプレーリズムと圧倒的なスプリントが脅威です。"
+            },
+            "ウズベキスタン": {
+                enName: "Uzbekistan", themeColor: "#0ea5e9",
+                nickname: "White Wolves（ホワイト・ウルブズ / 白いオオカミ）",
+                color: "国旗の青と白を基調とし、清潔感のある白地に青のアクセントが入ります。",
+                desc: "中央アジアの雄。強靭なフィジカルと規律ある組織守備で、アジア予選では常に上位を争う実力派です。"
+            },
+
+            // Group L
+            "イングランド": {
+                enName: "England", themeColor: "#1e3a8a",
+                nickname: "Three Lions（スリーライオンズ）",
+                color: "純白のシャツにネイビーのパンツ。胸のエンブレムには王室の象徴である3頭の獅子が描かれています。",
+                desc: "「サッカーの母国」。近年は若きタレントが次々と台頭し、ダイナミックでスピーディーな攻撃を展開します。"
+            },
+            "クロアチア": {
+                enName: "Croatia", themeColor: "#dc2626",
+                nickname: "Vatreni（ヴァトレニ / 炎の男たち）",
+                color: "赤と白の市松模様（シャホヴニツァ）。世界で最も印象的で美しいユニフォームの一つです。",
+                desc: "世界最高峰のゲームメーカーを擁する中盤の支配者。延長戦も辞さない驚異的なスタミナと精神力は「炎」そのもの。"
+            },
+            "ガーナ": {
+                enName: "Ghana", themeColor: "#0f172a",
+                nickname: "Black Stars（ブラックスターズ）",
+                color: "国旗の中央に輝く黒い星が由来。ホームは白地に黒の星がワンポイントで入ります。",
+                desc: "アフリカ特有のバネと、卓越したボールコントロール。自由奔放ながらも爆発力のある攻撃陣が魅力です。"
+            },
+            "パナマ": {
+                enName: "Panama", themeColor: "#dc2626",
+                nickname: "Los Canaleros（ロス・カナレロス / 運河の人々）",
+                color: "パナマ運河の国らしく、国旗の赤と青をベースにした情熱的なデザイン。",
+                desc: "北中米の成長株。フィジカルを活かしたハードな守備と、全員でゴールに向かうガッツあふれるプレーが持ち味です。"
+            }
+        };
+
+        const modal = document.getElementById('team-modal');
+        const modalContent = document.querySelector('.modal-content-pro');
+
+        // 国旗をクリックしたときの処理
+        document.querySelectorAll('.region-circle-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                const teamName = img.alt;
+                const flagSrc = img.src;
+                
+                // データがあるかチェック（ない場合はグレーを差し色にする）
+                const info = teamData[teamName] || {
+                    enName: "TBD",
+                    themeColor: "#94a3b8", // デフォルトのグレー
+                    nickname: "愛称調査中",
+                    color: "ユニフォーム情報は準備中です。",
+                    desc: "現在このチームの詳細情報を準備中です。"
+                };
+
+                // ★魔法のコード：CSSの変数（--theme-color）に、その国の色を流し込む！
+                modalContent.style.setProperty('--theme-color', info.themeColor);
+
+                // モーダルの中にデータをそれぞれセットする
+                document.getElementById('modal-flag').src = flagSrc;
+                document.getElementById('modal-team-name').textContent = teamName;
+                document.getElementById('modal-team-name-en').textContent = info.enName;
+                document.getElementById('modal-team-nickname').textContent = info.nickname;
+                document.getElementById('modal-team-color').textContent = info.color;
+                document.getElementById('modal-team-desc').textContent = info.desc;
+
+                // ★is-active クラスを付けることで、CSSのアニメーションを発動！
+                modal.classList.add('is-active');
+            });
+        });
+
+        // モーダルの「×」ボタンを押したときの処理
+        document.getElementById('modal-close').addEventListener('click', () => {
+            modal.classList.remove('is-active');
+        });
+
+        // モーダルの外側の黒い背景部分を押したときも閉じるようにする
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === 'team-modal') {
+                modal.classList.remove('is-active');
+            }
+        });
     </script>
 </body>
 </html>
