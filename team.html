@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | TEAMS</title>
-    <!-- CSSの読み込み -->
-    <link rel="stylesheet" href="css/style.css?ver=42">
+    <!-- CSSの読み込み（キャッシュクリア設定付き） -->
+    <link rel="stylesheet" href="css/style.css?ver=43">
 </head>
 <body class="light-theme">
-    <!-- ページ遷移アニメーション用の帯 -->
-    <div class="page-transition-overlay">
+    <!-- ==========================================
+      ページ遷移アニメーション用の帯
+    =========================================== -->
+    <div class="page-transition-overlay" aria-hidden="true">
         <div class="transition-stripe stripe-1"></div>
         <div class="transition-stripe stripe-2"></div>
         <div class="transition-stripe stripe-3"></div>
@@ -18,20 +20,21 @@
     </div>
     
     <!-- ==========================================
-      ヘッダー
+      ヘッダー（ナビゲーション）
     =========================================== -->
     <header class="header">
         <div class="logo">World Cup Guide</div>
-        <nav class="nav-pc">
+        <nav class="nav-pc" aria-label="メインナビゲーション">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="rule.html">Rules</a></li>
-                <li><a href="team.html" class="active">Teams</a></li>
+                <!-- 現在のページを示す aria-current="page" を追加 -->
+                <li><a href="team.html" class="active" aria-current="page">Teams</a></li>
                 <li><a href="history.html">History</a></li>
                 <li><a href="result.html">Result</a></li>
             </ul>
         </nav>
-        <button class="menu-btn">
+        <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
     </header>
@@ -41,7 +44,7 @@
           1. HEROエリア
         =========================================== -->
         <div class="subpage-hero bg-teams">
-            <div class="subpage-hero-inner">
+            <div class="subpage-hero-inner fade-in-up">
                 <h1>出場国を知ろう</h1>
                 <p>世界最高峰の舞台に集う強豪国。それぞれの実力と風格、そして注目すべきスター選手たちを詳しくチェック。</p>
             </div>
@@ -51,14 +54,21 @@
           2. タブ（フィルター）ボタン
         =========================================== -->
         <div class="container">
-            <div class="filter-container fade-in-up">
-                <button class="filter-btn active" data-target="all" onclick="switchRegion('all')">All Teams</button>
-                <button class="filter-btn" data-target="europe" onclick="switchRegion('europe')">Europe</button>
-                <button class="filter-btn" data-target="south-america" onclick="switchRegion('south-america')">South America</button>
-                <button class="filter-btn" data-target="north-america" onclick="switchRegion('north-america')">North & Central America</button>
-                <button class="filter-btn" data-target="africa" onclick="switchRegion('africa')">Africa</button>
-                <button class="filter-btn" data-target="asia" onclick="switchRegion('asia')">Asia</button>
-                <button class="filter-btn" data-target="oceania" onclick="switchRegion('oceania')">Oceania</button>
+            <!-- リアルタイム検索バー -->
+            <div class="search-container fade-in-up">
+                <!-- 音声読み上げ用に aria-label を追加 -->
+                <input type="text" id="team-search" class="team-search-input" placeholder="🔍 国名で探す... (例: スペイン)" aria-label="出場国の検索">
+            </div>
+
+            <!-- ★修正：タブであることを支援技術に伝える role と aria-pressed を追加 -->
+            <div class="filter-container fade-in-up" role="group" aria-label="地域の絞り込み">
+                <button type="button" class="filter-btn active" data-target="all" aria-pressed="true" onclick="switchRegion('all')">All Teams</button>
+                <button type="button" class="filter-btn" data-target="europe" aria-pressed="false" onclick="switchRegion('europe')">Europe</button>
+                <button type="button" class="filter-btn" data-target="south-america" aria-pressed="false" onclick="switchRegion('south-america')">South America</button>
+                <button type="button" class="filter-btn" data-target="north-america" aria-pressed="false" onclick="switchRegion('north-america')">North & Central America</button>
+                <button type="button" class="filter-btn" data-target="africa" aria-pressed="false" onclick="switchRegion('africa')">Africa</button>
+                <button type="button" class="filter-btn" data-target="asia" aria-pressed="false" onclick="switchRegion('asia')">Asia</button>
+                <button type="button" class="filter-btn" data-target="oceania" aria-pressed="false" onclick="switchRegion('oceania')">Oceania</button>
             </div>
         </div>
 
@@ -73,60 +83,62 @@
                     <div class="section-title-left line-blue">
                         <h2 class="text-blue">全チーム <span class="en-sub">All Teams (48)</span></h2>
                     </div>
-                    <div class="slider-arrows">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-all', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-all', 1)">&gt;</button>
+                    <div class="slider-arrows" aria-label="全チーム一覧のスライダー操作">
+                        <button type="button" class="arrow-btn" aria-label="左にスクロール" onclick="scrollSlider('grid-circle-all', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" aria-label="右にスクロール" onclick="scrollSlider('grid-circle-all', 1)">&gt;</button>
                     </div>
                 </div>
-                <div id="grid-circle-all" class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/algeria.png" alt="アルジェリア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/america.png" alt="アメリカ合衆国" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/argentina.png" alt="アルゼンチン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/australia.png" alt="オーストラリア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/austria.png" alt="オーストリア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/belgium.png" alt="ベルギー" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/bosnia.png" alt="ボスニア・ヘルツェゴビナ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/brazil.png" alt="ブラジル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/canada.png" alt="カナダ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/cape-verde.png" alt="カーボベルデ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/colombia.png" alt="コロンビア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/congo.png" alt="コンゴ民主共和国" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/cote-dlvoire.png" alt="コートジボワール" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/croatia.png" alt="クロアチア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/curacao.png" alt="キュラソー" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/czech.png" alt="チェコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/ecuador.png" alt="エクアドル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/egypt.png" alt="エジプト" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/england.png" alt="イングランド" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/france.png" alt="フランス" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/germany.png" alt="ドイツ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/ghana.png" alt="ガーナ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/haiti.png" alt="ハイチ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/iran.png" alt="イラン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/iraq.png" alt="イラク" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/japan.png" alt="日本" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/jordan.png" alt="ヨルダン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/mexico.png" alt="メキシコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/morocco.png" alt="モロッコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/netherlands.png" alt="オランダ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/newzealand.png" alt="ニュージーランド" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/norway.png" alt="ノルウェー" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/panama.png" alt="パナマ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/paraguay.png" alt="パラグアイ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/portugal.png" alt="ポルトガル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/qatar.png" alt="カタール" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/saudiarabia.png" alt="サウジアラビア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/scotland.png" alt="スコットランド" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/senegal.png" alt="セネガル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/south-africa.png" alt="南アフリカ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/south-korea.png" alt="韓国" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/spain.png" alt="スペイン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/sweden.png" alt="スウェーデン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/switzerland.png" alt="スイス" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/tunisia.png" alt="チュニジア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/turkiye.png" alt="トルコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/uruguay.png" alt="ウルグアイ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/uzbekistan.png" alt="ウズベキスタン" class="round-flag"></div>
+                <!-- ★修正：横スクロールエリアに tabindex="0" を付与し、キーボード操作に対応 -->
+                <div id="grid-circle-all" class="region-circle-grid fade-in-up" tabindex="0" aria-label="全チーム一覧（横スクロール可能）">
+                    <!-- ★修正：クリックできる要素なので <div> ではなく <button> に変更（キーボードのEnterで開けるように） -->
+                    <button type="button" class="region-circle-item"><img src="img/algeria.png" alt="アルジェリア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/america.png" alt="アメリカ合衆国" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/argentina.png" alt="アルゼンチン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/australia.png" alt="オーストラリア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/austria.png" alt="オーストリア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/belgium.png" alt="ベルギー" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/bosnia.png" alt="ボスニア・ヘルツェゴビナ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/brazil.png" alt="ブラジル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/canada.png" alt="カナダ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/cape-verde.png" alt="カーボベルデ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/colombia.png" alt="コロンビア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/congo.png" alt="コンゴ民主共和国" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/cote-dlvoire.png" alt="コートジボワール" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/croatia.png" alt="クロアチア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/curacao.png" alt="キュラソー" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/czech.png" alt="チェコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/ecuador.png" alt="エクアドル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/egypt.png" alt="エジプト" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/england.png" alt="イングランド" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/france.png" alt="フランス" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/germany.png" alt="ドイツ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/ghana.png" alt="ガーナ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/haiti.png" alt="ハイチ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/iran.png" alt="イラン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/iraq.png" alt="イラク" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/japan.png" alt="日本" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/jordan.png" alt="ヨルダン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/mexico.png" alt="メキシコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/morocco.png" alt="モロッコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/netherlands.png" alt="オランダ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/newzealand.png" alt="ニュージーランド" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/norway.png" alt="ノルウェー" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/panama.png" alt="パナマ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/paraguay.png" alt="パラグアイ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/portugal.png" alt="ポルトガル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/qatar.png" alt="カタール" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/saudiarabia.png" alt="サウジアラビア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/scotland.png" alt="スコットランド" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/senegal.png" alt="セネガル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/south-africa.png" alt="南アフリカ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/south-korea.png" alt="韓国" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/spain.png" alt="スペイン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/sweden.png" alt="スウェーデン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/switzerland.png" alt="スイス" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/tunisia.png" alt="チュニジア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/turkiye.png" alt="トルコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/uruguay.png" alt="ウルグアイ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/uzbekistan.png" alt="ウズベキスタン" class="round-flag"></button>
                 </div>
             </div>
 
@@ -136,28 +148,28 @@
                     <div class="section-title-left line-blue">
                         <h2 class="text-blue">ヨーロッパ <span class="en-sub">Europe (16)</span></h2>
                     </div>
-                    <div class="slider-arrows">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-europe', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-europe', 1)">&gt;</button>
+                    <div class="slider-arrows" aria-label="ヨーロッパチームのスライダー操作">
+                        <button type="button" class="arrow-btn" aria-label="左にスクロール" onclick="scrollSlider('grid-circle-europe', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" aria-label="右にスクロール" onclick="scrollSlider('grid-circle-europe', 1)">&gt;</button>
                     </div>
                 </div>
-                <div id="grid-circle-europe" class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/austria.png" alt="オーストリア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/belgium.png" alt="ベルギー" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/bosnia.png" alt="ボスニア・ヘルツェゴビナ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/croatia.png" alt="クロアチア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/czech.png" alt="チェコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/england.png" alt="イングランド" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/france.png" alt="フランス" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/germany.png" alt="ドイツ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/netherlands.png" alt="オランダ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/norway.png" alt="ノルウェー" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/portugal.png" alt="ポルトガル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/scotland.png" alt="スコットランド" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/spain.png" alt="スペイン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/sweden.png" alt="スウェーデン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/switzerland.png" alt="スイス" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/turkiye.png" alt="トルコ" class="round-flag"></div>
+                <div id="grid-circle-europe" class="region-circle-grid fade-in-up" tabindex="0" aria-label="ヨーロッパチーム一覧">
+                    <button type="button" class="region-circle-item"><img src="img/austria.png" alt="オーストリア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/belgium.png" alt="ベルギー" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/bosnia.png" alt="ボスニア・ヘルツェゴビナ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/croatia.png" alt="クロアチア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/czech.png" alt="チェコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/england.png" alt="イングランド" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/france.png" alt="フランス" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/germany.png" alt="ドイツ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/netherlands.png" alt="オランダ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/norway.png" alt="ノルウェー" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/portugal.png" alt="ポルトガル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/scotland.png" alt="スコットランド" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/spain.png" alt="スペイン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/sweden.png" alt="スウェーデン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/switzerland.png" alt="スイス" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/turkiye.png" alt="トルコ" class="round-flag"></button>
                 </div>
             </div>
 
@@ -168,13 +180,13 @@
                         <h2 class="text-blue">南米 <span class="en-sub">South America (6)</span></h2>
                     </div>
                 </div>
-                <div id="grid-circle-sa" class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/argentina.png" alt="アルゼンチン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/brazil.png" alt="ブラジル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/colombia.png" alt="コロンビア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/ecuador.png" alt="エクアドル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/paraguay.png" alt="パラグアイ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/uruguay.png" alt="ウルグアイ" class="round-flag"></div>
+                <div id="grid-circle-sa" class="region-circle-grid fade-in-up" tabindex="0" aria-label="南米チーム一覧">
+                    <button type="button" class="region-circle-item"><img src="img/argentina.png" alt="アルゼンチン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/brazil.png" alt="ブラジル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/colombia.png" alt="コロンビア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/ecuador.png" alt="エクアドル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/paraguay.png" alt="パラグアイ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/uruguay.png" alt="ウルグアイ" class="round-flag"></button>
                 </div>
             </div>
 
@@ -185,13 +197,13 @@
                         <h2 class="text-blue">北中米カリブ海 <span class="en-sub">North & Central America (6)</span></h2>
                     </div>
                 </div>
-                <div id="grid-circle-na" class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/america.png" alt="アメリカ合衆国" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/canada.png" alt="カナダ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/curacao.png" alt="キュラソー" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/haiti.png" alt="ハイチ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/mexico.png" alt="メキシコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/panama.png" alt="パナマ" class="round-flag"></div>
+                <div id="grid-circle-na" class="region-circle-grid fade-in-up" tabindex="0" aria-label="北中米カリブ海チーム一覧">
+                    <button type="button" class="region-circle-item"><img src="img/america.png" alt="アメリカ合衆国" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/canada.png" alt="カナダ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/curacao.png" alt="キュラソー" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/haiti.png" alt="ハイチ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/mexico.png" alt="メキシコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/panama.png" alt="パナマ" class="round-flag"></button>
                 </div>
             </div>
 
@@ -201,22 +213,22 @@
                     <div class="section-title-left line-blue">
                         <h2 class="text-blue">アフリカ <span class="en-sub">Africa (10)</span></h2>
                     </div>
-                    <div class="slider-arrows">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-africa', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-africa', 1)">&gt;</button>
+                    <div class="slider-arrows" aria-label="アフリカチームのスライダー操作">
+                        <button type="button" class="arrow-btn" aria-label="左にスクロール" onclick="scrollSlider('grid-circle-africa', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" aria-label="右にスクロール" onclick="scrollSlider('grid-circle-africa', 1)">&gt;</button>
                     </div>
                 </div>
-                <div id="grid-circle-africa" class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/algeria.png" alt="アルジェリア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/cape-verde.png" alt="カーボベルデ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/congo.png" alt="コンゴ民主共和国" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/cote-dlvoire.png" alt="コートジボワール" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/egypt.png" alt="エジプト" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/ghana.png" alt="ガーナ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/morocco.png" alt="モロッコ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/senegal.png" alt="セネガル" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/south-africa.png" alt="南アフリカ" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/tunisia.png" alt="チュニジア" class="round-flag"></div>
+                <div id="grid-circle-africa" class="region-circle-grid fade-in-up" tabindex="0" aria-label="アフリカチーム一覧">
+                    <button type="button" class="region-circle-item"><img src="img/algeria.png" alt="アルジェリア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/cape-verde.png" alt="カーボベルデ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/congo.png" alt="コンゴ民主共和国" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/cote-dlvoire.png" alt="コートジボワール" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/egypt.png" alt="エジプト" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/ghana.png" alt="ガーナ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/morocco.png" alt="モロッコ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/senegal.png" alt="セネガル" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/south-africa.png" alt="南アフリカ" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/tunisia.png" alt="チュニジア" class="round-flag"></button>
                 </div>
             </div>
 
@@ -226,21 +238,21 @@
                     <div class="section-title-left line-blue">
                         <h2 class="text-blue">アジア <span class="en-sub">Asia (9)</span></h2>
                     </div>
-                    <div class="slider-arrows">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-circle-asia', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-circle-asia', 1)">&gt;</button>
+                    <div class="slider-arrows" aria-label="アジアチームのスライダー操作">
+                        <button type="button" class="arrow-btn" aria-label="左にスクロール" onclick="scrollSlider('grid-circle-asia', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" aria-label="右にスクロール" onclick="scrollSlider('grid-circle-asia', 1)">&gt;</button>
                     </div>
                 </div>
-                <div id="grid-circle-asia" class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/australia.png" alt="オーストラリア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/iran.png" alt="イラン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/iraq.png" alt="イラク" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/japan.png" alt="日本" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/jordan.png" alt="ヨルダン" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/qatar.png" alt="カタール" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/saudiarabia.png" alt="サウジアラビア" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/south-korea.png" alt="韓国" class="round-flag"></div>
-                    <div class="region-circle-item"><img src="img/uzbekistan.png" alt="ウズベキスタン" class="round-flag"></div>
+                <div id="grid-circle-asia" class="region-circle-grid fade-in-up" tabindex="0" aria-label="アジアチーム一覧">
+                    <button type="button" class="region-circle-item"><img src="img/australia.png" alt="オーストラリア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/iran.png" alt="イラン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/iraq.png" alt="イラク" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/japan.png" alt="日本" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/jordan.png" alt="ヨルダン" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/qatar.png" alt="カタール" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/saudiarabia.png" alt="サウジアラビア" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/south-korea.png" alt="韓国" class="round-flag"></button>
+                    <button type="button" class="region-circle-item"><img src="img/uzbekistan.png" alt="ウズベキスタン" class="round-flag"></button>
                 </div>
             </div>
 
@@ -251,8 +263,8 @@
                         <h2 class="text-blue">オセアニア <span class="en-sub">Oceania (1)</span></h2>
                     </div>
                 </div>
-                <div class="region-circle-grid fade-in-up">
-                    <div class="region-circle-item"><img src="img/newzealand.png" alt="ニュージーランド" class="round-flag"></div>
+                <div class="region-circle-grid fade-in-up" tabindex="0" aria-label="オセアニアチーム一覧">
+                    <button type="button" class="region-circle-item"><img src="img/newzealand.png" alt="ニュージーランド" class="round-flag"></button>
                 </div>
             </div>
 
@@ -261,24 +273,26 @@
         <!-- ==========================================
           4. 注目選手セクション
         =========================================== -->
-        <section class="players-section">
+        <section class="players-section" aria-labelledby="featured-players-heading">
             <div class="container">
                 <div class="section-header-with-arrows fade-in-up">
                     <div class="section-title-left line-yellow">
-                        <h2>注目選手 <span class="en-sub">Featured Player</span></h2>
+                        <h2 id="featured-players-heading">注目選手 <span class="en-sub">Featured Player</span></h2>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [全チーム] ▼▼▼ -->
                 <div id="players-all" class="player-pane" style="display: block;">
-                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-player-all', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-all', 1)">&gt;</button>
+                    <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;" aria-label="注目選手のスライダー操作">
+                        <button type="button" class="arrow-btn" aria-label="左にスクロール" onclick="scrollSlider('grid-player-all', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" aria-label="右にスクロール" onclick="scrollSlider('grid-player-all', 1)">&gt;</button>
                     </div>
-                    <div id="grid-player-all" class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/argentina.png" alt="アルゼンチン" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                    <!-- ★修正：横スクロールエリアのキーボード対応 & セマンティックタグの適用 -->
+                    <div id="grid-player-all" class="player-grid fade-in-up" tabindex="0" aria-label="注目選手一覧">
+                        <article class="player-card">
+                            <!-- ★修正：背面の巨大な国旗や背番号は、読み上げソフトが読まないように aria-hidden="true" を付与 -->
+                            <img src="img/argentina.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇦🇷 アルゼンチン</div>
@@ -286,10 +300,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>インテル・マイアミ</div>
                                 <p class="player-desc">圧倒的なテクニックと得点力でピッチを支配する、生きる伝説。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/spain.png" alt="スペイン" class="player-bg-flag">
-                            <div class="player-number">19</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/spain.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">19</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇪🇸 スペイン</div>
@@ -297,10 +311,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>FCバルセロナ</div>
                                 <p class="player-desc">次々と最年少記録を塗り替える、無敵艦隊の新たなる至宝。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/france.png" alt="フランス" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/france.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇫🇷 フランス</div>
@@ -308,10 +322,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">爆発的なスピードと決定力で、どんな守備陣も置き去りにする怪物。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/norway.png" alt="ノルウェー" class="player-bg-flag">
-                            <div class="player-number">9</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/norway.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">9</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇳🇴 ノルウェー</div>
@@ -319,10 +333,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>マンチェスター・C</div>
                                 <p class="player-desc">規格外のフィジカルとシュート技術でゴールを強奪する北欧の魔神。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/england.png" alt="イングランド" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/england.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド</div>
@@ -330,10 +344,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">若くして全てを兼ね備える、スリーライオンズの心臓。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/brazil.png" alt="ブラジル" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/brazil.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇧🇷 ブラジル</div>
@@ -341,10 +355,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">キレのあるドリブルで左サイドを切り裂く、カナリア軍団のエース。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/netherlands.png" alt="オランダ" class="player-bg-flag">
-                            <div class="player-number">4</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/netherlands.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">4</div>
                             <div class="player-info">
                                 <span class="player-pos badge-df">DF</span>
                                 <div class="player-country">🇳🇱 オランダ</div>
@@ -352,10 +366,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>リヴァプール</div>
                                 <p class="player-desc">圧倒的な対人能力と統率力で最終ラインに君臨する巨大な壁。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/france.png" alt="フランス" class="player-bg-flag">
-                            <div class="player-number">11</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/france.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">11</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇫🇷 フランス</div>
@@ -363,20 +377,20 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>パリ・サンジェルマン</div>
                                 <p class="player-desc">両足を遜色なく操り、予測不能なドリブルでサイドを制圧するアタッカー。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [ヨーロッパ] ▼▼▼ -->
                 <div id="players-europe" class="player-pane" style="display: none;">
                     <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-player-europe', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-europe', 1)">&gt;</button>
+                        <button type="button" class="arrow-btn" onclick="scrollSlider('grid-player-europe', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" onclick="scrollSlider('grid-player-europe', 1)">&gt;</button>
                     </div>
-                    <div id="grid-player-europe" class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/france.png" alt="フランス" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                    <div id="grid-player-europe" class="player-grid fade-in-up" tabindex="0">
+                        <article class="player-card">
+                            <img src="img/france.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇫🇷 フランス</div>
@@ -384,10 +398,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">爆発的なスピードと決定力で、どんな守備陣も置き去りにする怪物。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/france.png" alt="フランス" class="player-bg-flag">
-                            <div class="player-number">11</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/france.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">11</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇫🇷 フランス</div>
@@ -395,10 +409,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>パリ・サンジェルマン</div>
                                 <p class="player-desc">両足を遜色なく操り、予測不能なドリブルでサイドを制圧するアタッカー。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/spain.png" alt="スペイン" class="player-bg-flag">
-                            <div class="player-number">19</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/spain.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">19</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇪🇸 スペイン</div>
@@ -406,10 +420,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>FCバルセロナ</div>
                                 <p class="player-desc">次々と最年少記録を塗り替える、無敵艦隊の新たなる至宝。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/england.png" alt="イングランド" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/england.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド</div>
@@ -417,10 +431,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">若くして全てを兼ね備える、スリーライオンズの心臓。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/netherlands.png" alt="オランダ" class="player-bg-flag">
-                            <div class="player-number">4</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/netherlands.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">4</div>
                             <div class="player-info">
                                 <span class="player-pos badge-df">DF</span>
                                 <div class="player-country">🇳🇱 オランダ</div>
@@ -428,10 +442,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>リヴァプール</div>
                                 <p class="player-desc">圧倒的な対人能力と統率力で最終ラインに君臨する巨大な壁。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/england.png" alt="イングランド" class="player-bg-flag">
-                            <div class="player-number">9</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/england.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">9</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🏴󠁧󠁢󠁥󠁮󠁧󠁿 イングランド</div>
@@ -439,10 +453,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>バイエルン・ミュンヘン</div>
                                 <p class="player-desc">正確無比なシュートとチャンスメイクもこなす万能型ストライカー。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/croatia.png" alt="クロアチア" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/croatia.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇭🇷 クロアチア</div>
@@ -450,10 +464,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">魔法のようなパスと献身的な守備でチームを導く不屈のマエストロ。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/portugal.png" alt="ポルトガル" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/portugal.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇵🇹 ポルトガル</div>
@@ -461,20 +475,20 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>アル・ナスル</div>
                                 <p class="player-desc">飽くなき向上心でゴールを渇望し続ける、サッカー界の生ける伝説。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [南米] ▼▼▼ -->
                 <div id="players-south-america" class="player-pane" style="display: none;">
                     <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-player-sa', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-sa', 1)">&gt;</button>
+                        <button type="button" class="arrow-btn" onclick="scrollSlider('grid-player-sa', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" onclick="scrollSlider('grid-player-sa', 1)">&gt;</button>
                     </div>
-                    <div id="grid-player-sa" class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/argentina.png" alt="アルゼンチン" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                    <div id="grid-player-sa" class="player-grid fade-in-up" tabindex="0">
+                        <article class="player-card">
+                            <img src="img/argentina.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇦🇷 アルゼンチン</div>
@@ -482,10 +496,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>インテル・マイアミ</div>
                                 <p class="player-desc">圧倒的なテクニックと得点力でピッチを支配する、生きる伝説。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/brazil.png" alt="ブラジル" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/brazil.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇧🇷 ブラジル</div>
@@ -493,10 +507,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">キレのあるドリブルで左サイドを切り裂く、カナリア軍団のエース。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/brazil.png" alt="ブラジル" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/brazil.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇧🇷 ブラジル</div>
@@ -504,10 +518,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>アル・ヒラル</div>
                                 <p class="player-desc">創造性あふれるプレーと圧倒的なスキルで観客を魅了する至宝。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/colombia.png" alt="コロンビア" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/colombia.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇨🇴 コロンビア</div>
@@ -515,10 +529,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>リヴァプール</div>
                                 <p class="player-desc">予測不能なドリブルとアクロバティックなシュートで観客を沸かせる。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/uruguay.png" alt="ウルグアイ" class="player-bg-flag">
-                            <div class="player-number">15</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/uruguay.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">15</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇺🇾 ウルグアイ</div>
@@ -526,10 +540,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">強烈なミドルシュートと無尽蔵のスタミナで中盤を制圧するダイナモ。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/brazil.png" alt="ブラジル" class="player-bg-flag">
-                            <div class="player-number">1</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/brazil.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">1</div>
                             <div class="player-info">
                                 <span class="player-pos badge-gk">GK</span>
                                 <div class="player-country">🇧🇷 ブラジル</div>
@@ -537,10 +551,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>リヴァプール</div>
                                 <p class="player-desc">抜群のシュートストップと安定した足元の技術を誇る世界最高峰の壁。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/ecuador.png" alt="エクアドル" class="player-bg-flag">
-                            <div class="player-number">23</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/ecuador.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">23</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇪🇨 エクアドル</div>
@@ -548,10 +562,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>チェルシー</div>
                                 <p class="player-desc">驚異的なボール奪取能力で相手の攻撃を摘み取る若き潰し屋。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/colombia.png" alt="コロンビア" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/colombia.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇨🇴 コロンビア</div>
@@ -559,20 +573,20 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ラージョ・バジェカーノ</div>
                                 <p class="player-desc">魔法の左足から繰り出される正確なパスとシュートで違いを生み出す。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [アジア] ▼▼▼ -->
                 <div id="players-asia" class="player-pane" style="display: none;">
                     <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-player-asia', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-asia', 1)">&gt;</button>
+                        <button type="button" class="arrow-btn" onclick="scrollSlider('grid-player-asia', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" onclick="scrollSlider('grid-player-asia', 1)">&gt;</button>
                     </div>
-                    <div id="grid-player-asia" class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/japan.png" alt="日本" class="player-bg-flag">
-                            <div class="player-number">18</div>
+                    <div id="grid-player-asia" class="player-grid fade-in-up" tabindex="0">
+                        <article class="player-card">
+                            <img src="img/japan.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">18</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇯🇵 日本</div>
@@ -580,10 +594,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>フェイエノールト</div>
                                 <p class="player-desc">抜群の身体能力と強烈なシュートでゴールを量産する日本のエース。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/japan.png" alt="日本" class="player-bg-flag">
-                            <div class="player-number">1</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/japan.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">1</div>
                             <div class="player-info">
                                 <span class="player-pos badge-gk">GK</span>
                                 <div class="player-country">🇯🇵 日本</div>
@@ -591,10 +605,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>パルマ</div>
                                 <p class="player-desc">圧倒的なフィジカルと驚異的なキック力を誇る、次世代の守護神。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/japan.png" alt="日本" class="player-bg-flag">
-                            <div class="player-number">20</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/japan.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">20</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇯🇵 日本</div>
@@ -602,10 +616,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・ソシエダ</div>
                                 <p class="player-desc">卓越したテクニックと高い戦術眼で攻撃を牽引する日本の至宝。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/south-korea.png" alt="韓国" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/south-korea.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇰🇷 韓国</div>
@@ -613,10 +627,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ロサンゼルスFC</div>
                                 <p class="player-desc">両足から放たれる強烈なシュートでゴールを量産するアジア最高のストライカー。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/south-korea.png" alt="韓国" class="player-bg-flag">
-                            <div class="player-number">19</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/south-korea.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">19</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇰🇷 韓国</div>
@@ -624,10 +638,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>パリ・サンジェルマン</div>
                                 <p class="player-desc">繊細なボールタッチと創造性あふれるパスで魅了する天才レフティ。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/south-korea.png" alt="韓国" class="player-bg-flag">
-                            <div class="player-number">4</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/south-korea.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">4</div>
                             <div class="player-info">
                                 <span class="player-pos badge-df">DF</span>
                                 <div class="player-country">🇰🇷 韓国</div>
@@ -635,10 +649,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>バイエルン・ミュンヘン</div>
                                 <p class="player-desc">圧倒的な対人能力とスピードを兼ね備えた「アジアの怪物」。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/uzbekistan.png" alt="ウズベキスタン" class="player-bg-flag">
-                            <div class="player-number">2</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/uzbekistan.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">2</div>
                             <div class="player-info">
                                 <span class="player-pos badge-df">DF</span>
                                 <div class="player-country">🇺🇿 ウズベキスタン</div>
@@ -646,10 +660,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>マンチェスター・C</div>
                                 <p class="player-desc">若くして欧州で活躍する、ウズベキスタンが誇る強靭なセンターバック。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/iran.png" alt="イラン" class="player-bg-flag">
-                            <div class="player-number">9</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/iran.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">9</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇮🇷 イラン</div>
@@ -657,20 +671,20 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>オリンピアコス</div>
                                 <p class="player-desc">高い得点力とポストプレーで攻撃を牽引するイランの絶対的エース。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [北中米カリブ海] ▼▼▼ -->
                 <div id="players-north-america" class="player-pane" style="display: none;">
                     <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-player-na', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-na', 1)">&gt;</button>
+                        <button type="button" class="arrow-btn" onclick="scrollSlider('grid-player-na', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" onclick="scrollSlider('grid-player-na', 1)">&gt;</button>
                     </div>
-                    <div id="grid-player-na" class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/america.png" alt="アメリカ合衆国" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                    <div id="grid-player-na" class="player-grid fade-in-up" tabindex="0">
+                        <article class="player-card">
+                            <img src="img/america.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇺🇸 アメリカ</div>
@@ -678,10 +692,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ACミラン</div>
                                 <p class="player-desc">鋭いドリブルで攻撃を牽引する「キャプテン・アメリカ」。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/canada.png" alt="カナダ" class="player-bg-flag">
-                            <div class="player-number">19</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/canada.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">19</div>
                             <div class="player-info">
                                 <span class="player-pos badge-df">DF</span>
                                 <div class="player-country">🇨🇦 カナダ</div>
@@ -689,10 +703,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>バイエルン・ミュンヘン</div>
                                 <p class="player-desc">世界最速クラスのスピードで左サイドを制圧する超攻撃的SB。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/mexico.png" alt="メキシコ" class="player-bg-flag">
-                            <div class="player-number">11</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/mexico.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">11</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇲🇽 メキシコ</div>
@@ -700,10 +714,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ACミラン</div>
                                 <p class="player-desc">ゴールへの嗅覚と高い得点力を誇る、エル・トリの頼れる点取り屋。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/canada.png" alt="カナダ" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/canada.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇨🇦 カナダ</div>
@@ -711,10 +725,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ユヴェントス</div>
                                 <p class="player-desc">多彩なシュートパターンでゴールを陥れるカナダの絶対的ストライカー。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/america.png" alt="アメリカ合衆国" class="player-bg-flag">
-                            <div class="player-number">8</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/america.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">8</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇺🇸 アメリカ</div>
@@ -722,10 +736,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ユヴェントス</div>
                                 <p class="player-desc">豊富な運動量でピッチを駆け回る、星条旗軍団のダイナモ。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/mexico.png" alt="メキシコ" class="player-bg-flag">
-                            <div class="player-number">13</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/mexico.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">13</div>
                             <div class="player-info">
                                 <span class="player-pos badge-gk">GK</span>
                                 <div class="player-country">🇲🇽 メキシコ</div>
@@ -733,10 +747,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>AELリマソール</div>
                                 <p class="player-desc">大舞台になるほど神がかったセーブを見せる、メキシコの生ける伝説。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/america.png" alt="アメリカ合衆国" class="player-bg-flag">
-                            <div class="player-number">20</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/america.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">20</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇺🇸 アメリカ</div>
@@ -744,10 +758,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>ASモナコ</div>
                                 <p class="player-desc">鋭い裏への抜け出しと冷静なフィニッシュを武器とする点取り屋。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/panama.png" alt="パナマ" class="player-bg-flag">
-                            <div class="player-number">20</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/panama.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">20</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇵🇦 パナマ</div>
@@ -755,20 +769,20 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>サンディエゴFC</div>
                                 <p class="player-desc">闘志あふれるプレーで中盤を引き締める、パナマの精神的支柱。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [アフリカ] ▼▼▼ -->
                 <div id="players-africa" class="player-pane" style="display: none;">
                     <div class="slider-arrows fade-in-up" style="justify-content: flex-end; margin-bottom: 24px; display: flex; gap: 12px;">
-                        <button class="arrow-btn" onclick="scrollSlider('grid-player-africa', -1)">&lt;</button>
-                        <button class="arrow-btn active" onclick="scrollSlider('grid-player-africa', 1)">&gt;</button>
+                        <button type="button" class="arrow-btn" onclick="scrollSlider('grid-player-africa', -1)">&lt;</button>
+                        <button type="button" class="arrow-btn active" onclick="scrollSlider('grid-player-africa', 1)">&gt;</button>
                     </div>
-                    <div id="grid-player-africa" class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/egypt.png" alt="エジプト" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                    <div id="grid-player-africa" class="player-grid fade-in-up" tabindex="0">
+                        <article class="player-card">
+                            <img src="img/egypt.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇪🇬 エジプト</div>
@@ -776,10 +790,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>リヴァプール</div>
                                 <p class="player-desc">カットインからのコントロールシュートで世界を魅了するファラオ。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/egypt.png" alt="エジプト" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/egypt.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇪🇬 エジプト</div>
@@ -787,10 +801,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>マンチェスター・C</div>
                                 <p class="player-desc">スピードに乗ったドリブルと多彩なフィニッシュで魅せるアタッカー。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/morocco.png" alt="モロッコ" class="player-bg-flag">
-                            <div class="player-number">2</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/morocco.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">2</div>
                             <div class="player-info">
                                 <span class="player-pos badge-df">DF</span>
                                 <div class="player-country">🇲🇦 モロッコ</div>
@@ -798,10 +812,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>パリ・サンジェルマン</div>
                                 <p class="player-desc">驚異的なスピードと攻撃参加で右サイドを制圧する世界最高峰のSB。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/morocco.png" alt="モロッコ" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/morocco.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇲🇦 モロッコ</div>
@@ -809,10 +823,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>レアル・マドリード</div>
                                 <p class="player-desc">巧みなボールコントロールと創造性で攻撃にリズムをもたらす。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/senegal.png" alt="セネガル" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/senegal.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇸🇳 セネガル</div>
@@ -820,10 +834,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>アル・ナスル</div>
                                 <p class="player-desc">力強い突破と確かな決定力でテランガのライオンを牽引するエース。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/ghana.png" alt="ガーナ" class="player-bg-flag">
-                            <div class="player-number">20</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/ghana.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">20</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇬🇭 ガーナ</div>
@@ -831,10 +845,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>トッテナム</div>
                                 <p class="player-desc">パワフルなドリブルと強烈なシュートでゴールを強襲するブラックスター。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/algeria.png" alt="アルジェリア" class="player-bg-flag">
-                            <div class="player-number">7</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/algeria.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">7</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇩🇿 アルジェリア</div>
@@ -842,10 +856,10 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>アル・アハリ</div>
                                 <p class="player-desc">吸い付くようなトラップと魔法のような左足を持つアタッカー。</p>
                             </div>
-                        </div>
-                        <div class="player-card">
-                            <img src="img/tunisia.png" alt="チュニジア" class="player-bg-flag">
-                            <div class="player-number">10</div>
+                        </article>
+                        <article class="player-card">
+                            <img src="img/tunisia.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">10</div>
                             <div class="player-info">
                                 <span class="player-pos badge-mf">MF</span>
                                 <div class="player-country">🇹🇳 チュニジア</div>
@@ -853,16 +867,16 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>バーンリー</div>
                                 <p class="player-desc">アグレッシブなプレーと広い視野で中盤を支配する若き才能。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
                 <!-- ▼▼▼ [オセアニア] ▼▼▼ -->
                 <div id="players-oceania" class="player-pane" style="display: none;">
-                    <div class="player-grid fade-in-up">
-                        <div class="player-card">
-                            <img src="img/newzealand.png" alt="ニュージーランド" class="player-bg-flag">
-                            <div class="player-number">9</div>
+                    <div class="player-grid fade-in-up" tabindex="0">
+                        <article class="player-card">
+                            <img src="img/newzealand.png" alt="" class="player-bg-flag" aria-hidden="true">
+                            <div class="player-number" aria-hidden="true">9</div>
                             <div class="player-info">
                                 <span class="player-pos badge-fw">FW</span>
                                 <div class="player-country">🇳🇿 ニュージーランド</div>
@@ -870,7 +884,7 @@
                                 <div class="player-club"><span class="club-label">CLUB</span>N. フォレスト</div>
                                 <p class="player-desc">圧倒的な高さとフィジカルでゴールをこじ開ける絶対的エース。</p>
                             </div>
-                        </div>
+                        </article>
                     </div>
                 </div>
 
@@ -878,38 +892,41 @@
         </section>
 
        <!-- ==========================================
-          5. CTA（推しの国を見つけよう）
-        =========================================== -->
-        <section class="cta-banner-section">
+         5. CTA（推しの国を見つけよう）
+       =========================================== -->
+        <section class="cta-banner-section" aria-label="推しの国診断へのリンク">
             <div class="container">
                 <div class="cta-blue-card fade-in-up">
                     <h2>推しの国を見つけよう</h2>
                     <p style="margin-top: 10px; font-size: 15px;">どの国を応援するか決まりましたか？試合結果をチェックして最高の祭典の結果を確認しましょう。</p>
                     <div class="cta-buttons">
-    <a href="result.html" class="btn btn-green">試合結果を確認する</a>
-    <button class="btn btn-white-border" onclick="openQuizModal()">推しの国診断</button>
-</div>
+                        <a href="result.html" class="btn btn-green">試合結果を確認する</a>
+                        <!-- ★修正：ボタンであることを明示 -->
+                        <button type="button" class="btn btn-white-border" onclick="openQuizModal()">推しの国診断</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
 <!-- ==========================================
-  推しの国診断 モーダル画面（ベスト3対応版）
+  推しの国診断 モーダル画面
 =========================================== -->
-<div id="quizModal" class="quiz-modal-overlay">
+<!-- ★修正：モーダルであることを支援技術に伝える role="dialog" と aria-modal="true" を追加 -->
+<div id="quizModal" class="quiz-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="quiz-heading">
     <div class="quiz-modal-content">
-        <button class="quiz-close-btn" onclick="closeQuizModal()">×</button>
+        <button type="button" class="quiz-close-btn" aria-label="診断を閉じる" onclick="closeQuizModal()">×</button>
         
         <!-- 【画面1】スタート画面 -->
         <div id="quiz-start" class="quiz-step active">
-            <h3 style="font-size: 20px; color: #1e293b;">あなたにぴったりの国は？</h3>
+            <h3 id="quiz-heading" style="font-size: 20px; color: #1e293b;">あなたにぴったりの国は？</h3>
             <p style="font-size: 14px; color: #475569; line-height: 1.6;">10の質問からあなたの志向を分析し、全48カ国の中から最もマッチする「推しの国」を導き出します。</p>
-            <button class="btn btn-green" onclick="startQuiz()" style="margin-top: 16px;">診断スタート</button>
+            <button type="button" class="btn btn-green" onclick="startQuiz()" style="margin-top: 16px;">診断スタート</button>
         </div>
 
         <!-- 【画面2】質問画面 -->
         <div id="quiz-question" class="quiz-step">
-            <span class="quiz-progress">Q<span id="q-num">1</span> / 10</span>
+            <span class="quiz-progress" aria-live="polite">Q<span id="q-num">1</span> / 10</span>
             <h3 id="q-text" style="font-size: 17px; color: #1e293b; line-height: 1.4;">質問テキスト</h3>
             <div id="quiz-choices" class="quiz-choices">
                 <!-- JSで自動生成 -->
@@ -917,12 +934,13 @@
         </div>
 
         <!-- 【画面3】結果画面 -->
-        <div id="quiz-result" class="quiz-step">
+        <div id="quiz-result" class="quiz-step" aria-live="polite">
             <h3 style="font-size: 18px; color: #1e293b; margin-bottom: 4px;">あなたの推しの国 ベスト3</h3>
             
             <!-- 1位 -->
             <div class="result-rank rank-1">
                 <div class="rank-badge">1位</div>
+                <!-- alt属性はJSで動的に更新されるので空にしておく -->
                 <img id="res1-flag" src="" alt="">
                 <div class="res-info">
                     <div class="match-rate">マッチ度: <span id="res1-rate">0</span>%</div>
@@ -949,22 +967,23 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-green" onclick="closeQuizModal()" style="margin-top: 16px;">閉じる</button>
+            <button type="button" class="btn btn-green" onclick="closeQuizModal()" style="margin-top: 16px;">閉じる</button>
         </div>
     </div>
 </div>
+
 <!-- ==========================================
-  チーム詳細モーダル（プロ仕様・アニメーション付き）
+  チーム詳細モーダル
 =========================================== -->
-<div id="team-modal" class="modal-overlay">
+<div id="team-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-team-name">
     <div class="modal-content-pro">
-        <!-- 差し色が入るヘッダーバー -->
         <div class="modal-color-bar"></div>
-        <button id="modal-close" class="modal-close-btn">×</button>
+        <button type="button" id="modal-close" class="modal-close-btn" aria-label="チーム詳細を閉じる">×</button>
         
         <div class="modal-header-pro">
             <div class="flag-wrapper">
-                <img id="modal-flag" src="" alt="" class="modal-flag-img-pro">
+                <!-- 国名は横のh3に表示されるので、ここの画像は二重読み上げを防止 -->
+                <img id="modal-flag" src="" alt="" class="modal-flag-img-pro" aria-hidden="true">
             </div>
             <div class="modal-title-area-pro">
                 <div class="modal-title-wrap">
@@ -977,15 +996,16 @@
         
         <div class="modal-body-pro">
             <div class="color-info-box-pro">
-                <span class="color-icon">👕</span>
+                <span class="color-icon" aria-hidden="true">👕</span>
                 <p id="modal-team-color" class="color-desc-pro"></p>
             </div>
             <p id="modal-team-desc" class="modal-desc-pro"></p>
         </div>
     </div>
 </div>
+
     <!-- ==========================================
-      フッター（全ページ共通）
+      フッター
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
@@ -1005,14 +1025,12 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
@@ -1021,9 +1039,9 @@
             </div>
         </div>
     </footer>
-   <!-- JSの読み込み -->
-    <!-- ※ ver=3 に変更して、強制的に最新のscript.jsを読み込ませます -->
-    <script src="js/script.js?ver=3"></script>
+
+    <!-- JSの読み込み -->
+    <script src="js/script.js?ver=43"></script>
     
     <!-- タブ切り替え ＆ スライダー用のJavaScript -->
     <script>
@@ -1041,8 +1059,15 @@
             }
             
             const btns = document.querySelectorAll('.filter-btn');
-            btns.forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`[data-target="${regionId}"]`).classList.add('active');
+            btns.forEach(btn => {
+                btn.classList.remove('active');
+                // タブが選択されていないことを支援技術に伝える
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            const activeBtn = document.querySelector(`[data-target="${regionId}"]`);
+            activeBtn.classList.add('active');
+            // タブが選択されたことを支援技術に伝える
+            activeBtn.setAttribute('aria-pressed', 'true');
         }
 
         // 2. 矢印ボタンスクロール機能（横移動）
@@ -1063,10 +1088,7 @@
             }
         });
 
-        // ※※※ ここにダブって記載されていた「推しの国診断プログラム」は丸ごと削除しました ※※※
-        
-// チームの詳細データ（themeColorを追加！）
-        // 全48チームの詳細データ（プロ仕様）
+        // 全48チームの詳細データ
         const teamData = {
             // Group A
             "メキシコ": {
@@ -1400,7 +1422,7 @@
                     desc: "現在このチームの詳細情報を準備中です。"
                 };
 
-                // ★魔法のコード：CSSの変数（--theme-color）に、その国の色を流し込む！
+                // CSSの変数（--theme-color）に、その国の色を流し込む
                 modalContent.style.setProperty('--theme-color', info.themeColor);
 
                 // モーダルの中にデータをそれぞれセットする
@@ -1411,7 +1433,7 @@
                 document.getElementById('modal-team-color').textContent = info.color;
                 document.getElementById('modal-team-desc').textContent = info.desc;
 
-                // ★is-active クラスを付けることで、CSSのアニメーションを発動！
+                // クラスを付けることで、CSSのアニメーションを発動
                 modal.classList.add('is-active');
             });
         });

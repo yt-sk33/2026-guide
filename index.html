@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide</title>
-    <!-- CSSの読み込み -->
+    <!-- キャッシュ対策でバージョンを付与 -->
     <link rel="stylesheet" href="css/style.css?ver=43">
 </head>
 <body>
     <!-- ==========================================
       ページ遷移アニメーション用の帯
     =========================================== -->
-    <div class="page-transition-overlay">
+    <div class="page-transition-overlay" aria-hidden="true">
         <div class="transition-stripe stripe-1"></div>
         <div class="transition-stripe stripe-2"></div>
         <div class="transition-stripe stripe-3"></div>
@@ -20,15 +20,16 @@
     </div>
     
     <!-- ==========================================
-      ヘッダー（全ページ共通・Figma精密再現）
+      ヘッダー（ナビゲーション）
     =========================================== -->
     <header class="header">
         <div class="logo">World Cup Guide</div>
         
         <!-- PC用ナビゲーション -->
-        <nav class="nav-pc">
+        <nav class="nav-pc" aria-label="メインナビゲーション">
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <!-- 現在のページを示す aria-current="page" を追加 -->
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="rule.html">Rules</a></li>
                 <li><a href="team.html">Teams</a></li>
                 <li><a href="history.html">History</a></li>
@@ -37,7 +38,7 @@
         </nav>
 
         <!-- スマホ用ハンバーガーメニューアイコン -->
-        <button class="menu-btn" aria-label="メニューを開く">
+        <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -48,11 +49,14 @@
         <!-- ==========================================
           1. HEROエリア
         =========================================== -->
-        <section class="hero">
+        <section class="hero" aria-label="メインビジュアル">
             <div class="hero-content">
                 <h1 class="fade-in-up">世界がひとつになる瞬間を<br>見よう。</h1>
-                <p class="hero-sub fade-in-up">サッカー最大の祭典を、もっと深く、もっと楽しく。
-基本ルールから注目チームまで、大会を120%楽しむための完全ガイド。<br>4年の月日が紡ぐドラマや世界の熱狂を体感してください。</p>
+                <p class="hero-sub fade-in-up">
+                    サッカー最大の祭典を、もっと深く、もっと楽しく。<br>
+                    基本ルールから注目チームまで、大会を120%楽しむための完全ガイド。<br>
+                    4年の月日が紡ぐドラマや世界の熱狂を体感してください。
+                </p>
                 <div class="hero-buttons fade-in-up">
                     <a href="history.html" class="btn btn-primary">
                         ワールドカップを知る
@@ -66,11 +70,11 @@
         <!-- ==========================================
           2. 大会紹介（ワールドカップとは？）
         =========================================== -->
-        <section class="about-section">
+        <section class="about-section" aria-labelledby="about-heading">
             <div class="about-container">
                 <div class="about-text">
                     <span class="sub-label fade-in-up">ABOUT</span>
-                    <h2 class="fade-in-up">ワールドカップとは？</h2>
+                    <h2 id="about-heading" class="fade-in-up">ワールドカップとは？</h2>
                     <p class="about-desc fade-in-up">
                         4年に一度開催される、サッカーの最高峰にして最大のイベント。世界各国から予選を勝ち抜いたチームが集結し、そのプライドと技術を賭けて激突します。世界の頂点に立つのはどの国か、今からチェックしていきましょう。
                     </p>
@@ -88,10 +92,9 @@
                 </div>
 
                 <!-- ABOUTセクション：右側のビジュアルエリア -->
-                <!-- ★修正：ここに fade-in-up を追加しました -->
-                <div class="about-visual-container fade-in-up">
+                <div class="about-visual-container fade-in-up" aria-hidden="true">
                     <div class="visual-large">
-                        <img src="img/about-stadium.jpg" alt="ワールドカップのスタジアム">
+                        <img src="img/about-stadium.jpg" alt="熱狂するワールドカップのスタジアム">
                     </div>
                     
                     <div class="visual-small">
@@ -106,21 +109,22 @@
         <!-- ==========================================
           3. ルールガイド（変則4枚カードレイアウト）
         =========================================== -->
-        <section class="rule-guide-section">
+        <section class="rule-guide-section" aria-labelledby="rule-heading">
             <div class="section-header fade-in-up">
                 <div class="title-wrap">
-                    <h2>ルールガイド</h2>
+                    <h2 id="rule-heading">ルールガイド</h2>
                     <p>これだけ知っておけば大丈夫！今のあなたに必要なルールを紹介！</p>
                 </div>
-                <a href="rule.html" class="more-link">もっと詳しく見る <span class="arrow">＞</span></a>
+                <a href="rule.html" class="more-link">もっと詳しく見る <span class="arrow" aria-hidden="true">＞</span></a>
             </div>
             
             <div class="rule-grid">
                 <!-- 上段 -->
                 <div class="rule-row">
-                    <div class="solid-card card-long rule-card fade-in-up">
+                    <!-- 独立したコンテンツとして article タグに変更 -->
+                    <article class="solid-card card-long rule-card fade-in-up">
                         <div class="rule-card-header">
-                            <span class="rule-icon">🏆</span>
+                            <span class="rule-icon" aria-hidden="true">🏆</span>
                             <h3 class="rule-title">48カ国が激突！大会の仕組み</h3>
                         </div>
                         <div class="rule-card-content">
@@ -130,55 +134,55 @@
                                     <strong>グループステージ</strong>
                                     <span>4カ国×12組の総当たり戦。<br>上位2チーム＋3位の上位8チームが突破。</span>
                                 </div>
-                                <div class="flow-arrow">▶︎</div>
+                                <div class="flow-arrow" aria-hidden="true">▶︎</div>
                                 <div class="flow-step">
                                     <strong>決勝トーナメント</strong>
                                     <span>32チームによる負けたら終わりの<br>一発勝負！</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                     
-                    <div class="solid-card card-short rule-card fade-in-up" style="transition-delay: 0.1s;">
+                    <article class="solid-card card-short rule-card fade-in-up" style="transition-delay: 0.1s;">
                         <div class="rule-card-header">
-                            <span class="rule-icon">⏱️</span>
+                            <span class="rule-icon" aria-hidden="true">⏱️</span>
                             <h3 class="rule-title">1試合は何分？</h3>
                         </div>
                         <div class="rule-card-content center-content">
                             <div class="time-big">90<span class="time-small">分</span></div>
                             <p class="rule-desc">前半45分 ＋ 後半45分<br><span style="font-size: 12px;">(間に15分のハーフタイム)</span></p>
                         </div>
-                    </div>
+                    </article>
                 </div>
 
                 <!-- 下段 -->
                 <div class="rule-row">
-                    <div class="solid-card card-short rule-card fade-in-up">
+                    <article class="solid-card card-short rule-card fade-in-up">
                         <div class="rule-card-header">
-                            <span class="rule-icon">📺</span>
+                            <span class="rule-icon" aria-hidden="true">📺</span>
                             <h3 class="rule-title">VARって何？</h3>
                         </div>
                         <div class="rule-card-content">
                             <p class="rule-desc"><strong>ビデオ・アシスタント・レフェリー</strong>の略称。<br><br>ゴールやPKなど、試合を左右する重要な判定を別室の映像でチェックし、主審の「正しい判定」をサポートします。</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="solid-card card-long rule-card fade-in-up" style="transition-delay: 0.1s;">
+                    <article class="solid-card card-long rule-card fade-in-up" style="transition-delay: 0.1s;">
                         <div class="rule-card-header">
-                            <span class="rule-icon">⚔️</span>
+                            <span class="rule-icon" aria-hidden="true">⚔️</span>
                             <h3 class="rule-title">同点のまま試合が終わったら？</h3>
                         </div>
                         <div class="rule-card-content">
                             <p class="rule-desc">決勝トーナメントには「引き分け」がありません。必ず勝敗を決めます。</p>
                             <div class="pk-flow">
                                 <div class="pk-step">90分で同点</div>
-                                <div class="pk-arrow">➔</div>
+                                <div class="pk-arrow" aria-hidden="true">➔</div>
                                 <div class="pk-step"><strong>延長戦</strong><br>15分 × 2回</div>
-                                <div class="pk-arrow">➔</div>
+                                <div class="pk-arrow" aria-hidden="true">➔</div>
                                 <div class="pk-step highlight-step"><strong>PK戦</strong><br>キッカー5人〜</div>
                             </div>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -186,12 +190,12 @@
        <!-- ==========================================
           4. 注目チームセクション
         =========================================== -->
-        <section class="teams-section">
+        <section class="teams-section" aria-labelledby="teams-heading">
             <div class="teams-container">
                 
                 <div class="fade-in-up" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px;">
                     <div>
-                        <h2 style="font-size: 25px; font-weight: 800; margin-bottom: 8px; color: #ffffff;">注目チームを紹介</h2>
+                        <h2 id="teams-heading" style="font-size: 25px; font-weight: 800; margin-bottom: 8px; color: #ffffff;">注目チームを紹介</h2>
                         <p style="font-size: 14px; color: #93c5fd;">独自のスタイルを持つ強豪国たち</p>
                     </div>
                     <a href="team.html" style="font-size: 12px; font-weight: bold; color: #ffffff; text-decoration: none;">
@@ -220,12 +224,12 @@
         <!-- ==========================================
           5. なぜ、サッカーは世界中で愛されるのか？（階段状カード）
         =========================================== -->
-        <section class="why-section">
+        <section class="why-section" aria-labelledby="why-heading">
             <div class="why-container">
                 <div class="why-text">
-                    <h2 class="fade-in-up">
+                    <h2 id="why-heading" class="fade-in-up">
                         なぜ、サッカーは世界中<br>で愛されるのか？
-                        <span class="green-deco-line"></span>
+                        <span class="green-deco-line" aria-hidden="true"></span>
                     </h2>
                     <p class="why-desc fade-in-up">
                         ボール一つで始められる手軽さ、言葉が通じなくても繋がれる情熱。そして試合終了のホイッスルが鳴るまで何が起こるか分からないドラマ性。それらすべてが、人々を魅了し続ける理由です。
@@ -234,15 +238,14 @@
                 </div>
 
                 <div class="reason-cards-container">
-                    <!-- ★修正：ここに fade-in-up と時間差（transition-delay）を追加しました -->
                     <div class="reason-card fade-in-up">
-                        <img src="img/reason1.jpg" alt="サッカーの手軽さ">
+                        <img src="img/reason1.jpg" alt="公園でサッカーを楽しむ子どもたち">
                     </div>
                     <div class="reason-card fade-in-up" style="transition-delay: 0.2s;">
-                        <img src="img/reason2.jpg" alt="サッカーの情熱">
+                        <img src="img/reason2.jpg" alt="スタジアムで熱狂するサポーター">
                     </div>
                     <div class="reason-card fade-in-up" style="transition-delay: 0.4s;">
-                        <img src="img/reason3.jpg" alt="サッカーのドラマ性">
+                        <img src="img/reason3.jpg" alt="劇的なゴールを喜ぶ選手たち">
                     </div>
                 </div>
             </div>
@@ -251,15 +254,15 @@
         <!-- ==========================================
           6. FINAL CTA
         =========================================== -->
-        <section class="final-cta fade-in-up">
+        <section class="final-cta fade-in-up" aria-label="アクション喚起">
             <h2>Join the Excitement!</h2>
             <p>みんなでワールドカップを盛り上げよう。</p>
             <a href="result.html" class="btn btn-primary">大会結果</a>
         </section>
     </main>
 
-<!-- ==========================================
-      フッター（全ページ共通）
+    <!-- ==========================================
+      フッター
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
@@ -294,21 +297,9 @@
         </div>
     </footer>
 
-    <!-- JSの読み込み -->
-    <!-- ※ブラウザのキャッシュをクリアするため、ver=3 にしています -->
+    <!-- ==========================================
+      JavaScriptの読み込み
+    =========================================== -->
     <script src="js/script.js?ver=3"></script>
-
-    <!-- 国旗のホバーツールチップ用のデータを自動設定するJavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const flagContainers = document.querySelectorAll('.featured-flag-item');
-            flagContainers.forEach(item => {
-                const img = item.querySelector('img');
-                if (img && img.alt) {
-                    item.setAttribute('data-name', img.alt);
-                }
-            });
-        });
-    </script>
 </body>
 </html>

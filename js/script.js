@@ -1,159 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* ==========================================================================
+   WORLD CUP GUIDE - MAIN JAVASCRIPT
+   ========================================================================== */
 
-    // ==========================================================================
-    // 1. スマホ用ハンバーガーメニューの開閉制御
-    // ==========================================================================
-    const menuBtn = document.querySelector('.menu-btn');
-    const header = document.querySelector('.header');
-
-    if (menuBtn && header) {
-        menuBtn.addEventListener('click', () => {
-            // ヘッダーに is-open クラスを付け外ししてメニューを開閉
-            header.classList.toggle('is-open');
-            
-            // メニューが開いている時は、裏側の画面がスクロールしないように固定する
-            if (header.classList.contains('is-open')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-    }
-
-    // メニュー内のリンクをクリックしたら、自動的にメニューを閉じる
-    const navLinks = document.querySelectorAll('.header nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (header && header.classList.contains('is-open')) {
-                header.classList.remove('is-open');
-                document.body.style.overflow = '';
-            }
-        });
-    });
-
-    // ==========================================================================
-    // 2. ルールページ用アコーディオン（FAQ）の制御
-    // ==========================================================================
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const item = this.parentElement;
-            const content = this.nextElementSibling;
-            
-            // 他の開いているアイテムを閉じる
-            document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('active');
-                    otherItem.querySelector('.accordion-content').style.maxHeight = null;
-                }
-            });
-            
-            // クリックしたアイテムの開閉
-            item.classList.toggle('active');
-            if (item.classList.contains('active')) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                content.style.maxHeight = null;
-            }
-        });
-    });
-
-    // ==========================================================================
-    // 3. ページ遷移アニメーション (PC専用・スマホは即遷移)
-    // ==========================================================================
-    const overlayElement = document.querySelector('.page-transition-overlay');
-    const links = document.querySelectorAll('a');
-
-    links.forEach(link => {
-        link.addEventListener('click', function (e) {
-            const targetUrl = this.getAttribute('href');
-
-            // アニメーションを除外する条件（外部リンク、ページ内リンク、電話・メールなど）
-            if (
-                !targetUrl || 
-                this.getAttribute('target') === '_blank' || 
-                targetUrl.startsWith('#') ||
-                targetUrl.startsWith('tel:') ||
-                targetUrl.startsWith('mailto:')
-            ) {
-                return;
-            }
-
-            // ▼▼▼ 追加：スマホ版（画面幅768px以下）の場合はアニメーションをスキップして即遷移 ▼▼▼
-            if (window.innerWidth <= 768) {
-                return; // 処理をここで終了し、デフォルトのリンク遷移に任せる
-            }
-
-            e.preventDefault();
-            
-            // 画面を隠すアニメーション（is-leaving）を発動
-            if (overlayElement) {
-                overlayElement.classList.add('is-leaving');
-            }
-
-            // 0.5秒後にページ移動
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 500);
-        });
-    });
-
-    // ==========================================================================
-    // 4. スクロール時のフェードインアニメーション
-    // ==========================================================================
-    // 画面内の「.fade-in-up」がついた要素をすべて取得
-    const fadeElements = document.querySelectorAll('.fade-in-up');
-
-    // 画面内に入ったかを判定するオブザーバー（監視者）を作成
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // 画面内に入ったら 'is-visible' クラスを追加
-                entry.target.classList.add('is-visible');
-                
-                // 一度表示されたら監視を終了する（何度もフワフワさせないため）
-                fadeObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        // 画面の下から10%の地点を通過したら発火させる
-        rootMargin: '0px 0px -10% 0px'
-    });
-
-    // 取得したすべての要素を監視対象にセット
-    fadeElements.forEach(el => {
-        fadeObserver.observe(el);
-    });
-});
-
-// ブラウザの戻るボタン対策
-window.addEventListener('pageshow', function (event) {
-    if (event.persisted) {
-        const overlay = document.querySelector('.page-transition-overlay');
-        if (overlay) {
-            overlay.classList.remove('is-leaving');
-        }
-    }
-});
-
-// 国旗要素に hover 用の国名を自動セット
-document.addEventListener('DOMContentLoaded', () => {
-    const flagContainers = document.querySelectorAll('.region-circle-item, .featured-flag-item, .team-flag-card, [class*="flag"]');
-    flagContainers.forEach(item => {
-        const img = item.querySelector('img');
-        if (img && img.alt) {
-            item.setAttribute('data-name', img.alt);
-        }
-    });
-});
-
-// ==========================================
-// 推しの国診断プログラム（全48カ国・10問高精度版）
-// ==========================================
+// ==========================================================================
+// 1. 推しの国診断プログラム（グローバル変数・関数）
+// ※ HTMLから直接(onclick等で)呼び出されるため外に出しています
+// ==========================================================================
 let currentQuestionIndex = 0;
-let userTags = {}; // ユーザーの回答傾向を蓄積するオブジェクト
+let userTags = {};
 
-// 設問データ（10問に増強）
 const quizData = [
     {
         question: "サッカーの試合で一番興奮する瞬間は？",
@@ -237,7 +92,6 @@ const quizData = [
     }
 ];
 
-// 全48カ国の属性データ
 const allCountries = [
     { name: "アルゼンチン", img: "img/argentina.png", tags: ["teamwork", "star", "passion", "king"] },
     { name: "ブラジル", img: "img/brazil.png", tags: ["attack", "star", "passion", "king", "young"] },
@@ -289,28 +143,25 @@ const allCountries = [
     { name: "ニュージーランド", img: "img/newzealand.png", tags: ["defense", "teamwork", "miracle", "darkhorse"] }
 ];
 
-// モーダル操作
 function openQuizModal() {
     document.getElementById('quizModal').classList.add('active');
     showStep('quiz-start');
     currentQuestionIndex = 0;
-    userTags = {}; // リセット
+    userTags = {};
 }
+
 function closeQuizModal() {
     document.getElementById('quizModal').classList.remove('active');
 }
+
 function startQuiz() {
     showStep('quiz-question');
     loadQuestion();
 }
 
-// 質問を画面にセット
 function loadQuestion() {
     const qData = quizData[currentQuestionIndex];
-    
-    // HTMLの「/ 6」などの表記を自動で全体の質問数（10）に書き換える
     document.querySelector('.quiz-progress').innerHTML = `Q<span id="q-num">${currentQuestionIndex + 1}</span> / ${quizData.length}`;
-    
     document.getElementById('q-text').innerText = qData.question;
     
     const choicesContainer = document.getElementById('quiz-choices');
@@ -325,7 +176,6 @@ function loadQuestion() {
     });
 }
 
-// 回答選択時の処理（タグの集計）
 function selectAnswer(tags) {
     tags.forEach(tag => {
         userTags[tag] = (userTags[tag] || 0) + 1;
@@ -339,28 +189,23 @@ function selectAnswer(tags) {
     }
 }
 
-// 48カ国からマッチ度を計算してベスト3を表示
 function calculateAndShowResult() {
-    // 1. 各国のスコアを計算
     let scoredCountries = allCountries.map(country => {
         let score = 0;
         country.tags.forEach(tag => {
             if(userTags[tag]) score += userTags[tag];
         });
-        // 同点時のランダム順位付けのための微小なノイズを追加
         score += Math.random() * 0.1;
         return { ...country, rawScore: score };
     });
 
-    // 2. スコアが高い順に並び替え
     scoredCountries.sort((a, b) => b.rawScore - a.rawScore);
 
-    // 3. 上位3カ国の「マッチ度(%)」をリアルな数字に変換
     let topScore = scoredCountries[0].rawScore;
     
     for (let i = 0; i < 3; i++) {
         let c = scoredCountries[i];
-        let ratio = topScore > 0 ? c.rawScore / topScore : 0.5; // エラー防止
+        let ratio = topScore > 0 ? c.rawScore / topScore : 0.5;
         
         let matchRate;
         if (i === 0) {
@@ -373,7 +218,6 @@ function calculateAndShowResult() {
         c.matchRate = matchRate;
     }
 
-    // 4. HTMLに結果をセット
     document.getElementById('res1-flag').src = scoredCountries[0].img;
     document.getElementById('res1-name').innerText = scoredCountries[0].name;
     document.getElementById('res1-rate').innerText = scoredCountries[0].matchRate;
@@ -389,8 +233,226 @@ function calculateAndShowResult() {
     showStep('quiz-result');
 }
 
-// 画面切り替え用
 function showStep(stepId) {
     document.querySelectorAll('.quiz-step').forEach(step => step.classList.remove('active'));
     document.getElementById(stepId).classList.add('active');
 }
+
+
+// ==========================================================================
+// 2. DOM読み込み完了後のUI制御（イベントリスナーを1つに統合）
+// ==========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ------------------------------------------
+    // スマホ用ハンバーガーメニューの開閉制御
+    // ------------------------------------------
+    const menuBtn = document.querySelector('.menu-btn');
+    const header = document.querySelector('.header');
+
+    if (menuBtn && header) {
+        menuBtn.addEventListener('click', () => {
+            header.classList.toggle('is-open');
+            if (header.classList.contains('is-open')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
+    const navLinks = document.querySelectorAll('.header nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (header && header.classList.contains('is-open')) {
+                header.classList.remove('is-open');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // ------------------------------------------
+    // ルールページ用アコーディオン（FAQ）の制御
+    // ------------------------------------------
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const item = this.parentElement;
+            const content = this.nextElementSibling;
+            
+            document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                }
+            });
+            
+            item.classList.toggle('active');
+            if (item.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        });
+    });
+
+    // ------------------------------------------
+    // ページ遷移アニメーション (PC専用)
+    // ------------------------------------------
+    const overlayElement = document.querySelector('.page-transition-overlay');
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => {
+        link.addEventListener('click', function (e) {
+            const targetUrl = this.getAttribute('href');
+
+            // アニメーションを除外する条件
+            if (
+                !targetUrl || 
+                this.getAttribute('target') === '_blank' || 
+                targetUrl.startsWith('#') ||
+                targetUrl.startsWith('tel:') ||
+                targetUrl.startsWith('mailto:') ||
+                window.innerWidth <= 768 // スマホ版はスキップ
+            ) {
+                return;
+            }
+
+            e.preventDefault();
+            
+            if (overlayElement) {
+                overlayElement.classList.add('is-leaving');
+            }
+
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 500);
+        });
+    });
+
+    // ------------------------------------------
+    // スクロール時のフェードインアニメーション
+    // ------------------------------------------
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: '0px 0px -10% 0px'
+    });
+
+    fadeElements.forEach(el => {
+        fadeObserver.observe(el);
+    });
+
+    // ------------------------------------------
+    // 国旗要素に hover 用の国名を自動セット
+    // ------------------------------------------
+    const flagContainers = document.querySelectorAll('.region-circle-item, .featured-flag-item, .team-flag-card, [class*="flag"]');
+    flagContainers.forEach(item => {
+        const img = item.querySelector('img');
+        if (img && img.alt) {
+            item.setAttribute('data-name', img.alt);
+        }
+    });
+
+    // ------------------------------------------
+    // トップへ戻るボタンの自動生成＆制御
+    // ------------------------------------------
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.id = 'back-to-top';
+    backToTopBtn.innerHTML = '↑';
+    backToTopBtn.setAttribute('aria-label', 'トップへ戻る');
+    document.body.appendChild(backToTopBtn);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('is-visible');
+        } else {
+            backToTopBtn.classList.remove('is-visible');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ------------------------------------------
+    // リアルタイム検索バー（Teamページ専用）
+    // ------------------------------------------
+    const searchInput = document.getElementById('team-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const keyword = this.value.trim();
+            const allPanes = document.querySelectorAll('.region-pane');
+            const allItems = document.querySelectorAll('.region-circle-item');
+            
+            if (keyword === '') {
+                allItems.forEach(item => item.style.display = '');
+                allPanes.forEach(pane => pane.style.display = 'none');
+                if(document.getElementById('region-all')) {
+                    document.getElementById('region-all').style.display = 'block';
+                }
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                const allBtn = document.querySelector('[data-target="all"]');
+                if(allBtn) allBtn.classList.add('active');
+            } else {
+                allPanes.forEach(pane => pane.style.display = 'block');
+                allItems.forEach(item => {
+                    const name = item.getAttribute('data-name') || '';
+                    if (name.includes(keyword)) {
+                        item.style.display = ''; 
+                    } else {
+                        item.style.display = 'none'; 
+                    }
+                });
+            }
+        });
+    }
+
+    // ------------------------------------------
+    // トーナメント表ハイライト（Resultページ専用）
+    // ------------------------------------------
+    const treeContainer = document.querySelector('.t-tree-container');
+    if (treeContainer) {
+        const allTeams = treeContainer.querySelectorAll('.t-team');
+        
+        allTeams.forEach(team => {
+            team.addEventListener('mouseenter', function() {
+                const teamNameElement = this.querySelector('.t-name');
+                if (!teamNameElement) return;
+                
+                const hoverTeamName = teamNameElement.textContent; 
+                treeContainer.classList.add('is-hovering');
+                
+                allTeams.forEach(t => {
+                    const nameEl = t.querySelector('.t-name');
+                    if (nameEl && nameEl.textContent === hoverTeamName) {
+                        t.classList.add('is-highlight');
+                    }
+                });
+            });
+            
+            team.addEventListener('mouseleave', function() {
+                treeContainer.classList.remove('is-hovering');
+                allTeams.forEach(t => t.classList.remove('is-highlight'));
+            });
+        });
+    }
+});
+
+// ==========================================================================
+// 3. ブラウザの戻るボタン対策
+// ==========================================================================
+window.addEventListener('pageshow', function (event) {
+    if (event.persisted) {
+        const overlay = document.querySelector('.page-transition-overlay');
+        if (overlay) {
+            overlay.classList.remove('is-leaving');
+        }
+    }
+});

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | HISTORY</title>
-    <!-- CSS読み込み（前回 ver=5 に変更した状態をキープ） -->
-    <link rel="stylesheet" href="css/style.css?ver30">
+    <!-- キャッシュ対策でバージョンを付与 -->
+    <link rel="stylesheet" href="css/style.css?ver=30">
 </head>
 <body>
-    <!-- ↓ページ遷移アニメーション用の帯↓ -->
-    <div class="page-transition-overlay">
+    <!-- ==========================================
+      ページ遷移アニメーション用の帯
+    =========================================== -->
+    <div class="page-transition-overlay" aria-hidden="true">
         <div class="transition-stripe stripe-1"></div>
         <div class="transition-stripe stripe-2"></div>
         <div class="transition-stripe stripe-3"></div>
@@ -18,20 +20,21 @@
     </div>
     
     <!-- ==========================================
-      ヘッダー（全ページ共通・Historyをアクティブ化）
+      ヘッダー（ナビゲーション）
     =========================================== -->
     <header class="header">
         <div class="logo">World Cup Guide</div>
-        <nav class="nav-pc">
+        <nav class="nav-pc" aria-label="メインナビゲーション">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="rule.html">Rules</a></li>
                 <li><a href="team.html">Teams</a></li>
-                <li><a href="history.html" class="active">History</a></li>
+                <!-- 現在のページを示す aria-current="page" を追加 -->
+                <li><a href="history.html" class="active" aria-current="page">History</a></li>
                 <li><a href="result.html">Result</a></li>
             </ul>
         </nav>
-        <button class="menu-btn" aria-label="メニューを開く">
+        <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -40,17 +43,14 @@
 
     <main>
         <!-- ==========================================
-          1. HEROエリア
+          1. HEROエリア（背景画像付きヘッダー）
         =========================================== -->
-       
-        <!-- ▼▼▼ 修正：背景画像付きのダイナミックなヘッダー ▼▼▼ -->
-<div class="subpage-hero bg-history">
-    <div class="subpage-hero-inner">
-        <h1>大会の歴史</h1>
-        <p>1930年の第1回大会から現在に至るまで、世界を熱狂させてきた伝説的な瞬間と、進化の歴史をタイムラインで振り返ります。</p>
-    </div>
-</div>
-<!-- ▲▲▲ ここまで ▲▲▲ -->
+        <div class="subpage-hero bg-history">
+            <div class="subpage-hero-inner fade-in-up">
+                <h1>大会の歴史</h1>
+                <p>1930年の第1回大会から現在に至るまで、世界を熱狂させてきた伝説的な瞬間と、進化の歴史をタイムラインで振り返ります。</p>
+            </div>
+        </div>
 
         <div class="container">
             <!-- ==========================================
@@ -63,49 +63,49 @@
 
                 <div class="timeline-container">
                     <!-- 1930年 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-badge">1930</div>
+                    <article class="timeline-item fade-in-up">
+                        <div class="timeline-badge" aria-label="1930年">1930</div>
                         <div class="solid-card timeline-card">
                             <h3>すべての始まり、ウルグアイ大会</h3>
                             <p>記念すべき第1回大会はウルグアイで開催。参加国はわずか13カ国でしたが、ホスト国のウルグアイが初代王者に輝き、世界的な熱狂の歴史が幕を開けました。</p>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- 1970年 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-badge">1970</div>
+                    <article class="timeline-item fade-in-up">
+                        <div class="timeline-badge" aria-label="1970年">1970</div>
                         <div class="solid-card timeline-card">
                             <h3>伝説のブラジルとカラー放送開始</h3>
                             <p>メキシコ大会では、ペレを擁する伝説のブラジル代表が圧倒的な強さで優勝。この大会からTVのカラー生中継が本格化し、W杯の視覚的な魅力が世界中に届くようになりました。</p>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- 1998年 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-badge">1998</div>
+                    <article class="timeline-item fade-in-up">
+                        <div class="timeline-badge" aria-label="1998年">1998</div>
                         <div class="solid-card timeline-card">
                             <h3>日本代表、悲願の初出場</h3>
                             <p>フランス大会にて、日本代表が悲願のワールドカップ初出場を果たしました。開催国フランスがジダンらの活躍で初優勝を飾った大会でもあります。</p>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- 2022年 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-badge">2022</div>
+                    <article class="timeline-item fade-in-up">
+                        <div class="timeline-badge" aria-label="2022年">2022</div>
                         <div class="solid-card timeline-card">
                             <h3>メッシの戴冠、カタールでの奇跡</h3>
                             <p>中東初開催となったカタール大会。アルゼンチンのリオネル・メッシが悲願の優勝を果たし、決勝戦は「史上最高のゲーム」として今も語り継がれています。</p>
                         </div>
-                    </div>
+                    </article>
 
                     <!-- 2026年 -->
-                    <div class="timeline-item fade-in-up">
-                        <div class="timeline-badge">2026</div>
+                    <article class="timeline-item fade-in-up">
+                        <div class="timeline-badge" aria-label="2026年">2026</div>
                         <div class="solid-card timeline-card">
                             <h3>無敵艦隊スペイン、最小失点記録で2度目の頂点へ</h3>
                             <p>48カ国制となった北中米大会。スペイン代表は持ち前のパスワークに加え圧倒的な堅守を披露し、全8試合でわずか1失点という驚異的な記録を樹立。W杯優勝チームの最小失点記録を塗り替え、見事に2度目の世界一に輝きました。</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </section>
 
@@ -121,9 +121,10 @@
                     <table class="neofont-table">
                         <thead>
                             <tr>
-                                <th>国名</th>
-                                <th>優勝回数</th>
-                                <th>主な優勝年</th>
+                                <!-- scope="col" を追加してテーブルの構造を明確化 -->
+                                <th scope="col">国名</th>
+                                <th scope="col">優勝回数</th>
+                                <th scope="col">主な優勝年</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -147,25 +148,21 @@
                                 <td class="count-td">3回</td>
                                 <td>1978, 1986, 2022</td>
                             </tr>
-                            <!-- 【追加】ウルグアイ -->
                             <tr>
                                 <td class="team-td"><strong>ウルグアイ</strong></td>
                                 <td class="count-td">2回</td>
                                 <td>1930, 1950</td>
                             </tr>
-                            <!-- 【追加】フランス -->
                             <tr>
                                 <td class="team-td"><strong>フランス</strong></td>
                                 <td class="count-td">2回</td>
                                 <td>1998, 2018</td>
                             </tr>
-                            <!-- スペイン（2026年優勝を加味して2回） -->
                             <tr>
                                 <td class="team-td"><strong>スペイン</strong></td>
                                 <td class="count-td">2回</td>
                                 <td>2010, 2026</td>
                             </tr>
-                            <!-- 【追加】イングランド -->
                             <tr>
                                 <td class="team-td"><strong>イングランド</strong></td>
                                 <td class="count-td">1回</td>
@@ -179,7 +176,7 @@
     </main>
 
     <!-- ==========================================
-      フッター（全ページ共通）
+      フッター
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
@@ -199,14 +196,12 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
@@ -216,7 +211,9 @@
         </div>
     </footer>
 
-    <!-- JSの読み込み -->
+    <!-- ==========================================
+      JavaScriptの読み込み
+    =========================================== -->
     <script src="js/script.js?ver=2"></script>
 </body>
 </html>

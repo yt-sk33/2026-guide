@@ -5,34 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Cup Guide | RULES</title>
     <!-- CSSの読み込み（キャッシュクリア設定付き） -->
-    <link rel="stylesheet" href="css/style.css?ver=30">
+    <link rel="stylesheet" href="css/style.css?ver=32">
 </head>
 <body class="light-theme">
-    <!-- ↓ここから追加（ページ遷移アニメーション用の帯）↓ -->
-    <div class="page-transition-overlay">
+    <!-- ==========================================
+      ページ遷移アニメーション用の帯
+    =========================================== -->
+    <div class="page-transition-overlay" aria-hidden="true">
         <div class="transition-stripe stripe-1"></div>
         <div class="transition-stripe stripe-2"></div>
         <div class="transition-stripe stripe-3"></div>
         <div class="transition-stripe stripe-4"></div>
         <div class="transition-stripe stripe-5"></div>
     </div>
-    <!-- ↑ここまで追加↑ -->
     
     <!-- ==========================================
-      ヘッダー
+      ヘッダー（ナビゲーション）
     =========================================== -->
     <header class="header">
         <div class="logo">World Cup Guide</div>
-        <nav class="nav-pc">
+        <nav class="nav-pc" aria-label="メインナビゲーション">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="rule.html" class="active">Rules</a></li>
+                <!-- 現在のページを示す aria-current="page" を追加 -->
+                <li><a href="rule.html" class="active" aria-current="page">Rules</a></li>
                 <li><a href="team.html">Teams</a></li>
                 <li><a href="history.html">History</a></li>
                 <li><a href="result.html">Result</a></li>
             </ul>
         </nav>
-        <button class="menu-btn" aria-label="メニューを開く">
+        <button class="menu-btn" aria-label="メニューを開く" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -43,130 +45,123 @@
         <!-- ==========================================
           1. HEROエリア
         =========================================== -->
-        <!-- ▼▼▼ 修正：背景画像付きのダイナミックなヘッダー ▼▼▼ -->
-<div class="subpage-hero bg-rules">
-    <div class="subpage-hero-inner">
-        <h1>ルールを知ろう</h1>
-        <p>サッカーの基本から、知っておくと観戦が100倍面白くなる新規定や専門ルールまで、シンプルにわかりやすく解説します。</p>
-    </div>
-</div>
-<!-- ▲▲▲ ここまで ▲▲▲ -->
+        <div class="subpage-hero bg-rules">
+            <div class="subpage-hero-inner fade-in-up">
+                <h1>ルールを知ろう</h1>
+                <p>サッカーの基本から、知っておくと観戦が100倍面白くなる新規定や専門ルールまで、シンプルにわかりやすく解説します。</p>
+            </div>
+        </div>
 
         <div class="container">
             <!-- ==========================================
               2. 基本ルール3箇条
             =========================================== -->
-            <section class="basic-rules-section">
-                <!-- 【追加】セクションタイトルに fade-in-up -->
+            <section class="basic-rules-section" aria-labelledby="basic-rules-heading">
                 <div class="section-title-left line-blue fade-in-up">
-                    <h2>これだけは外せない基本 <span class="en-sub">Basic Rules</span></h2>
+                    <h2 id="basic-rules-heading">これだけは外せない基本 <span class="en-sub">Basic Rules</span></h2>
                 </div>
 
                 <div class="rules-basic-grid">
-                    <!-- 【追加】各カードに fade-in-up -->
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">01</div>
+                    <!-- 独立したコンテンツとして article タグに変更 -->
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">01</div>
                         <h3>手を使ってはいけない</h3>
                         <p>ゴールキーパー以外の選手は、プレイ中に手や腕を使ってボールを扱ってはいけません（ハンドの反則）。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">02</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">02</div>
                         <h3>試合時間と人数</h3>
                         <p>1チーム11人、前後半それぞれ45分の合計90分間で勝敗を競います。アディショナルタイムもあります。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">03</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">03</div>
                         <h3>得点の決まり方</h3>
                         <p>ゴールラインをボールが完全に越えた場合に1得点となります。シンプルなルールこそが熱狂を生みます。</p>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- ==========================================
-              3. 今大会からの新ルール (新規追加セクション)
+              3. 今大会からの新ルール
             =========================================== -->
-            <section class="basic-rules-section" style="padding-top: 20px;">
-                <!-- 【追加】セクションタイトルに fade-in-up -->
+            <section class="basic-rules-section" style="padding-top: 20px;" aria-labelledby="new-rules-heading">
                 <div class="section-title-left line-blue fade-in-up">
-                    <h2>今大会からの新ルール・変更点 <span class="en-sub">New Rules</span></h2>
+                    <h2 id="new-rules-heading">今大会からの新ルール・変更点 <span class="en-sub">New Rules</span></h2>
                 </div>
 
                 <!-- 1段目 (1〜3) -->
                 <div class="rules-basic-grid">
-                    <!-- 【追加】各カードに fade-in-up -->
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">01</div>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">01</div>
                         <h3>スローイン等は「5秒以内」</h3>
                         <p>時間稼ぎを防ぐため、審判が5秒間のカウントダウンを実施。過ぎてしまうと相手ボール（スローインやCK）に変わります。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">02</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">02</div>
                         <h3>交代選手は「10秒で退出」</h3>
                         <p>交代で下がる選手は10秒以内にピッチ外へ出る必要があります。遅れると交代選手が60秒間入れず、一時的に10人で戦うペナルティに。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">03</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">03</div>
                         <h3>負傷治療後は「60秒待機」</h3>
                         <p>痛むフリを防ぐため、ピッチ内で治療を受けた選手は再開後60秒間戻れません（GKの負傷や相手のカード提示を伴う反則時などは例外）。</p>
-                    </div>
+                    </article>
                 </div>
 
                 <!-- 2段目 (4〜6) -->
                 <div class="rules-basic-grid" style="margin-top: 24px;">
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">04</div>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">04</div>
                         <h3>GK治療中の「作戦会議」禁止</h3>
                         <p>ゴールキーパーの治療で試合が止まっている時間を悪用し、他の選手がベンチ前に集まって戦術指示を受ける行為が禁止されました。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">05</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">05</div>
                         <h3>口元を隠す発言は「一発退場」</h3>
                         <p>暴言や人種差別の隠蔽を防ぐため、手やユニフォーム等で意図的に口元を覆いながら発言する行為にはレッドカードが提示されます。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">06</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">06</div>
                         <h3>抗議の「ピッチ放棄」厳罰化</h3>
                         <p>判定への不満から意図的にピッチを引き揚げるボイコット行為は禁止。関係者は退場となり、試合自体が没収（不戦敗）になる可能性も。</p>
-                    </div>
+                    </article>
                 </div>
 
                 <!-- 3段目 (7〜9) -->
                 <div class="rules-basic-grid" style="margin-top: 24px;">
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">07</div>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">07</div>
                         <h3>「給水ブレイク」の義務化</h3>
                         <p>選手の安全のため、気候に関わらず前半・後半の22分頃に一律で「正確に3分間」の給水・休憩時間が設けられるようになりました。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">08</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">08</div>
                         <h3>交代枠は「最大5人」ベース</h3>
                         <p>通常の交代は最大5人（3回まで）。さらに「脳震盪での特別枠」や「延長戦での追加枠（+1人）」も公平に用意されています。</p>
-                    </div>
-                    <div class="solid-card basic-card fade-in-up">
-                        <div class="card-badge">09</div>
+                    </article>
+                    <article class="solid-card basic-card fade-in-up">
+                        <div class="card-badge" aria-hidden="true">09</div>
                         <h3>VARの対象プレーが拡大</h3>
                         <p>得点や一発退場などに加え、「2枚目のイエローカード」「誤ったCK判定」「セットプレー再開前のファウル」なども確認対象になりました。</p>
-                    </div>
+                    </article>
                 </div>
             </section>
 
             <!-- ==========================================
               4. よくある質問・詳細ルール（アコーディオン）
             =========================================== -->
-            <section class="accordion-section">
-                <!-- 【追加】セクションタイトルに fade-in-up -->
+            <section class="accordion-section" aria-labelledby="faq-heading">
                 <div class="section-title-left line-yellow fade-in-up">
-                    <h2>もっと深く知る解説 <span class="en-sub">Detailed Rules (FAQ)</span></h2>
+                    <h2 id="faq-heading">もっと深く知る解説 <span class="en-sub">Detailed Rules (FAQ)</span></h2>
                 </div>
 
                 <div class="accordion-container">
-                    <!-- 【追加】各アコーディオンアイテムに fade-in-up -->
                     <!-- アコーディオン1 -->
                     <div class="accordion-item fade-in-up">
-                        <button class="accordion-header">
-                            <span class="q-icon">Q</span>
+                        <button type="button" class="accordion-header" aria-expanded="false">
+                            <span class="q-icon" aria-hidden="true">Q</span>
                             <span class="q-text">「オフサイド」って結局なんですか？</span>
-                            <span class="arrow-icon">▼</span>
+                            <span class="arrow-icon" aria-hidden="true">▼</span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-inner">
@@ -177,10 +172,10 @@
 
                     <!-- アコーディオン2 -->
                     <div class="accordion-item fade-in-up">
-                        <button class="accordion-header">
-                            <span class="q-icon">Q</span>
+                        <button type="button" class="accordion-header" aria-expanded="false">
+                            <span class="q-icon" aria-hidden="true">Q</span>
                             <span class="q-text">イエローカードとレッドカードの基準は？</span>
-                            <span class="arrow-icon">▼</span>
+                            <span class="arrow-icon" aria-hidden="true">▼</span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-inner">
@@ -191,14 +186,28 @@
 
                     <!-- アコーディオン3 -->
                     <div class="accordion-item fade-in-up">
-                        <button class="accordion-header">
-                            <span class="q-icon">Q</span>
+                        <button type="button" class="accordion-header" aria-expanded="false">
+                            <span class="q-icon" aria-hidden="true">Q</span>
                             <span class="q-text">VAR（ビデオ・アシスタント・レフェリー）とは？</span>
-                            <span class="arrow-icon">▼</span>
+                            <span class="arrow-icon" aria-hidden="true">▼</span>
                         </button>
                         <div class="accordion-content">
                             <div class="accordion-inner">
                                 <p>試合の勝敗を左右する「重大な局面（ゴール、PK、一発退場、人違い）」などにおいて、映像を用いて主審の判定をサポートするシステムです。最終決定権は常にピッチ上の主審にあります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- アコーディオン4（追加：アディショナルタイム） -->
+                    <div class="accordion-item fade-in-up">
+                        <button type="button" class="accordion-header" aria-expanded="false">
+                            <span class="q-icon" aria-hidden="true">Q</span>
+                            <span class="q-text">「アディショナルタイム」って何？</span>
+                            <span class="arrow-icon" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>試合中にプレーが止まっていた時間を、前後半（各45分）の最後に追加してプレーする時間のことです。<br>選手のケガの治療、交代、VARの映像チェック、ゴール後のパフォーマンスなどで消費された時間を主審が計測し、「最低でも何分追加するか」を提示します。一昔前は「ロスタイム」と呼ばれていました。</p>
                             </div>
                         </div>
                     </div>
@@ -208,7 +217,7 @@
     </main>
 
     <!-- ==========================================
-      フッター（全ページ共通）
+      フッター
     =========================================== -->
     <footer class="footer">
         <div class="footer-container">
@@ -228,14 +237,12 @@
                         <li><a href="team.html">Teams</a></li>
                         <li><a href="history.html">History</a></li>
                         <li><a href="result.html">Result</a></li>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">Support</a></li>
                     </ul>
                 </div>
                 <div class="footer-group">
                     <h3>お問い合わせ</h3>
                     <ul>
-                        <!-- ★修正：アニメーションが誤作動しない安全なダミーリンクの書き方に変更 -->
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">プライバシーポリシー</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">利用規約</a></li>
                         <li><a href="#" onclick="event.preventDefault(); alert('課題作成用のダミーリンクです。');">FAQ</a></li>
@@ -245,7 +252,7 @@
         </div>
     </footer>
 
-    <!-- JSの読み込み（正しい位置・キャッシュクリア設定付き） -->
-    <script src="js/script.js?ver=2"></script>
+    <!-- JSの読み込み -->
+    <script src="js/script.js?ver=32"></script>
 </body>
 </html>
